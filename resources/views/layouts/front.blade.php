@@ -14,10 +14,11 @@
 </head>
 
 <body>
-    
+    @include('partials._header')
 
     @yield('content')
 
+    @include('partials._footer')
     <script src="{{ asset('/') . mix('js/front.js') }}" type="text/javascript"></script>
     @yield('scripts')
 </body>
