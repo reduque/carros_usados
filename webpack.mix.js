@@ -10,8 +10,8 @@ const mix = require('laravel-mix');
  | file for the application as well as bundling up all the JS files.
  |
  */
-mix.js('resources/js/front.js', 'public/js/app2021.js')
-    .sass('resources/sass/front.scss', 'public/css/app.css')
+mix.js('resources/js/front.js', 'public/js/front.js')
+    .sass('resources/sass/front.scss', 'public/css/front.css')
     .version()
     .options({
         processCssUrls: false
