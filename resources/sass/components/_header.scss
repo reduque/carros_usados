@@ -1,4 +1,6 @@
 .cu-header {
+    position: relative;
+    z-index: 100;
     &__search {
         width: 2.5rem;
         height: 2.5rem;
@@ -78,6 +80,9 @@
         transition: transform 400ms ease-out, top 150ms linear;
         will-change: transform, top;
         z-index: 2;
+        .cu-search-form {
+            width: 37.5rem;
+        }
         &[aria-hidden="false"] {
             transform: translateY(0);
         }

@@ -829,6 +829,10 @@ figure img {
   background: var(--color-yellow);
 }
 
+.cu-header {
+  position: relative;
+  z-index: 100;
+}
 .cu-header__search {
   width: 2.5rem;
   height: 2.5rem;
@@ -910,6 +914,9 @@ figure img {
   will-change: transform, top;
   z-index: 2;
 }
+.cu-header__search-bar .cu-search-form {
+  width: 37.5rem;
+}
 .cu-header__search-bar[aria-hidden=false] {
   transform: translateY(0);
 }
@@ -967,7 +974,7 @@ figure img {
 .cu-footer__bottom {
   align-items: flex-end;
   justify-content: space-between;
-  padding: 1.25rem 0;
+  padding: 1.5625rem 0;
   margin: 0 2.1875rem;
   border-top: 1px solid var(--color-blue-border);
 }
@@ -1268,7 +1275,7 @@ figure img {
 }
 
 .cu-category {
-  padding: 3.125rem 0;
+  padding: 1.875rem 3.125rem;
 }
 .cu-category .cu-container {
   max-width: 89.5rem;
