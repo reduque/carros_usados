@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use App\Carro;
 use App\Marca;
 use App\Modelo;
+use App\Punto;
 use Session;
 
 class CarroController extends Controller
@@ -15,8 +16,8 @@ class CarroController extends Controller
 
     public function index(Request $request)
     {
-        $carros=Carro::get();
-        return view('administracion.carros.index',['carros' => $carros]);
+        $carros=Carro::with('marca')->with('modelo')->get();
+        return view('administracion.carros.index',compact('carros'));
     }
     public function carros_modelos(Request $request){
         $respuesta='';
@@ -56,7 +57,14 @@ class CarroController extends Controller
         $carro=Carro::find($id);
         Session(['carro_id' => $id]);
         $marcas=Marca::get();
-        return view('administracion.carros.edit',compact('carro','marcas'));
+        $carro_id=$carro->id;
+        $puntos=Punto::join('grupos','puntos.grupo_id','=','grupos.id')
+        ->leftJoin('carro_puntos', function($join) use ($carro_id){
+            $join->on('puntos.id', '=', 'carro_puntos.punto_id');
+            $join->where('carro_puntos.carro_id','=',$carro_id);
+        })->select(['puntos.*', 'grupo','respuesta'])->get();
+        //dd($puntos[0]);
+        return view('administracion.carros.edit',compact('carro','marcas','puntos'));
     }
 
     public function update(Request $request, $id)

@@ -106,12 +106,42 @@
             <button type="submit" class="btn btn-success"><i class="fa fa-fw fa-check"></i> @lang('administracion.guardar')</button>  
             <a href="{{ route('carros.index') }}" class="btn btn-primary"><i class="fa fa-fw fa-list"></i> @lang('administracion.volver_lista')</a> 
             <a href="{{ route('carros.create') }}" class="btn btn-primary"><i class="fa fa-fw fa-plus-circle"></i> @lang('administracion.nuevo')</a> 
+            <a href="" class="btn btn-primary"><i class="fa fa-fw fa-list"></i> Puntos de evaluación</a> 
             <a href="{{ route('fotos.index') }}" class="btn btn-primary"><i class="fa fa-fw fa-list"></i> @lang('administracion.fotos')</a> 
             <a href="{{ route('carros_eliminar', codifica($carro->id) ) }}" class="btn btn-danger"><i class="fa fa-fw fa-ban"></i> @lang('administracion.eliminar')</a>
         </div>
     </div>
 </form>
-
+<p>&nbsp;</p>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+            <?php
+            $grupo='';
+            foreach($puntos as $punto){
+                if($grupo<>$punto->grupo){
+                    $grupo=$punto->grupo;
+                    ?>
+                    <tr>
+                        <th>{{ $grupo }}</th>
+                        <th>Respuesta</th>
+                    </tr>
+                    <?php
+                } ?>
+                <tr>
+                    <td>{{ $punto->punto }}</td>
+                    <td data-id="{{ $punto->id }}">
+                        <label><input class="puntos" name="radio_{{ $punto->id }}" value="Si" type="radio"@if($punto->respuesta===1) checked @endif> Si</label>
+                        <label><input class="puntos" name="radio_{{ $punto->id }}" value="No" type="radio"@if($punto->respuesta===0) checked @endif> No</label>
+                        <label><input class="puntos" name="radio_{{ $punto->id }}" value="No aplica" type="radio"@if($punto->respuesta===null) checked @endif> No aplica</label>
+                    </td>
+                </tr>
+            <?php }?>
+            </table>
+        </div>
+    </div>
+</div>
 
 @endsection
 @section('javascript')
@@ -128,22 +158,25 @@ $(document).ready(function(){
         }
     })
     function carros_modelos(){
-            $.ajax({
-                url: '{{ route('carros_modelos') }}',
-                data: {
-                    idmarca: $('select[name="marca_id"]').val(),
-                    modeloid: '{{old('modelo_id', $carro->modelo_id)}}'
-                },
-                type: "get",
-                datatype: "html"
-            }).done(function(data) {
-                $('select[name="modelo_id"]').html(data);
-            });
-        }
+        $.ajax({
+            url: '{{ route('carros_modelos') }}',
+            data: {
+                idmarca: $('select[name="marca_id"]').val(),
+                modeloid: '{{old('modelo_id', $carro->modelo_id)}}'
+            },
+            type: "get",
+            datatype: "html"
+        }).done(function(data) {
+            $('select[name="modelo_id"]').html(data);
+        });
+    }
+    carros_modelos();
+    $('select[name="marca_id"]').change(function(){
         carros_modelos();
-        $('select[name="marca_id"]').change(function(){
-            carros_modelos();
-        })
+    })
+    $('.puntos').change(function(){
+        alert($(this).val());
+    })
 
 })
 </script>
