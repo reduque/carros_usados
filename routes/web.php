@@ -57,6 +57,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
 		Route::get('carros_eliminar/{id}', 'CarroController@destroy')->name('carros_eliminar');
 	    Route::resource('carros', 'CarroController');
 		Route::get('carros_modelos', 'CarroController@carros_modelos')->name('carros_modelos');
+		Route::get('carros_puntos', 'CarroController@carros_puntos')->name('carros_puntos');
 
 
 		Route::get('fotos_eliminar/{id}', 'FotoController@destroy')->name('fotos_eliminar');
