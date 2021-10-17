@@ -16,5 +16,5 @@ mix.js('resources/js/front.js', 'public/js/front.js')
     .options({
         processCssUrls: false
     })
-    .browserSync('goliiiveprod.local'); // Use wamp/xamp local proxy
+    .browserSync('carrosusados:8888'); // Use wamp/xamp local proxy
 

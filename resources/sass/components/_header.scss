@@ -1,0 +1,90 @@
+.cu-header {
+    &__search {
+        width: 2.5rem;
+        height: 2.5rem;
+        mask: url('../img/svg/icon-search.svg') center no-repeat;
+        mask-size: 1.5rem;
+        background: var(--color-blue-dark);
+        &:hover {
+            background: var(--color-yellow);
+        }
+    }
+    &__main,
+    &__bar {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 2.125rem;
+        &__brand {
+            display: block;
+            font-family: Arial;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: all 300ms ease-out;
+            will-change: color, font-size, width;
+        }
+    }
+    &__main {
+        position: relative;
+        height: 5.625rem;
+        z-index: 10;
+        background: var(--color-white);
+        &__brand {
+            width: 6.75rem;
+            font-size: 1.5625rem;
+            line-height: 1.4375rem;
+            color: var(--color-blue-dark);
+            &:hover {
+                color: var(--color-blue-light);
+            }
+        }
+    }
+    &__bar {
+        position: fixed;
+        width: 100%;
+        height: 3.5rem;
+        left: 0;
+        top: 0;
+        z-index: 5;
+        background: var(--color-blue-dark);
+        box-shadow: 0 0 0.5rem rgba(0,0,0,0.3);
+        &__brand {
+            font-size: 1.375rem;
+            line-height: 1.375rem;
+            letter-spacing: 0;
+            color: var(--color-white);
+        }
+        .cu-header__search {
+            background: var(--color-white);
+            &:hover {
+                background: var(--color-yellow);
+            }
+        }
+    }
+    &__search-bar {
+        position: fixed;
+        width: 100%;
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem 2.1875rem;
+        left: 0;
+        top: 5.625rem;
+        box-shadow: 0 0 0.5rem var(--color-blue-shadow);
+        background: var(--color-yellow);
+        transform: translateY(-200%);
+        transition: transform 400ms ease-out, top 150ms linear;
+        will-change: transform, top;
+        z-index: 2;
+        &[aria-hidden="false"] {
+            transform: translateY(0);
+        }
+    }
+    &--scrolled {
+        .cu-header__search-bar {
+            top: 3.5rem;
+        }
+    }
+}
