@@ -50,7 +50,9 @@ figure {
 .cu-main {
     position: relative;
     flex: 1;
+    box-shadow: 0 0 2rem rgba(0,0,0,0.2);
     background: var(--color-white);
+    z-index: 2;
     .flickity-page-dots {
         .dot {
             background: var(--color-gray-light);

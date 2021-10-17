@@ -4585,6 +4585,10 @@ window.onresize = function () {
   document.documentElement.style.setProperty('--vh', "".concat(vh, "px"));
 };
 
+var footer = document.querySelector('.cu-footer');
+var main = document.querySelector('.cu-main');
+main.style.marginBottom = "".concat(footer.clientHeight, "px");
+
 /***/ }),
 
 /***/ "./resources/js/front.js":

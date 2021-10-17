@@ -9,3 +9,8 @@ window.onresize = () => {
     document.documentElement.style.setProperty('--vw', `${vw}px`);
     document.documentElement.style.setProperty('--vh', `${vh}px`);
 }
+
+const footer = document.querySelector('.cu-footer')
+const main = document.querySelector('.cu-main')
+
+main.style.marginBottom = `${footer.clientHeight}px`

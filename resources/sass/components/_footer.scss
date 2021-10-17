@@ -1,6 +1,11 @@
 .cu-footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
     color: var(--color-white);
     background: var(--color-blue-dark);
+    z-index: 1;
     &__top,
     &__bottom {
         display: flex;
