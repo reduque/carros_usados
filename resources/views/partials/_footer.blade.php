@@ -3,10 +3,9 @@
       <div class="cu-footer__top">
         <h3>Marcas disponibles</h3>
         <p>Llega rápido al carro que te interesa</p>
-        <form>
-          <input type="search" placeholder="Buscar" />
-          <button type="submit">Buscar</button>
-        </form>
+        <div class="cu-footer__top__search">
+          @include('partials._search_form')
+        </div>
         <ul>
           <li><a href="">Audi</a></li>
           <li><a href="">Toyota</a></li>
@@ -23,7 +22,7 @@
       </div>
       <div class="cu-footer__bottom">
         <div class="cu-footer__bottom__copy">
-          <h3>Carros Usados</h3>
+          <h3><a href="">Carros Usados</a></h3>
           <p>Copyright &copy; 2021 Carros Usados. Todos los derechos reservados.</p>
         </div>
         <ul class="cu-footer__bottom__contact">

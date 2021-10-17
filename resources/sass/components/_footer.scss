@@ -1,0 +1,102 @@
+.cu-footer {
+    color: var(--color-white);
+    background: var(--color-blue-dark);
+    &__top,
+    &__bottom {
+        display: flex;
+        align-items: center;
+    }
+    &__top {
+        flex-flow: column nowrap;
+        justify-content: center;
+        text-align: center;
+        padding: 3.125rem 0;
+        h3 {
+            font-size: 2.1875rem;
+            line-height: 2.1875rem;
+            letter-spacing: -0.045rem;
+            margin-bottom: 1rem;
+        }
+        p {
+            font-size: 1.5rem;
+            line-height: 1.5rem;
+            margin-bottom: 3.125rem;
+        }
+        ul {
+            margin: 3.125rem 0 0;
+            padding: 0;
+            list-style-type: none;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 0.75rem 5rem;
+            li {
+                text-align: left;
+                a {
+                    color: var(--color-blue-light);
+                    &:hover {
+                        color: var(--color-yellow);
+                    }
+                }
+            }
+        }
+    }
+    &__bottom {
+        align-items: flex-end;
+        justify-content: space-between;
+        padding: 1.25rem 0;
+        margin: 0 2.1875rem;
+        border-top: 1px solid var(--color-blue-border);
+        &__copy {
+            h3 {
+                font-family: Arial;
+                width: 6.75rem;
+                font-size: 1.5625rem;
+                line-height: 1.4375rem;
+                text-transform: uppercase;
+                margin-bottom: 0.8125rem;
+            }
+            p {
+                font-size: 0.75rem;
+                line-height: 0.75rem;
+            }
+        }
+        &__contact {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            &, li {
+                display: flex;
+                flex-flow: column nowrap;
+                align-items: flex-start;
+            }
+            li {
+                flex-flow: row nowrap;
+                align-items: center;
+                margin: 0 0 0.9375rem;
+                &::before {
+                    content: '';
+                    width: 1.5625rem;
+                    height: 1.5625rem;
+                    margin-right: 1.25rem;
+                    mask: url('../img/svg/icon-phone.svg') center/contain no-repeat;
+                    background: var(--color-white);
+                }
+                &:last-child {
+                    margin: 0;
+                    &::before {
+                        width: 1.6875rem;
+                        height: 1.25rem;
+                        mask-image: url('../img/svg/icon-mail.svg');
+                    }
+                }
+                a {
+                    display: inline-block;
+                    font-size: 1.5625rem;
+                    line-height: 1.5625rem;
+                    letter-spacing: -0.02rem;
+                    text-align: right;
+                }
+            }
+        }
+    }
+}
