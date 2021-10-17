@@ -9,6 +9,7 @@ use App\Carro;
 use App\Marca;
 use App\Modelo;
 use App\Punto;
+use App\CarroPunto;
 use Session;
 
 class CarroController extends Controller
@@ -55,6 +56,9 @@ class CarroController extends Controller
     {
         $id=decodifica($id);
         $carro=Carro::find($id);
+
+        //dd($carro->puntos_intermedia);
+
         Session(['carro_id' => $id]);
         $marcas=Marca::get();
         $carro_id=$carro->id;
@@ -63,8 +67,25 @@ class CarroController extends Controller
             $join->on('puntos.id', '=', 'carro_puntos.punto_id');
             $join->where('carro_puntos.carro_id','=',$carro_id);
         })->select(['puntos.*', 'grupo','respuesta'])->get();
-        //dd($puntos[0]);
         return view('administracion.carros.edit',compact('carro','marcas','puntos'));
+    }
+
+    public function carros_puntos(Request $request){
+        if($request->respuesta=='No aplica'){
+            if( $respuesta=CarroPunto::where('carro_id', $request->carroid)->where('punto_id', $request->puntoid)->first() ){
+                $respuesta->delete();
+            }
+        }else{
+            CarroPunto::updateOrCreate(
+                [
+                    'carro_id' => $request->carroid,
+                    'punto_id' => $request->puntoid
+                ],
+                [
+                    'respuesta' => $request->respuesta
+                ]
+            );
+        }
     }
 
     public function update(Request $request, $id)
