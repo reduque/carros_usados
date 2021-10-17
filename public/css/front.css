@@ -512,10 +512,10 @@ figure img {
   will-change: fill;
 }
 .cu-main .flickity-button.previous {
-  left: -2.5rem;
+  left: -3rem;
 }
 .cu-main .flickity-button.next {
-  right: -2.5rem;
+  right: -3rem;
 }
 .cu-main .flickity-button:hover .flickity-button-icon {
   fill: var(--color-yellow);
@@ -846,6 +846,9 @@ figure img {
   text-transform: uppercase;
   margin-bottom: 0.8125rem;
 }
+.cu-footer__bottom__copy h3:hover {
+  color: var(--color-yellow);
+}
 .cu-footer__bottom__copy p {
   font-size: 0.75rem;
   line-height: 0.75rem;
@@ -873,6 +876,14 @@ figure img {
   -webkit-mask: url("../img/svg/icon-phone.svg") center/contain no-repeat;
           mask: url("../img/svg/icon-phone.svg") center/contain no-repeat;
   background: var(--color-white);
+  transition: background-color 300ms ease-out;
+  will-change: background-color;
+}
+.cu-footer__bottom__contact li:hover::before {
+  background: vaR(--color-yellow);
+}
+.cu-footer__bottom__contact li:hover a {
+  color: var(--color-blue-light);
 }
 .cu-footer__bottom__contact li:last-child {
   margin: 0;

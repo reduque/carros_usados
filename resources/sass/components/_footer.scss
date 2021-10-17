@@ -54,6 +54,9 @@
                 line-height: 1.4375rem;
                 text-transform: uppercase;
                 margin-bottom: 0.8125rem;
+                &:hover {
+                    color: var(--color-yellow);
+                }
             }
             p {
                 font-size: 0.75rem;
@@ -80,6 +83,16 @@
                     margin-right: 1.25rem;
                     mask: url('../img/svg/icon-phone.svg') center/contain no-repeat;
                     background: var(--color-white);
+                    transition: background-color 300ms ease-out;
+                    will-change: background-color;
+                }
+                &:hover {
+                    &::before {
+                        background: vaR(--color-yellow);
+                    }
+                    a {
+                        color: var(--color-blue-light);
+                    }
                 }
                 &:last-child {
                     margin: 0;
