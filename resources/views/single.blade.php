@@ -101,5 +101,5 @@
     @include('partials._modal')
 @endsection
 @section('javascript')
-
+   
 @endsection

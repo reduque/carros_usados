@@ -313,6 +313,9 @@
                         font-weight: 700;
                         color: var(--color-blue-light);
                         text-decoration: underline;
+                        &:hover {
+                            color: var(--color-yellow);
+                        }
                     }
                     &:nth-child(2) {
                         h3 {

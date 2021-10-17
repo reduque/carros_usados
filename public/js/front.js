@@ -4870,7 +4870,12 @@ if (homeSlider) {
 var singleGallery = document.querySelector('.cu-single__gallery');
 
 if (singleGallery) {
+  var scrollPos;
+  var $body;
+
   window.onload = function () {
+    $body = document.querySelector('body');
+    scrollPos = 0;
     var thumbsSlider = new flickity__WEBPACK_IMPORTED_MODULE_3___default.a(singleGallery.querySelector('.cu-single__gallery__thumbs'), {
       cellSelector: '.gallery-thumb',
       cellAlign: 'left',
@@ -4911,6 +4916,39 @@ if (singleGallery) {
         thumbsSlider.resize();
       }, 310);
     });
+  };
+
+  var pointsBtn = document.querySelector('.see-points');
+
+  if (pointsBtn) {
+    var modal = document.querySelector('.cu-modal');
+    var closeBtn = modal.querySelector('.cu-modal__close');
+    pointsBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      modal.classList.add('active');
+      disableScroll();
+    });
+    closeBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      modal.classList.remove('active');
+      enableScroll();
+    });
+  }
+
+  var disableScroll = function disableScroll() {
+    scrollPos = window.pageYOffset;
+    $body.style.overflow = 'hidden';
+    $body.style.position = 'fixed';
+    $body.style.top = "-".concat(scrollPos, "px");
+    $body.style.width = '100%';
+  };
+
+  var enableScroll = function enableScroll() {
+    $body.style.removeProperty('overflow');
+    $body.style.removeProperty('position');
+    $body.style.removeProperty('top');
+    $body.style.removeProperty('width');
+    window.scrollTo(0, scrollPos);
   };
 }
 
