@@ -22,7 +22,8 @@ Route::get('/home', function () {
 });
 
 
-Route::get('/terminos-de-servicio', 'HomeController@tyc')->name('tyc');
+Route::get('/category', 'HomeController@category')->name('category');
+Route::get('/single', 'HomeController@single')->name('single');
 
 
 
