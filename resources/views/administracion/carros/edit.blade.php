@@ -132,8 +132,8 @@
                 <tr>
                     <td>{{ $punto->punto }}</td>
                     <td data-id="{{ $punto->id }}">
-                        <label><input class="puntos" name="radio_{{ $punto->id }}" value="Si" type="radio"@if($punto->respuesta===1) checked @endif> Si</label>
-                        <label><input class="puntos" name="radio_{{ $punto->id }}" value="No" type="radio"@if($punto->respuesta===0) checked @endif> No</label>
+                        <label><input class="puntos" name="radio_{{ $punto->id }}" value="1" type="radio"@if($punto->respuesta===1) checked @endif> Si</label>
+                        <label><input class="puntos" name="radio_{{ $punto->id }}" value="0" type="radio"@if($punto->respuesta===0) checked @endif> No</label>
                         <label><input class="puntos" name="radio_{{ $punto->id }}" value="No aplica" type="radio"@if($punto->respuesta===null) checked @endif> No aplica</label>
                     </td>
                 </tr>
@@ -142,6 +142,11 @@
         </div>
     </div>
 </div>
+
+@foreach ($carro->puntos_intermedia as $item)
+    <p>{{ $item->punto->grupo->grupo}} - {{ $item->punto->punto}} - {{ $item->respuesta}}</p>
+@endforeach
+
 
 @endsection
 @section('javascript')
@@ -175,7 +180,16 @@ $(document).ready(function(){
         carros_modelos();
     })
     $('.puntos').change(function(){
-        alert($(this).val());
+        $.ajax({
+            url: '{{ route('carros_puntos') }}',
+            data: {
+                respuesta: $(this).val(),
+                carroid: '{{ $carro->id }}',
+                puntoid: $(this).parents('td').data('id')
+            },
+            type: "get",
+        });
+
     })
 
 })
