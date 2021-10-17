@@ -1,5 +1,10 @@
-import 'flickity/dist/flickity.min.css';
+import 'flickity/dist/flickity.min.css'
+import '@fancyapps/ui/dist/fancybox.css'
+
+import 'flickity-as-nav-for'
 import Flickity from 'flickity'
+import { Fancybox } from '@fancyapps/ui'
+
 import './cssvars'
 import './togglers'
 import './scroll'
@@ -25,4 +30,40 @@ if (homeSlider) {
         groupCells: responsiveCells(),
         cellSelector: '.cu-card',
     })
+}
+
+const singleGallery = document.querySelector('.cu-single__gallery')
+if (singleGallery) {
+    window.onload = function() {
+        const thumbsSlider = new Flickity(singleGallery.querySelector('.cu-single__gallery__thumbs'), {
+            cellSelector: '.gallery-thumb',
+            cellAlign: 'left',
+            contain: true,
+            draggable: true,
+            wrapAround: true,
+            prevNextButtons: false,
+            pageDots: false,
+            resize: true,
+            asNavFor: singleGallery.querySelector('.cu-single__gallery__main'),
+        })
+        const mainSlider = new Flickity(singleGallery.querySelector('.cu-single__gallery__main'), {
+            cellSelector: '.gallery-item',
+            cellAlign: 'left',
+            draggable: true,
+            groupCells: 1,
+            prevNextButtons: true,
+            pageDots: false,
+            wrapAround: true,
+            resize: true,
+            contain: true,
+        })
+        const panelBtn = document.querySelector('.cu-single__info__button')
+        panelBtn.addEventListener('click', (e) => {
+            e.preventDefault()
+            setTimeout(() => {
+                mainSlider.resize()
+                thumbsSlider.resize()
+            }, 310)
+        })
+    }
 }
