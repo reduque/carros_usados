@@ -1,0 +1,83 @@
+.cu-category {
+    padding: 3.125rem 0;
+    .cu-container {
+        max-width: 89.5rem;
+    }
+    &__header {
+        width: 100%;
+    }
+    &__header {
+        &, &__left {
+            display: flex;
+            flex-flow: row nowrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+        &__left {
+            h4 {
+                font-family: var(--font-family-body);
+                font-size: 1rem;
+                line-height: 1rem;
+                color: var(--color-blue-shadow);
+                margin-right: 1rem;
+            }
+        }
+        &__search {
+            width: 31rem;
+        }
+        &__counter {
+            font-size: 1rem;
+            line-height: 1rem;
+            font-weight: 700;
+            letter-spacing: -0.02rem;
+            color: var(--color-blue-shadow);
+            span {
+                display: inline-block;
+                margin: 0 0.1875rem;
+                color: var(--color-blue-light);
+            }
+        }
+    }
+    &__content {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        justify-content: center;
+        margin: 0 -1.25rem;
+        &__grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            padding-top: 2.5rem;
+            margin: 0 -1.25rem;
+            width: 100%;
+        }
+        .cu-more {
+            display: flex;
+            flex-flow: column nowrap;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.0625rem;
+            line-height: 1.0625rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-top: 1.5625rem;
+            &::after {
+                display: block;
+                content: '';
+                width: 0.75rem;
+                height: 1rem;
+                margin-top: 0.375rem;
+                mask: url('../img/svg/icon-arrow.svg') center/contain no-repeat;
+                background: var(--color-blue-light);
+                transition: background-color 300ms ease-out;
+                will-change: background-color;
+            }
+            &:hover {
+                color: var(--color-yellow);
+                &::after {
+                    background: var(--color-blue-dark);
+                }
+            }
+        }
+    }
+}

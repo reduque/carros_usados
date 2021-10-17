@@ -7,7 +7,7 @@
         <div class="cu-catalog__slider">
            <div class="cu-catalog__slider__wrapper">
                 @for ($i = 0; $i < 8; $i++)
-                    @include('partials._car_card')
+                    @include('partials._car_minicard')
                 @endfor
            </div>
            <a class="cu-button cu-button--filled">Ver más</a>
