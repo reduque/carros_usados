@@ -24,10 +24,17 @@
             position: absolute;
             left: 0;
             top: 0;
+            overflow: hidden;
+            &:hover {
+                img {
+                    transform: scale(1.025);
+                }
+            }
         }
         img {
             object-fit: cover;
             object-position: center;
+            transition: transform 300ms ease-out;
         }
     }
     &__info {

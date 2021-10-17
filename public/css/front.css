@@ -951,12 +951,17 @@ img {
   position: absolute;
   left: 0;
   top: 0;
+  overflow: hidden;
+}
+.cu-card__image a:hover img {
+  transform: scale(1.025);
 }
 .cu-card__image img {
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: center;
      object-position: center;
+  transition: transform 300ms ease-out;
 }
 .cu-card__info {
   padding: 0.75rem;
@@ -1408,11 +1413,28 @@ img {
   width: 100%;
   margin-right: 0.9375rem;
 }
+.cu-main .cu-single__gallery__main__item a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.cu-main .cu-single__gallery__main__item a img {
+  transition: transform 300ms ease-out;
+}
+.cu-main .cu-single__gallery__main__item a:hover img {
+  transform: scale(1.025);
+}
 .cu-main .cu-single__gallery__thumbs {
   margin-top: 0.9375rem;
 }
 .cu-main .cu-single__gallery__thumbs__thumb {
   margin-right: 0.9375rem;
+  transition: filter 300ms linear;
+  filter: grayscale(1);
+}
+.cu-main .cu-single__gallery__thumbs__thumb.is-nav-selected {
+  filter: grayscale(0);
 }
 .cu-main .cu-single__gallery .flickity-button {
   width: 2.5rem;

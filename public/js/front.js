@@ -4880,7 +4880,12 @@ if (singleGallery) {
       prevNextButtons: false,
       pageDots: false,
       resize: true,
-      asNavFor: singleGallery.querySelector('.cu-single__gallery__main')
+      asNavFor: singleGallery.querySelector('.cu-single__gallery__main'),
+      on: {
+        change: function change(index) {
+          mainSlider.select(index);
+        }
+      }
     });
     var mainSlider = new flickity__WEBPACK_IMPORTED_MODULE_3___default.a(singleGallery.querySelector('.cu-single__gallery__main'), {
       cellSelector: '.gallery-item',
@@ -4891,7 +4896,12 @@ if (singleGallery) {
       pageDots: false,
       wrapAround: true,
       resize: true,
-      contain: true
+      contain: true,
+      on: {
+        change: function change(index) {
+          thumbsSlider.select(index);
+        }
+      }
     });
     var panelBtn = document.querySelector('.cu-single__info__button');
     panelBtn.addEventListener('click', function (e) {

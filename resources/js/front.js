@@ -45,6 +45,11 @@ if (singleGallery) {
             pageDots: false,
             resize: true,
             asNavFor: singleGallery.querySelector('.cu-single__gallery__main'),
+            on: {
+                change: function(index) {
+                    mainSlider.select(index)
+                },
+            }
         })
         const mainSlider = new Flickity(singleGallery.querySelector('.cu-single__gallery__main'), {
             cellSelector: '.gallery-item',
@@ -56,6 +61,11 @@ if (singleGallery) {
             wrapAround: true,
             resize: true,
             contain: true,
+            on: {
+                change: function(index) {
+                    thumbsSlider.select(index)
+                },
+            }
         })
         const panelBtn = document.querySelector('.cu-single__info__button')
         panelBtn.addEventListener('click', (e) => {
