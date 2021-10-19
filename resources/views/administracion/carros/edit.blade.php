@@ -132,7 +132,7 @@
                 <tr>
                     <td>{{ $punto->punto }}</td>
                     <td data-id="{{ $punto->id }}">
-                        <label><input class="puntos" name="radio_{{ $punto->id }}" value="1" type="radio"@if($punto->respuesta===1) checked @endif> Si</label>
+                        <label><input class="puntos" name="radio_{{ $punto->id }}" value="1" type="radio"@if($punto->respuesta===1) checked @endif> Si</label>&nbsp;&nbsp;
                         <label><input class="puntos" name="radio_{{ $punto->id }}" value="0" type="radio"@if($punto->respuesta===0) checked @endif> No</label>
                         <label><input class="puntos" name="radio_{{ $punto->id }}" value="No aplica" type="radio"@if($punto->respuesta===null) checked @endif> No aplica</label>
                     </td>
