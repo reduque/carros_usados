@@ -1,6 +1,6 @@
 .cu-hero {
     position: relative;
-    height: 43.75rem;
+    height: calc(var(--vw, vw) * 40);
     border-top: 1px solid var(--color-blue-dark);
     border-bottom: 1px solid var(--color-blue-dark);
     background: var(--color-blue-light);
@@ -110,7 +110,7 @@
 }
 
 .cu-reasons {
-    padding: 3.75rem 0 3.125rem;
+    padding: 3.75rem 0;
     color: var(--color-white);
     background: linear-gradient(to top, #0190C4, var(--color-blue-dark));
     .cu-container {
@@ -119,6 +119,7 @@
         align-items: center;
         justify-content: center;
         text-align: center;
+        height: 100%;
     }
     &__intro {
         h2 {
@@ -190,7 +191,7 @@
 .cu-cert {
     position: relative;
     padding: 3.75rem 0;
-    height: 36.4375rem;
+    height: calc(var(--vw, vw) * 38.0208333333333333);
     overflow: hidden;
     background: linear-gradient(0deg, var(--color-white) 0%, var(--color-white) 50%, var(--color-gray-background) 100%);
     .cu-container,

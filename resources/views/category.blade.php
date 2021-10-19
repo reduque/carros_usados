@@ -6,7 +6,7 @@
 
 @section('content')
 <section class="cu-category">
-    <div class="cu-container">
+    <div class="cu-container cu-container--category">
         <div class="cu-category__header">
             <div class="cu-category__header__left">
                 <h4>Ordenar por</h4>
