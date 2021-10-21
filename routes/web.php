@@ -21,9 +21,8 @@ Route::get('/home', function () {
     return redirect()->route('home');
 });
 
-
-Route::get('/category', 'HomeController@category')->name('category');
-Route::get('/single', 'HomeController@single')->name('single');
+Route::get('/category/', 'HomeController@category')->name('category');
+Route::get('/single/{id}', 'HomeController@single')->name('single');
 
 
 
@@ -61,6 +60,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
 
 
 		Route::get('fotos_eliminar/{id}', 'FotoController@destroy')->name('fotos_eliminar');
+		Route::get('ordena_fotos', 'FotoController@ordena_fotos')->name('ordena_fotos');
 	    Route::resource('fotos', 'FotoController');
 
 

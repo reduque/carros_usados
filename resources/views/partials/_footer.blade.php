@@ -7,17 +7,9 @@
           @include('partials._search_form')
         </div>
         <ul>
-          <li><a href="">Audi</a></li>
-          <li><a href="">Toyota</a></li>
-          <li><a href="">Volkswagen</a></li>
-          <li><a href="">Infiniti</a></li>
-          <li><a href="">Subaru</a></li>
-          <li><a href="">Kia</a></li>
-          <li><a href="">Ford</a></li>
-          <li><a href="">GMC</a></li>
-          <li><a href="">Lexus</a></li>
-          <li><a href="">Honda</a></li>
-          <li><a href="">Lincoln</a></li>
+        @foreach ($marcas as $marca)
+          <li><a href="{{ route('category') }}?marca={{$marca->marca}}">{{ ucfirst(strtolower($marca->marca)) }}</a></li>
+        @endforeach
         </ul>
       </div>
       <div class="cu-footer__bottom">

@@ -12,9 +12,9 @@ const mix = require('laravel-mix');
  */
 mix.js('resources/js/front.js', 'public/js/front.js')
     .sass('resources/sass/front.scss', 'public/css/front.css')
+    .sass('resources/sass/sb-admin.scss', 'public/css/sb-admin.css')
     .version()
     .options({
         processCssUrls: false
     })
     .browserSync('carrosusados:8888'); // Use wamp/xamp local proxy
-

@@ -56,9 +56,11 @@
                     <li>
                         <a href="{{ route("usuarios.index") }}"><i class="fa fa-fw fa-user"></i> @lang('administracion.usuarios')</a>
                     </li>
+                    {{--
                     <li>
                         <a href="{{ route('banners.index') }}"><i class="fa fa-fw fa-pencil"></i> Banners</a>
                     </li>
+                    --}}
                     <li>
                         <a href="{{ route('marcas.index') }}"><i class="fa fa-fw fa-pencil"></i> Marcas</a>
                     </li>

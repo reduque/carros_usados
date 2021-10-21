@@ -6,11 +6,11 @@
         </div>
         <div class="cu-catalog__slider">
            <div class="cu-catalog__slider__wrapper">
-                @for ($i = 0; $i < 8; $i++)
+                @foreach ($carros as $carro_p)
                     @include('partials._car_minicard')
-                @endfor
+                @endforeach
            </div>
-           <a class="cu-button cu-button--filled">Ver más</a>
+           <a href="{{ route('category') }}" class="cu-button cu-button--filled">Ver más</a>
         </div>
     </div>
 </section>

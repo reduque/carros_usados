@@ -11,6 +11,6 @@ class Marca extends Model
 	    return $this->hasMany('App\Modelo');
 	}	
 	public function carros(){
-	    return $this->hasMany('App\Carro');
+	    return $this->hasMany('App\Carro')->where('estatus','nuevo');
 	}	
 }

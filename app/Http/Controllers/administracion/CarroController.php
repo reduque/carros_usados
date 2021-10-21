@@ -39,7 +39,12 @@ class CarroController extends Controller
         $rules = [
             'precio' => 'numeric|required',
             'descripcion' => 'required',
+            'placa' => 'required',
             'color' => 'required',
+            'kilometraje' => 'numeric|required',
+            'tanque_de_combustible' => 'numeric|required',
+            'puertas' => 'numeric|required',
+            'juegos_de_llaves' => 'numeric|required',
         ];
 
         $validator = \Validator::make($request->all(), $rules);
@@ -47,6 +52,13 @@ class CarroController extends Controller
             return back()->withErrors($validator)->withInput();
         }
         $data=$request->toArray();
+        $data['aire_acondicionado']= $request->aire_acondicionado ? 1 : 0;
+        $data['sistema_de_seguroda']= $request->sistema_de_seguroda ? 1 : 0;
+        if($request->img){
+            $data['img'] = $this->saveFile($request->img, 'carros/',(string)(date("YmdHis")) . (string)(rand(1,9)));
+            createThumbnail('uploads/carros/' . $data['img'], 'uploads/carros/tn/' . $data['img'], 1000);
+        }
+
         $carro=Carro::create($data);
 
         return redirect()->route('carros.edit', codifica($carro->id))->with("notificacion", __('administracion.grabado_exito') );
@@ -90,29 +102,42 @@ class CarroController extends Controller
 
     public function update(Request $request, $id)
     {
-
         $rules = [
             'precio' => 'numeric|required',
             'descripcion' => 'required',
+            'placa' => 'required',
             'color' => 'required',
+            'kilometraje' => 'numeric|required',
+            'tanque_de_combustible' => 'numeric|required',
+            'puertas' => 'numeric|required',
+            'juegos_de_llaves' => 'numeric|required',
         ];
 
-        try {
-            $validator = \Validator::make($request->all(), $rules);
-            if ($validator->fails()){
-                return back()->withErrors($validator)->withInput();
-            }
-            $id=decodifica($id);
-            $carro=Carro::find($id);
-            $data=$request->toArray();
-            $carro->update($data);
-
-            return redirect()->route('carros.edit', codifica($id))->with("notificacion", __('administracion.grabado_exito') );
-
-        } catch (\Exception $e) {
-            \Log::info('Error creating item: '.$e);
-            return \Response::json(['created' => false], 500);
+        $validator = \Validator::make($request->all(), $rules);
+        if ($validator->fails()){
+            return back()->withErrors($validator)->withInput();
         }
+        $id=decodifica($id);
+        $carro=Carro::find($id);
+        $data=$request->toArray();
+        $data['aire_acondicionado']= $request->aire_acondicionado ? 1 : 0;
+        $data['sistema_de_seguroda']= $request->sistema_de_seguroda ? 1 : 0;
+        if($request->img){
+            $img=$carro->img;
+            if($img<>''){
+                $this->deleteFile('carros/' . $img);
+                $this->deleteFile('carros/tn/' . $img);
+            }
+            $data['img'] = $this->saveFile($request->img, 'carros/',(string)(date("YmdHis")) . (string)(rand(1,9)));
+            createThumbnail('uploads/carros/' . $data['img'], 'uploads/carros/tn/' . $data['img'], 1000);
+        }else{
+            unset($data['img']);
+        }
+
+        $carro->update($data);
+
+        return redirect()->route('carros.edit', codifica($id))->with("notificacion", __('administracion.grabado_exito') );
+
     }
 
     public function destroy($id)
@@ -120,11 +145,9 @@ class CarroController extends Controller
         $id=decodifica($id);
         try{
             $carro=Carro::find($id);
-            if($carro->foto<>''){
-                $this->deleteFile('categorias/' . $carro->foto);
-            }
-            if($carro->banner<>''){
-                $this->deleteFile('categorias/' . $carro->banner);
+            if($carro->img<>''){
+                $this->deleteFile('carros/' . $carro->img);
+                $this->deleteFile('carros/tn/' . $carro->img);
             }
             $carro->delete();
             return redirect()->route('carros.index');

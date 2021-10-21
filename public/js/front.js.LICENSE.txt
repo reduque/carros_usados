@@ -1,4 +1,9 @@
 /*!
+ * Flickity asNavFor v2.0.1
+ * enable asNavFor for Flickity
+ */
+
+/*!
  * Flickity v2.2.2
  * Touch, responsive, flickable carousels
  *
