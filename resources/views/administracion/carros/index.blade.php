@@ -49,6 +49,11 @@
         </div>
     </div>
 </div>
+<div class="row">
+    <div class="col-lg-12">
+        {{$carros->render()}}
+    </div>
+</div>
 
 @endsection
 @section('javascript')

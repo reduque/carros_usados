@@ -1,19 +1,24 @@
 html {
     overflow-y: scroll;
-	max-height: 100%;
-	line-height: 1.5;
+    max-height: 100%;
+    line-height: 1.5;
 }
 
 body {
     display: flex;
-	min-height: calc(var(--vh, 1vh) * 100);
-	flex-direction: column;
+    min-height: calc(var(--vh, 1vh) * 100);
+    flex-direction: column;
     font-family: var(--font-family-body);
     color: var(--body-color);
     background-color: var(--color-yellow);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: var(--font-family-heading);
     font-weight: 700;
     margin: 0;
@@ -21,12 +26,14 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
     margin: 0 0 1.5rem;
+
     &:last-child {
         margin: 0;
     }
 }
 
-a, button {
+a,
+button {
     cursor: pointer;
     text-decoration: none;
     transition: all 300ms ease-out;
@@ -44,6 +51,7 @@ figure {
     display: block;
     margin: 0;
     padding: 0;
+
     img {
         font-family: var(--font-family-heading);
         font-size: 10px;
@@ -60,43 +68,53 @@ img {
 .cu-main {
     position: relative;
     flex: 1;
-    box-shadow: 0 0 2rem rgba(0,0,0,0.2);
+    box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
     background: var(--color-white);
     z-index: 2;
+
     .flickity-page-dots {
         .dot {
             background: var(--color-gray-light);
             opacity: 1;
+
             &.is-selected {
                 background: var(--color-blue-light);
             }
         }
     }
+
     .flickity-button {
         border-radius: none;
         background: none;
+
         .flickity-button-icon {
             fill: var(--color-blue-dark);
             transition: fill 300ms ease-out;
             will-change: fill;
         }
+
         &.previous {
             left: -3rem;
         }
+
         &.next {
             right: -3rem;
         }
+
         &:hover {
             .flickity-button-icon {
                 fill: var(--color-yellow);
             }
         }
+
         &:disabled {
             opacity: 1;
+
             .flickity-button-icon {
                 fill: var(--color-gray-border);
             }
         }
+
         &:focus {
             box-shadow: none;
             outline: none;
@@ -109,9 +127,11 @@ img {
     margin: 0 auto;
     padding: 0 2.5rem;
     height: auto;
+
     &--category {
         max-width: 94.5rem;
     }
+
     &--single {
         max-width: none;
         padding: 0;
@@ -130,6 +150,7 @@ img {
     line-height: 0;
     transition: background-color 300ms ease-out;
     will-change: background-color;
+
     &--filled {
         display: inline-flex;
         flex-flow: row nowrap;
@@ -142,8 +163,120 @@ img {
         color: var(--color-white);
         border-radius: 0.3125rem;
         background: var(--color-blue-light);
+
         &:hover {
             background: vaR(--color-blue-dark);
         }
     }
+}
+
+
+.pagination {
+    display: inline-block;
+    padding-left: 0;
+    margin: 22px 0;
+    border-radius: 4px
+}
+
+.pagination>li {
+    display: inline
+}
+
+.pagination>li>a,
+.pagination>li>span {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    line-height: 1.6;
+    text-decoration: none;
+    color: var(--color-blue-light);
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin-left: -1px
+}
+
+.pagination>li:first-child>a,
+.pagination>li:first-child>span {
+    margin-left: 0;
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px
+}
+
+.pagination>li:last-child>a,
+.pagination>li:last-child>span {
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px
+}
+
+.pagination>li>a:focus,
+.pagination>li>a:hover,
+.pagination>li>span:focus,
+.pagination>li>span:hover {
+    z-index: 2;
+    color: #216a94;
+    background-color: #eee;
+    border-color: #ddd
+}
+
+.pagination>.active>a,
+.pagination>.active>a:focus,
+.pagination>.active>a:hover,
+.pagination>.active>span,
+.pagination>.active>span:focus,
+.pagination>.active>span:hover {
+    z-index: 3;
+    color: #fff;
+    background-color: var(--color-blue-light);
+    border-color: var(--color-blue-light);
+    cursor: default
+}
+
+.pagination>.disabled>a,
+.pagination>.disabled>a:focus,
+.pagination>.disabled>a:hover,
+.pagination>.disabled>span,
+.pagination>.disabled>span:focus,
+.pagination>.disabled>span:hover {
+    color: #777;
+    background-color: #fff;
+    border-color: #ddd;
+    cursor: not-allowed
+}
+
+.pagination-lg>li>a,
+.pagination-lg>li>span {
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.3333333
+}
+
+.pagination-lg>li:first-child>a,
+.pagination-lg>li:first-child>span {
+    border-bottom-left-radius: 6px;
+    border-top-left-radius: 6px
+}
+
+.pagination-lg>li:last-child>a,
+.pagination-lg>li:last-child>span {
+    border-bottom-right-radius: 6px;
+    border-top-right-radius: 6px
+}
+
+.pagination-sm>li>a,
+.pagination-sm>li>span {
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5
+}
+
+.pagination-sm>li:first-child>a,
+.pagination-sm>li:first-child>span {
+    border-bottom-left-radius: 3px;
+    border-top-left-radius: 3px
+}
+
+.pagination-sm>li:last-child>a,
+.pagination-sm>li:last-child>span {
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px
 }

@@ -9,7 +9,7 @@
             <h3 class="cu-card__info__model">{{ $carro_p->modelo->modelo }}</h3>
             <div class="cu-card__info__meta">
                 <p><span class="cu-card__info__meta__brand">{{ ucfirst(strtolower($carro_p->marca->marca)) }}</span>
-                <span class="cu-card__info__meta__year">{{ $carro_p->ano }}</span></p>
+                <span class="cu-card__info__meta__year">&nbsp;{{ $carro_p->ano }}</span></p>
                 <p>{{ number_format($carro_p->kilometraje,0,'.','.') }} km</p>
             </div>
             <div class="cu-card__info__footer">

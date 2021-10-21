@@ -21,7 +21,7 @@ Route::get('/home', function () {
     return redirect()->route('home');
 });
 
-Route::get('/category/', 'HomeController@category')->name('category');
+Route::get('/catalogo/', 'HomeController@catalogo')->name('category');
 Route::get('/single/{id}', 'HomeController@single')->name('single');
 
 

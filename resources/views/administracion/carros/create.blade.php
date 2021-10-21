@@ -193,11 +193,6 @@
                 <label><span>Tamaño mímino 2500 x 1400 px | JPG o PNG</span></label>
             </div>
         </div>
-        <div class="col-lg-6">
-            <div class="form-group">
-                <input type="checkbox" class="" name="aire_acondicionado" id="a_a" value="1" @if( old('aire_acondicionado',1) == 1 ) checked @endif >&nbsp;&nbsp;<label for="a_a">Activo</label>
-            </div>
-        </div>
     </div>
 
     <div class="row">

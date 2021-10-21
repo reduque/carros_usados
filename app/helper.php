@@ -66,13 +66,27 @@ function meses($mes){
 
 	return $meses_array[$mes];
 }
-function limpiafiltro($txtbuscar){
-    $virus = array(" el "," la "," las "," los "," un "," una "," unas "," de "," del "," y "," the "," and ");
-    $cambios  = array(" "," "," "," "," "," "," "," "," "," "," "," ");
-    $txtbuscar = str_replace($virus, $cambios, $txtbuscar);
-    return trim($txtbuscar);
-}
+function creafiltro($txtBuscar){
+	$salida='';
+	$u='';
+	if($txtBuscar<>""){
+		$txtBuscar = ' ' . str_replace([',','.',';','?'], [' ',' ',' ',' '], strtolower($txtBuscar)) . ' ';
 
+		$virus = array(" a "," el "," la "," las "," los "," un "," una "," unas "," de "," del "," y "," the "," and "," al ");
+		$cambios  = array(" "," "," "," "," "," "," "," "," "," "," "," "," ");
+		$txtBuscar = str_replace($virus, $cambios, $txtBuscar);
+		$mpalabras = explode(" ", $txtBuscar);
+		$mpalabras = array_unique($mpalabras);
+		foreach($mpalabras as $mpalabra){
+			$mpalabra=trim($mpalabra);
+			if($mpalabra<>''){
+				$salida.=$u . $mpalabra;
+				$u='|';
+			}
+		}
+	}
+	return $salida;
+}
 function nl2p($string)
 {
     $paragraphs = '';

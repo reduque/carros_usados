@@ -12,8 +12,10 @@ class HomeController extends Controller
         return view('home', compact('carros'));
     }
 
-    public function category(){
-        return view('category');
+    public function catalogo(Request $request){
+        $palabras=creafiltro($request->q);
+        $carros=Carro::where('estatus','nuevo')->marca(($request->marca) ?: '')->orderby('created_at','desc')->with('marca')->with('modelo')->paginate(20);
+        return view('category',compact('carros'));
     }
 
     public function single($id){

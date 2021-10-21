@@ -17,7 +17,7 @@ class CarroController extends Controller
 
     public function index(Request $request)
     {
-        $carros=Carro::with('marca')->with('modelo')->get();
+        $carros=Carro::with('marca')->with('modelo')->paginate(50);
         return view('administracion.carros.index',compact('carros'));
     }
     public function carros_modelos(Request $request){
