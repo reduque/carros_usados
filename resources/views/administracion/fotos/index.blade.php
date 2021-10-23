@@ -7,6 +7,7 @@
             flex-wrap: wrap; 
         }
         .galeria article{
+            position: relative;
             width: 200px;
             padding: 5px;
             border: 1px solid #ccc;
@@ -14,6 +15,16 @@
         }
         .galeria article img{
             max-width: 100%;
+        }
+        .galeria article i{
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            color: #3097d1;
+            display: none;
+        }
+        .galeria article:hover i{
+            display: block;
         }
     </style>
 @endsection
@@ -47,7 +58,8 @@
         <div class="galeria">
             @foreach($fotos as $foto)
             <article data-id='{{ codifica($foto->id) }}'>
-                <a href="{{ route('fotos.edit', codifica($foto->id) ) }}" title="@lang('administracion.editar')"><img src="uploads/carros/galeria/tn/{{ $foto->img }}"></a>
+                <a href="{{ route('fotos.edit', codifica($foto->id) ) }}" title="@lang('administracion.editar')"><img src="uploads/carros/galeria/{{ $foto->img }}"></a>
+                <i class="fa fa-arrows-alt"></i>
             </article>
             @endforeach
         </div>

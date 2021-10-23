@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="manifest" href="{{ asset("/favicon/site.webmanifest") }}">
 
-    <link href="{{ asset('/') . mix('css/front.css')}}" rel="stylesheet">
+    <link href="css/front.css" rel="stylesheet">
 
     @yield('css')
 </head>
@@ -19,7 +19,7 @@
     @yield('content')
 
     @include('partials._footer')
-    <script src="{{ asset('/') . mix('js/front.js') }}" type="text/javascript"></script>
+    <script src="js/front.js" type="text/javascript"></script>
     @yield('scripts')
 </body>
 </html>
