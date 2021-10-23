@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Carro;
-
 class HomeController extends Controller
 {
     public function index(){
@@ -13,8 +12,16 @@ class HomeController extends Controller
     }
 
     public function catalogo(Request $request){
+        //dd($request->except('page'));
+        if($request->ordenamiento) Session(['ordenamiento' => $request->ordenamiento]);
+        if( empty(session('ordenamiento')) ) Session(['ordenamiento' => 'recientes']);
+
         $palabras=creafiltro($request->q);
-        $carros=Carro::where('estatus','nuevo')->marca(($request->marca) ?: '')->orderby('created_at','desc')->with('marca')->with('modelo')->paginate(20);
+        $carros=Carro::where('estatus','nuevo')
+        ->marca(($request->marca) ?: '')
+        ->filtro($palabras)
+        ->orderby((session('ordenamiento')=='recientes') ? 'created_at' : session('ordenamiento'),(session('ordenamiento')=='recientes') ? 'desc' : 'asc')->with('marca')->with('modelo')->paginate(20);
+
         return view('category',compact('carros'));
     }
 

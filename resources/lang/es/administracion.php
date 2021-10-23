@@ -2,7 +2,7 @@
 
 return [
 
-    'login' => 'Recuérdame',
+    'login' => 'Ingresar',
     'clave' => 'Clave',
     'confirmar_clave' => 'Confirmar Clave',
     'recuerdame' => 'Recúerdame',

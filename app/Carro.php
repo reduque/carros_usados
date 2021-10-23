@@ -16,7 +16,7 @@ class Carro extends Model
 	    return $this->belongsTo('App\Modelo');
 	}
     public function fotos(){
-	    return $this->hasMany('App\Foto');
+	    return $this->hasMany('App\Foto')->orderby('orden');
 	}
     public function puntos_intermedia(){
 	    return $this->hasMany('App\CarroPunto')->with('punto')->orderby('punto_id');
@@ -32,21 +32,39 @@ class Carro extends Model
 
 	public function scopeFiltro($query, $txtBuscar){
 		if($txtBuscar <> ''){
-			//$query->where("experiencias.nombre",'like','%' . $txtBuscar . '%');
-			$query->join('venues', function($join){
-				$join->on('experiencias.idvenue', '=', 'venues.id');
-			});
-			$query->join('users', function($join){
-				$join->on('experiencias.iduser', '=', 'users.id');
-			});
-			$query->where(function($query) use ($txtBuscar){
-				foreach(explode("|", $txtBuscar) as $txt){
-					$query->orwhere("experiencias.nombre",'like','%' . $txt . '%')
-					->orwhere("venues.nombre",'like','%' . $txt . '%')
-					->orwhere("venues.ciudad",'like','%' . $txt . '%')
-					->orwhere('first_name','like','%' . $txt . '%')
-					->orwhere('last_name','like','%' . $txt . '%')
-					->orwhere('nickname','like','%' . $txt . '%');
+			$palabras=explode("|", $txtBuscar);
+
+			$marcas_id=[];
+			foreach(Marca::where(function($query) use ($palabras){
+				foreach($palabras as $txt){
+					$query->orwhere("marca",'like','%' . $txt . '%');
+				}
+			})->get(['id']) as $marca){
+				$marcas_id[]=$marca->id;
+			}
+
+			$modelos_id=[];
+			foreach(Modelo::where(function($query) use ($palabras){
+				foreach($palabras as $txt){
+					$query->orwhere("modelo",'like','%' . $txt . '%');
+				}
+			})->get(['id']) as $modelo){
+				$modelos_id[]=$modelo->id;
+			}
+
+			$query->where(function($query) use ($palabras, $marcas_id, $modelos_id){
+				foreach($palabras as $txt){
+					$query->orwhere("descripcion",'like','%' . $txt . '%')
+					->orwhere("color",'like','%' . $txt . '%')
+					->orwhere("transmision",'like','%' . $txt . '%')
+					->orwhere('combustible','like','%' . $txt . '%')
+					->orwhere('asientos','like','%' . $txt . '%');
+					if(count($marcas_id)>0){
+						$query->orwherein('marca_id',$marcas_id);
+					}
+					if(count($modelos_id)>0){
+						$query->orwherein('modelo_id',$modelos_id);
+					}
 				}
 			});
 		}

@@ -11,10 +11,9 @@
             <div class="cu-category__header__left">
                 <h4>Ordenar por</h4>
                 <div class="cu-select">
-                    <select>
-                        <option>Recientes</option>
-                        <option>Populares</option>
-                        <option>Precio</option>
+                    <select name="ordenamiento" class="ordenamiento">
+                        <option value="recientes" @if(session('ordenamiento')=='recientes') selected @endif >Recientes</option>
+                        <option value="precio" @if(session('ordenamiento')=='precio') selected @endif >Precio</option>
                     </select>
                 </div>
             </div>
@@ -39,6 +38,23 @@
     </div>
 </section>
 @endsection
-@section('javascript')
+@section('scripts')
+<?php
+    $url=route('category');
+    $u='?';
+    foreach(request()->except('page','ordenamiento') as $key => $item){
+        $url .= $u . $key . '=' . $item;
+        $u='&';
+    }
+?>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function(){
+        $('.ordenamiento').change(function(){
+            document.location='{!! $url . $u !!}ordenamiento=' + $(this).val();
+        })
+    })
+</script>
+
 
 @endsection
