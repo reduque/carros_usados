@@ -1,6 +1,6 @@
 .cu-footer {
     position: fixed;
-    width: 100%;
+    width: calc(var(--vw, vw) * 100);
     bottom: 0;
     left: 0;
     color: var(--color-white);

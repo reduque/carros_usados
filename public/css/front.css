@@ -712,7 +712,9 @@ img {
 
 .cu-header {
   position: relative;
-  z-index: 100;
+  width: 100%;
+  overflow-x: hidden;
+  z-index: 10;
 }
 .cu-header__search {
   width: 2.5rem;
@@ -741,6 +743,11 @@ img {
   transition: all 300ms ease-out;
   will-change: color, font-size, width;
 }
+@media (max-width: 600px) {
+  .cu-header__main, .cu-header__bar {
+    padding: 0 0.625rem 0 1.5625rem;
+  }
+}
 .cu-header__main {
   position: relative;
   height: 5.625rem;
@@ -756,11 +763,26 @@ img {
 .cu-header__main__brand:hover {
   color: var(--color-blue-light);
 }
-.cu-header__bar {
+@media (max-width: 600px) {
+  .cu-header__main__brand {
+    width: 5rem;
+    font-size: 1.3125rem;
+    line-height: 1.1875rem;
+  }
+}
+@media (max-width: 600px) {
+  .cu-header__main {
+    height: 3.75rem;
+  }
+}
+.cu-header__bar, .cu-header__search-bar {
   position: fixed;
-  width: 100%;
-  height: 3.5rem;
+  width: calc(var(--vw, vw) * 100);
   left: 0;
+  box-sizing: border-box;
+}
+.cu-header__bar {
+  height: 3.5rem;
   top: 0;
   z-index: 5;
   background: var(--color-blue-dark);
@@ -772,21 +794,34 @@ img {
   letter-spacing: 0;
   color: var(--color-white);
 }
+@media (max-width: 600px) {
+  .cu-header__bar__brand {
+    font-size: 0.9375rem;
+    line-height: 0.9375rem;
+  }
+}
 .cu-header__bar .cu-header__search {
   background: var(--color-white);
 }
 .cu-header__bar .cu-header__search:hover {
   background: var(--color-yellow);
 }
+@media (max-width: 600px) {
+  .cu-header__bar {
+    height: 2.5rem;
+    padding: 0 0.3125rem 0 0.9375rem;
+  }
+  .cu-header__bar .cu-header__search {
+    -webkit-mask-size: 1.125rem;
+            mask-size: 1.125rem;
+  }
+}
 .cu-header__search-bar {
-  position: fixed;
-  width: 100%;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
   padding: 0.5rem 2.1875rem;
-  left: 0;
   top: 5.625rem;
   box-shadow: 0 0 0.5rem var(--color-blue-shadow);
   background: var(--color-yellow);
@@ -796,18 +831,30 @@ img {
   z-index: 2;
 }
 .cu-header__search-bar .cu-search-form {
-  width: 37.5rem;
+  width: 85%;
+  max-width: 37.5rem;
 }
 .cu-header__search-bar[aria-hidden=false] {
   transform: translateY(0);
 }
+@media (max-width: 600px) {
+  .cu-header__search-bar {
+    top: 3.75rem;
+    padding: 0.375rem 1.5625rem;
+  }
+}
 .cu-header--scrolled .cu-header__search-bar {
   top: 3.5rem;
+}
+@media (max-width: 600px) {
+  .cu-header--scrolled .cu-header__search-bar {
+    top: 2.5rem;
+  }
 }
 
 .cu-footer {
   position: fixed;
-  width: 100%;
+  width: calc(var(--vw, vw) * 100);
   bottom: 0;
   left: 0;
   color: var(--color-white);
@@ -984,6 +1031,15 @@ img {
 }
 .cu-search-form:hover, .cu-search-form:focus-within {
   border-color: var(--color-gray-border-field);
+}
+@media (max-width: 600px) {
+  .cu-search-form {
+    height: 2rem;
+  }
+  .cu-search-form button {
+    width: 1.625rem;
+    height: 1.625rem;
+  }
 }
 
 .cu-select {

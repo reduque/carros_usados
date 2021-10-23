@@ -50,6 +50,13 @@
     &:hover, &:focus-within {
         border-color: var(--color-gray-border-field);
     }
+    @include phone {
+        height: 2rem;
+        button {
+            width: 1.625rem;
+            height: 1.625rem;
+        }
+    }
 }
 
 .cu-select {

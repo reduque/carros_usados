@@ -37,6 +37,64 @@
   }
 }
 
+// Media queries
+@mixin bp($point) {
+  @if $point == large {
+    @media (min-width: 1280px) { @content; }
+  } @else if $point == small {
+    @media (max-width: 1279px) { @content; }
+  }
+}
+
+@mixin mini-phone {
+  @media (max-width: 360px) {
+    @content;
+  }
+}
+@mixin phone {
+  @media (max-width: 600px) {
+    @content;
+  }
+}
+@mixin mini-tablet {
+  @media (max-width: 860px) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media (max-width: 1100px) { // Salto entre 1280/1024
+    @content;
+  }
+}
+@mixin laptop {
+  @media (max-width: 1280px) {
+    @content;
+  }
+}
+@mixin low-desktop {
+  @media (max-width: 1366px) {
+    @content;
+  }
+}
+
+@mixin mid-desktop {
+  @media (max-width: 1440px) {
+    @content;
+  }
+}
+
+@mixin min-tablet {
+  @media (min-width: 1100px) {
+    @content;
+  }
+}
+
+@mixin min-laptop {
+  @media (min-width: 1025px) {
+    @content;
+  }
+}
+
 //Placeholders
 //Usage:
 //@include placeholder;
