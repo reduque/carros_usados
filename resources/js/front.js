@@ -23,24 +23,28 @@ if (homeSlider) {
             return 2;
         }
     }
-    const slider = new Flickity(homeSlider, {
-        cellAlign: 'left',
-        contain: true,
-        pageDots: window.innerWidth < 480,
-        prevNextButtons: slides > responsiveCells(),
-        groupCells: responsiveCells(),
-        cellSelector: '.cu-card',
-    })
 
-    if (window.innerWidth < 860) {
-        const reasons = document.querySelector('.cu-reasons__reasons')
-        const reasonsSlider = new Flickity(reasons, {
+    window.onload = function() {
+        const slider = new Flickity(homeSlider, {
             cellAlign: 'left',
             contain: true,
-            pageDots: true,
-            prevNextButtons: false,
-            cellSelector: '.cu-reasons__reasons__item',
+            pageDots: window.innerWidth < 480,
+            prevNextButtons: slides > responsiveCells(),
+            groupCells: responsiveCells(),
+            cellSelector: '.cu-card',
         })
+    
+        if (window.innerWidth < 860) {
+            const reasons = document.querySelector('.cu-reasons__reasons')
+            const reasonsSlider = new Flickity(reasons, {
+                cellAlign: 'left',
+                contain: true,
+                pageDots: true,
+                prevNextButtons: false,
+                wrapAround: true,
+                cellSelector: '.cu-reasons__reasons__item',
+            })
+        }
     }
 }
 

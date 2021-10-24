@@ -80,6 +80,9 @@
                 right: -14%;
                 transform: none;
             }
+            @include mini-tablet {
+                bottom: -6%;
+            }
         }
         @include mid-desktop {
             padding-top: 4.5rem;
@@ -90,7 +93,7 @@
         overflow: hidden;
     }
     @include mini-tablet {
-        height: calc(var(--vw, vw) * 64); 
+        height: calc(var(--vw, vw) * 66); 
     }
 }
 
@@ -173,6 +176,10 @@
         justify-content: center;
         text-align: center;
         height: 100%;
+        @include mini-tablet {
+            display: block;
+            height: auto;
+        }
     }
     &__intro {
         h2 {
@@ -205,6 +212,7 @@
         grid-gap: 7.8125rem;
         margin: 3.125rem 0 0;
         max-width: 74.75rem;
+        width: 100%;
         &__item {
             width: 100%;
             &, h3 {
@@ -257,6 +265,9 @@
                     }
                 }
             }
+            @include mini-tablet {
+                display: block;
+            }
         }
         @include mid-desktop {
             grid-gap: 6.25rem;
@@ -264,10 +275,9 @@
         @include mini-tablet {
             display: block;
             grid-gap: 0;
-            max-width: 37.5rem;
-            &__item {
-                width: 100%;
-            }
+            max-width: 28.75rem;
+            padding: 2.5rem 0;
+            margin: 0 auto;
         }
     }
 }
@@ -315,6 +325,9 @@
                     font-size: 2.625rem;
                     line-height: 3.125rem;
                 }
+                @include mini-tablet {
+                    max-width: 70%;
+                }
             }
             p {
                 font-size: 1.6875rem;
@@ -327,6 +340,10 @@
                 }
                 @include tablet {
                     max-width: 25rem;
+                }
+                @include mini-tablet {
+                    max-width: 80%;
+                    margin: 0 0 0.625rem;
                 }
             }
         }
@@ -341,13 +358,17 @@
             @include mid-desktop {
                 width: 64%;
             }
-            @include tablet {
-                width: 72%;
-                right: -14%;
+            @include mini-tablet {
+                position: relative;
+                width: 130%;
+                top: -5%;
+                max-width: none;
+                transform: none;
             }
         }
     }
-    @include tablet {
-        height: calc(var(--vw, vw) * 50);
+    @include mini-tablet {
+        height: auto;
+        padding: 3.5rem 0;
     }
 }

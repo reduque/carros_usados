@@ -1505,6 +1505,11 @@ img {
     transform: none;
   }
 }
+@media (max-width: 860px) {
+  .cu-hero__content__image {
+    bottom: -6%;
+  }
+}
 @media (max-width: 1440px) {
   .cu-hero__content {
     padding-top: 4.5rem;
@@ -1518,7 +1523,7 @@ img {
 }
 @media (max-width: 860px) {
   .cu-hero {
-    height: calc(var(--vw, vw) * 64);
+    height: calc(var(--vw, vw) * 66);
   }
 }
 
@@ -1613,6 +1618,12 @@ img {
   text-align: center;
   height: 100%;
 }
+@media (max-width: 860px) {
+  .cu-reasons .cu-container {
+    display: block;
+    height: auto;
+  }
+}
 .cu-reasons__intro h2 {
   font-size: 2.9375rem;
   line-height: 2.9375rem;
@@ -1646,6 +1657,7 @@ img {
   grid-gap: 7.8125rem;
   margin: 3.125rem 0 0;
   max-width: 74.75rem;
+  width: 100%;
 }
 .cu-reasons__reasons__item {
   width: 100%;
@@ -1696,6 +1708,11 @@ img {
   background-image: url("../img/svg/icon-key.svg");
   background-size: 2.4375rem;
 }
+@media (max-width: 860px) {
+  .cu-reasons__reasons__item {
+    display: block;
+  }
+}
 @media (max-width: 1440px) {
   .cu-reasons__reasons {
     grid-gap: 6.25rem;
@@ -1705,10 +1722,9 @@ img {
   .cu-reasons__reasons {
     display: block;
     grid-gap: 0;
-    max-width: 37.5rem;
-  }
-  .cu-reasons__reasons__item {
-    width: 100%;
+    max-width: 28.75rem;
+    padding: 2.5rem 0;
+    margin: 0 auto;
   }
 }
 
@@ -1760,6 +1776,11 @@ img {
     line-height: 3.125rem;
   }
 }
+@media (max-width: 860px) {
+  .cu-cert__content__left h2 {
+    max-width: 70%;
+  }
+}
 .cu-cert__content__left p {
   font-size: 1.6875rem;
   line-height: 1.875rem;
@@ -1777,6 +1798,12 @@ img {
     max-width: 25rem;
   }
 }
+@media (max-width: 860px) {
+  .cu-cert__content__left p {
+    max-width: 80%;
+    margin: 0 0 0.625rem;
+  }
+}
 .cu-cert__content__image {
   position: absolute;
   display: block;
@@ -1791,15 +1818,19 @@ img {
     width: 64%;
   }
 }
-@media (max-width: 1100px) {
+@media (max-width: 860px) {
   .cu-cert__content__image {
-    width: 72%;
-    right: -14%;
+    position: relative;
+    width: 130%;
+    top: -5%;
+    max-width: none;
+    transform: none;
   }
 }
-@media (max-width: 1100px) {
+@media (max-width: 860px) {
   .cu-cert {
-    height: calc(var(--vw, vw) * 50);
+    height: auto;
+    padding: 3.5rem 0;
   }
 }
 
