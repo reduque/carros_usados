@@ -25,6 +25,10 @@
                 font-size: 2rem;
                 line-height: 2rem;
             }
+            @include phone {
+                font-size: 2.1875rem;
+                line-height: 2.5rem;
+            }
         }
         p {
             font-size: 1.5rem;
@@ -33,6 +37,10 @@
             @include mid-desktop {
                 font-size: 1.375rem;
                 line-height: 1.375rem;
+            }
+            @include phone {
+                font-size: 1.375rem;
+                line-height: 1.5rem;
             }
         }
         ul {
@@ -51,10 +59,24 @@
                     }
                 }
             }
+            @include phone {
+                margin: 2.5rem 0 0;
+                grid-template-columns: 1fr 1fr;
+                grid-gap: 0.75rem 3.5rem;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+            }
         }
         @include mid-desktop {
             &__search {
                 width: 22.5rem;
+            }
+        }
+        @include phone {
+            padding: 2.5rem 1.25rem;
+            &__search {
+                max-width: 92% !important;
             }
         }
     }
@@ -79,10 +101,24 @@
                     font-size: 1.4375rem;
                     line-height: 1.3125rem;
                 }
+                @include phone {
+                    width: 7.625rem;
+                    font-size: 1.75rem;
+                    line-height: 1.625rem;
+                    margin-bottom: 1.25rem;
+                }
             }
             p {
                 font-size: 0.75rem;
                 line-height: 0.75rem;
+            }
+            @include phone {
+                display: flex;
+                flex-flow: column nowrap;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                margin-top: 2.5rem;
             }
         }
         &__contact {
@@ -140,6 +176,16 @@
                     }
                 }
             }
+            @include phone {
+                align-items: center;
+            }
+        }
+        @include phone {
+            flex-flow: column-reverse nowrap;
+            align-items: center;
+            justify-content: center;
+            padding: 2.5rem 1.5625rem;
+            margin: 0;
         }
     }
 }

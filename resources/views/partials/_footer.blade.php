@@ -1,7 +1,7 @@
 </main>
     <footer class="cu-footer">
       <div class="cu-footer__top">
-        <h3>Marcas disponibles</h3>
+        <h3>Todo  nuestro stock</h3>
         <p>Llega rápido al carro que te interesa</p>
         <div class="cu-footer__top__search">
           @include('partials._search_form')
