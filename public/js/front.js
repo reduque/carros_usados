@@ -4879,6 +4879,11 @@ if (homeSlider) {
         wrapAround: true,
         cellSelector: '.cu-reasons__reasons__item'
       });
+
+      window.onresize = function () {
+        slider.resize();
+        reasonsSlider.resize();
+      };
     }
   };
 }
@@ -4932,6 +4937,11 @@ if (singleGallery) {
         thumbsSlider.resize();
       }, 310);
     });
+
+    window.onresize = function () {
+      thumbsSlider.resize();
+      mainSlider.resize();
+    };
   };
 
   var pointsBtn = document.querySelector('.see-points');
