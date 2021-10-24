@@ -7,6 +7,10 @@
     background: radial-gradient(ellipse at center, var(--color-blue-light), var(--color-blue-dark));
     .cu-container {
         height: 100%;
+        @include phone {
+            display: block;
+            height: auto;
+        }
     }
     &__content {
         display: flex;
@@ -26,6 +30,10 @@
                     line-height: 3.75rem;
                     max-width: 37rem;
                 }
+                @include phone {
+                    font-size: 2.375rem;
+                    line-height: 2.5rem;
+                }
             }
             h3 {
                 font-family: var(--font-family-body);
@@ -39,6 +47,10 @@
                     line-height: 2.0625rem;
                     max-width: 33rem;
                 }
+                @include phone {
+                    font-size: 1.5rem;
+                    line-height: 1.75rem;
+                }
             }
             p {
                 font-size: 1.25rem;
@@ -49,6 +61,9 @@
                 @include mid-desktop {
                     font-size: 1.125rem;
                     line-height: 1.25rem;
+                }
+                @include phone {
+                    display: none;
                 }
             }
             .cu-button {
@@ -83,9 +98,20 @@
             @include mini-tablet {
                 bottom: -6%;
             }
+            @include phone {
+                width: 146%;
+                max-width: none;
+                bottom: -15%;
+                right: -45%;
+            }
         }
         @include mid-desktop {
             padding-top: 4.5rem;
+        }
+        @include phone {
+            display: block;
+            padding: 0;
+            height: auto;
         }
     }
     @include tablet {
@@ -94,6 +120,12 @@
     }
     @include mini-tablet {
         height: calc(var(--vw, vw) * 66); 
+    }
+    @include phone {
+        display: block;
+        height: auto !important;
+        padding: 3rem 0 calc(var(--vw, vw) * 50);
+        overflow: visible;
     }
 }
 
@@ -118,6 +150,10 @@
                 font-size: 2rem;
                 line-height: 2rem;
             }
+            @include phone {
+                font-size: 1.875rem;
+                line-height: 2.375rem;
+            }
         }
         p {
             font-size: 1.875rem;
@@ -127,6 +163,13 @@
                 font-size: 1.625rem;
                 line-height: 1.8125rem;
             }
+            @include phone {
+                font-size: 1.375rem;
+                line-height: 1.5rem;
+            }
+        }
+        @include phone {
+            padding: 0 2rem;
         }
     }
     &__slider {
@@ -149,6 +192,9 @@
             @include mini-tablet {
                 width: 33.333333%;
             }
+            @include phone {
+                width: 50%;
+            }
         }
         & > .cu-button {
             margin-top: 1.875rem;
@@ -158,9 +204,22 @@
                 color: var(--color-yellow);
                 background: var(--color-blue-dark);
             }
+            @include phone {
+                margin-top: 3.5rem;
+            }
         }
         @include tablet {
             max-width: 53.75rem;
+        }
+        @include phone {
+            max-width: none;
+            margin: 1.5rem 0 0;
+        }
+    }
+    @include phone {
+        padding: 3.5rem 0 2rem;
+        .cu-container {
+            padding: 0 0.625rem;
         }
     }
 }
@@ -191,6 +250,11 @@
                 font-size: 2.5rem;
                 line-height: 2.5rem;
             }
+            @include phone {
+                font-size: 2.1875rem;
+                line-height: 2.5rem;
+                margin-bottom: 0.9375rem;
+            }
         }
         p {
             font-size: 2.4375rem;
@@ -199,10 +263,18 @@
                 display: inline-block;
                 padding-bottom: 0.625rem;
                 border-bottom: 0.25rem solid var(--color-blue-light);
+                @include phone {
+                    padding-bottom: 0.25rem;
+                    border-bottom-width: 0.1875rem;
+                }
             }
             @include mid-desktop {
                 font-size: 2rem;
                 line-height: 2rem;
+            }
+            @include phone {
+                font-size: 1.875rem;
+                line-height: 2.25rem;
             }
         }
     }
@@ -235,10 +307,20 @@
                     border: 0.125rem solid var(--color-blue-light);
                     background: url('../img/svg/icon-document.svg') center no-repeat;
                     background-size: 1.875rem;
+                    @include phone {
+                        width: 4.1875rem;
+                        height: 4.1875rem;
+                        background-size: 1.5rem;
+                    }
                 }
                 @include mid-desktop {
                     font-size: 1.6875rem;
                     line-height: 2.3125rem;
+                }
+                @include phone {
+                    font-size: 1.5rem;
+                    line-height: 2.125rem;
+                    padding: 0 2.5rem;
                 }
             }
             p {
@@ -248,12 +330,19 @@
                     font-size: 1.3125rem;
                     line-height: 1.5625rem;
                 }
+                @include phone {
+                    font-size: 1.375rem;
+                    line-height: 1.625rem;
+                }
             }
             &:nth-child(2) {
                 h3 {
                     &::before {
                         background-image: url('../img/svg/icon-lock.svg');
                         background-size: 2.1875rem;
+                        @include phone {
+                            background-size: 1.875rem;
+                        }
                     }
                 }
             }
@@ -262,6 +351,9 @@
                     &::before {
                         background-image: url('../img/svg/icon-key.svg');
                         background-size: 2.4375rem;
+                        @include phone {
+                            background-size: 2rem;
+                        }
                     }
                 }
             }
@@ -276,8 +368,14 @@
             display: block;
             grid-gap: 0;
             max-width: 28.75rem;
-            padding: 2.5rem 0;
+            padding: 3.5rem 0 2rem;
             margin: 0 auto;
+            .flickity-page-dots {
+                bottom: -0.9375rem !important;
+            }
+        }
+        @include phone {
+            padding-top: 2.1875rem;
         }
     }
 }
@@ -328,6 +426,11 @@
                 @include mini-tablet {
                     max-width: 70%;
                 }
+                @include phone {
+                    font-size: 2rem;
+                    line-height: 2.3125rem;
+                    max-width: none;
+                }
             }
             p {
                 font-size: 1.6875rem;
@@ -345,30 +448,55 @@
                     max-width: 80%;
                     margin: 0 0 0.625rem;
                 }
+                @include phone {
+                    font-size: 1.375rem;
+                    line-height: 1.5rem;
+                }
             }
         }
         &__image {
             position: absolute;
-            display: block;
+            display: none;
             width: 67.0572916666666667%;
             height: auto;
             right: -10%;
             top: 50%;
             transform: translateY(-50%);
+            &--desktop {
+                display: block;
+            }
             @include mid-desktop {
                 width: 64%;
             }
             @include mini-tablet {
-                position: relative;
-                width: 130%;
-                top: -5%;
-                max-width: none;
-                transform: none;
+                &--desktop {
+                    display: none;
+                }
+                &--mobile {
+                    display: block;
+                    position: relative;
+                    width: calc(100% + 2.5rem);
+                    top: auto;
+                    right: auto;
+                    bottom: auto;
+                    left: auto;
+                    max-width: none;
+                    transform: none;
+                }
+            }
+            @include phone {
+                &--mobile {
+                    width: calc(100% + 1.5625rem);
+                }
             }
         }
     }
     @include mini-tablet {
         height: auto;
         padding: 3.5rem 0;
+        background: linear-gradient(0deg, var(--color-white) 0%, var(--color-white) 25%, var(--color-gray-background) 100%);
+    }
+    @include phone {
+        padding: 2.5rem 0;
     }
 }
