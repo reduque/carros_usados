@@ -21,14 +21,24 @@
                 letter-spacing: -0.02rem;
                 max-width: 41rem;
                 margin: 0 0 0.875rem;
+                @include mid-desktop {
+                    font-size: 3rem;
+                    line-height: 3.75rem;
+                    max-width: 37rem;
+                }
             }
             h3 {
                 font-family: var(--font-family-body);
                 font-size: 2.0625rem;
                 line-height: 2.4375rem;
                 font-weight: 400;
-                letter-spacing: -0.1rem;
+                letter-spacing: -0.01rem;
                 max-width: 36.25rem;
+                @include mid-desktop {
+                    font-size: 1.6875rem;
+                    line-height: 2.0625rem;
+                    max-width: 33rem;
+                }
             }
             p {
                 font-size: 1.25rem;
@@ -36,6 +46,10 @@
                 letter-spacing: -0.02rem;
                 max-width: 20.625rem;
                 margin: 0;
+                @include mid-desktop {
+                    font-size: 1.125rem;
+                    line-height: 1.25rem;
+                }
             }
             .cu-button {
                 margin: 2.1875rem 0;
@@ -56,12 +70,33 @@
             right: 0;
             top: 50%;
             transform: translateY(-42%);
+            @include mid-desktop {
+                width: 60%;
+            }
+            @include tablet {
+                top: auto;
+                width: 70%;
+                bottom: -10%;
+                right: -14%;
+                transform: none;
+            }
         }
+        @include mid-desktop {
+            padding-top: 4.5rem;
+        }
+    }
+    @include tablet {
+        height: calc(var(--vw, vw) * 50);
+        overflow: hidden;
+    }
+    @include mini-tablet {
+        height: calc(var(--vw, vw) * 64); 
     }
 }
 
 .cu-catalog {
     padding: 3.125rem 0;
+    overflow: hidden;
     &__intro {
         display: flex;
         flex-flow: column nowrap;
@@ -76,11 +111,19 @@
             font-size: 2.1875rem;
             line-height: 2.1875rem;
             margin: 0 0 1.125rem;
+            @include mid-desktop {
+                font-size: 2rem;
+                line-height: 2rem;
+            }
         }
         p {
             font-size: 1.875rem;
             line-height: 2.0625rem;
             max-width: 45rem;
+            @include mid-desktop {
+                font-size: 1.625rem;
+                line-height: 1.8125rem;
+            }
         }
     }
     &__slider {
@@ -89,13 +132,20 @@
         align-items: center;
         justify-content: center;
         margin: 3rem auto 0;
-        width: 65.3125rem;
+        width: 100%;
+        max-width: 65.3125rem;
         &__wrapper {
             display: block;
             width: 100%;
         }
         .cu-card {
             width: 20%;
+            @include tablet {
+                width: 25%;
+            }
+            @include mini-tablet {
+                width: 33.333333%;
+            }
         }
         & > .cu-button {
             margin-top: 1.875rem;
@@ -105,6 +155,9 @@
                 color: var(--color-yellow);
                 background: var(--color-blue-dark);
             }
+        }
+        @include tablet {
+            max-width: 53.75rem;
         }
     }
 }
@@ -127,6 +180,10 @@
             line-height: 2.9375rem;
             letter-spacing: -0.045rem;
             margin: 0 0 1.375rem;
+            @include mid-desktop {
+                font-size: 2.5rem;
+                line-height: 2.5rem;
+            }
         }
         p {
             font-size: 2.4375rem;
@@ -136,53 +193,80 @@
                 padding-bottom: 0.625rem;
                 border-bottom: 0.25rem solid var(--color-blue-light);
             }
+            @include mid-desktop {
+                font-size: 2rem;
+                line-height: 2rem;
+            }
         }
     }
     &__reasons {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-gap: 7.8125rem;
-        list-style-type: none;
         margin: 3.125rem 0 0;
-        padding: 0;
         max-width: 74.75rem;
-        li {
-            margin: 0;
-            display: flex;
-            flex-flow: column nowrap;
-            align-items: center;
-            justify-content: center;
-            &::before {
-                content: '';
-                width: 5.25rem;
-                height: 5.25rem;
-                margin-bottom: 1.25rem;
-                border-radius: 50%;
-                border: 0.125rem solid var(--color-blue-light);
-                background: url('../img/svg/icon-document.svg') center no-repeat;
-                background-size: 1.875rem;
+        &__item {
+            width: 100%;
+            &, h3 {
+                display: flex;
+                flex-flow: column nowrap;
+                align-items: center;
+                justify-content: center;
             }
             h3 {
                 font-size: 1.75rem;
                 line-height: 2.375rem;
                 letter-spacing: -0.02rem;
                 margin-bottom: 0.875rem;
+                &::before {
+                    content: '';
+                    width: 5.25rem;
+                    height: 5.25rem;
+                    margin-bottom: 1.25rem;
+                    border-radius: 50%;
+                    border: 0.125rem solid var(--color-blue-light);
+                    background: url('../img/svg/icon-document.svg') center no-repeat;
+                    background-size: 1.875rem;
+                }
+                @include mid-desktop {
+                    font-size: 1.6875rem;
+                    line-height: 2.3125rem;
+                }
             }
             p {
                 font-size: 1.375rem;
                 line-height: 1.625rem;
+                @include mid-desktop {
+                    font-size: 1.3125rem;
+                    line-height: 1.5625rem;
+                }
             }
             &:nth-child(2) {
-                &::before {
-                    background-image: url('../img/svg/icon-lock.svg');
-                    background-size: 2.1875rem;
+                h3 {
+                    &::before {
+                        background-image: url('../img/svg/icon-lock.svg');
+                        background-size: 2.1875rem;
+                    }
                 }
             }
             &:last-child {
-                &::before {
-                    background-image: url('../img/svg/icon-key.svg');
-                    background-size: 2.4375rem;
+                h3 {
+                    &::before {
+                        background-image: url('../img/svg/icon-key.svg');
+                        background-size: 2.4375rem;
+                    }
                 }
+            }
+        }
+        @include mid-desktop {
+            grid-gap: 6.25rem;
+        }
+        @include mini-tablet {
+            display: block;
+            grid-gap: 0;
+            max-width: 37.5rem;
+            &__item {
+                width: 100%;
             }
         }
     }
@@ -221,12 +305,29 @@
                     height: 5rem;
                     margin-bottom: 1.875rem;
                     background: url('../img/svg/icon-check.svg') center/contain no-repeat;
+                    @include mid-desktop {
+                        width: 4.0625rem;
+                        height: 4.375rem;
+                        margin-bottom: 1.75rem;
+                    }
+                }
+                @include mid-desktop {
+                    font-size: 2.625rem;
+                    line-height: 3.125rem;
                 }
             }
             p {
                 font-size: 1.6875rem;
                 line-height: 1.875rem;
                 max-width: 36.5rem;
+                @include mid-desktop {
+                    font-size: 1.5625rem;
+                    line-height: 1.75rem;
+                    margin-bottom: 3rem;
+                }
+                @include tablet {
+                    max-width: 25rem;
+                }
             }
         }
         &__image {
@@ -237,6 +338,16 @@
             right: -10%;
             top: 50%;
             transform: translateY(-50%);
+            @include mid-desktop {
+                width: 64%;
+            }
+            @include tablet {
+                width: 72%;
+                right: -14%;
+            }
         }
+    }
+    @include tablet {
+        height: calc(var(--vw, vw) * 50);
     }
 }

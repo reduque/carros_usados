@@ -11,25 +11,37 @@ import './scroll'
 
 const homeSlider = document.querySelector('.cu-catalog__slider__wrapper')
 if (homeSlider) {
+    const slides = homeSlider.querySelector('.cu-card').length
     const responsiveCells = () => {
         if (window.innerWidth > 1100) {
             return 5;
         } else if (window.innerWidth > 890) {
-            return 3;
+            return 4;
         } else if (window.innerWidth > 600) {
-            return 2;
+            return 3;
         } else {
-            return 1;
+            return 2;
         }
     }
     const slider = new Flickity(homeSlider, {
         cellAlign: 'left',
         contain: true,
-        pageDots: false,
-        prevNextButtons: true,
+        pageDots: window.innerWidth < 480,
+        prevNextButtons: slides > responsiveCells(),
         groupCells: responsiveCells(),
         cellSelector: '.cu-card',
     })
+
+    if (window.innerWidth < 860) {
+        const reasons = document.querySelector('.cu-reasons__reasons')
+        const reasonsSlider = new Flickity(reasons, {
+            cellAlign: 'left',
+            contain: true,
+            pageDots: true,
+            prevNextButtons: false,
+            cellSelector: '.cu-reasons__reasons__item',
+        })
+    }
 }
 
 const singleGallery = document.querySelector('.cu-single__gallery')

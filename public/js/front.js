@@ -4845,26 +4845,39 @@ __webpack_require__.r(__webpack_exports__);
 var homeSlider = document.querySelector('.cu-catalog__slider__wrapper');
 
 if (homeSlider) {
+  var slides = homeSlider.querySelector('.cu-card').length;
+
   var responsiveCells = function responsiveCells() {
     if (window.innerWidth > 1100) {
       return 5;
     } else if (window.innerWidth > 890) {
-      return 3;
+      return 4;
     } else if (window.innerWidth > 600) {
-      return 2;
+      return 3;
     } else {
-      return 1;
+      return 2;
     }
   };
 
   var slider = new flickity__WEBPACK_IMPORTED_MODULE_3___default.a(homeSlider, {
     cellAlign: 'left',
     contain: true,
-    pageDots: false,
-    prevNextButtons: true,
+    pageDots: window.innerWidth < 480,
+    prevNextButtons: slides > responsiveCells(),
     groupCells: responsiveCells(),
     cellSelector: '.cu-card'
   });
+
+  if (window.innerWidth < 860) {
+    var reasons = document.querySelector('.cu-reasons__reasons');
+    var reasonsSlider = new flickity__WEBPACK_IMPORTED_MODULE_3___default.a(reasons, {
+      cellAlign: 'left',
+      contain: true,
+      pageDots: true,
+      prevNextButtons: false,
+      cellSelector: '.cu-reasons__reasons__item'
+    });
+  }
 }
 
 var singleGallery = document.querySelector('.cu-single__gallery');
