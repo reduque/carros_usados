@@ -2,7 +2,7 @@
     <div class="cu-card__wrapper">
         <figure class="cu-card__image">
             <a href="{{ route('single',codifica($carro_p->id)) }}">
-                <img src="uploads/carros/{{ $carro_p->img }}" alt="Car" />
+                <img src="uploads/carros/{{ $carro_p->miniatura }}" alt="Car" />
             </a>
         </figure>
         <div class="cu-card__info">

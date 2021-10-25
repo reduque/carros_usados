@@ -190,12 +190,11 @@
             </div>
         </div>
     </div>
-
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-7">
             <div class="form-group">
                 <label>Imagen</label>
-                <div class="slim">
+                <div class="slim1">
                     <input name="img" type="file" accept="image/jpeg, image/png" />
                     @if($carro->img<>'')
                         <img src="uploads/carros/{{ $carro->img }}">
@@ -204,7 +203,21 @@
                 <label><span>Tamaño mímino 2500 x 1400 px | JPG o PNG</span></label>
             </div>
         </div>
+        <div class="col-lg-4">
+            <div class="form-group">
+                <label>Miniatura</label>
+                <div class="slim">
+                    <input name="miniatura" type="file" accept="image/jpeg, image/png" />
+                    @if($carro->miniatura<>'')
+                        <img src="uploads/carros/{{ $carro->miniatura }}">
+                    @endif
+                </div>
+                <label><span>Tamaño mímino 1000 x 1000 px | JPG o PNG</span></label>
+            </div>
+        </div>
         
+    </div>
+    <div class="row">
         <div class="col-lg-3">
             <div class="form-group">
                 <label>Estatus</label>
@@ -271,7 +284,7 @@
 <script src="js/slim.jquery.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-    $('.slim').slim({
+    $('.slim1').slim({
         label: 'Arrastra tu imagen ó haz click aquí',
         ratio: '2500:1400',
         forceType: 'jpg',
@@ -282,6 +295,35 @@ $(document).ready(function(){
         size: {
             width: 2500,
             height: 1400
+        },
+        download: false,
+        labelLoading: 'Cargando imagen...',
+        statusImageTooSmall: 'La imagen es muy pequeña. El tamaño mínimo es $0 píxeles.',
+        statusUnknownResponse: 'Ha ocurrido un error inesperado.',
+        statusUploadSuccess: 'Imagen guardada',
+        statusFileSize: 'El tamaño máximo de imagen es 1MB.',
+        statusFileType: 'El formato de imagen no es permitido. Solamente: $0.',
+        buttonConfirmLabel: 'Aceptar',
+        buttonConfirmTitle: 'Aceptar',
+        buttonCancelLabel: 'Cancelar',
+        buttonCancelLabel: "Cancelar",
+        buttonCancelTitle: "Cancelar",
+        buttonEditTitle: "Editar",
+        buttonRemoveTitle: "Eliminar",
+        buttonRotateTitle: "Rotar",
+        buttonUploadTitle: "Guardar"
+    });
+    $('.slim').slim({
+        label: 'Arrastra tu imagen ó haz click aquí',
+        ratio: '1:1',
+        forceType: 'jpg',
+        minSize: {
+            width: 1000,
+            height: 1000
+        },
+        size: {
+            width: 1000,
+            height: 1000
         },
         download: false,
         labelLoading: 'Cargando imagen...',

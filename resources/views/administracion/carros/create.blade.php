@@ -184,13 +184,22 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-7">
             <div class="form-group">
                 <label>Imagen pincipal</label>
-                <div class="slim">
+                <div class="slim1">
                     <input name="img" type="file" accept="image/jpeg, image/png" />
                 </div>
                 <label><span>Tamaño mímino 2500 x 1400 px | JPG o PNG</span></label>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="form-group">
+                <label>Miniatura</label>
+                <div class="slim">
+                    <input name="miniatura" type="file" accept="image/jpeg, image/png" required />
+                </div>
+                <label><span>Tamaño mímino 1000 x 1000 px | JPG o PNG</span></label>
             </div>
         </div>
     </div>
@@ -209,54 +218,83 @@
 
 <script src="js/slim.jquery.js"></script>
 <script type="text/javascript">
-    $(document).ready(function(){
-        $('.slim').slim({
-            label: 'Arrastra tu imagen ó haz click aquí',
-            ratio: '2500:1400',
-            forceType: 'jpg',
-            minSize: {
-                width: 2500,
-                height: 1400
-            },
-            size: {
-                width: 2500,
-                height: 1400
-            },
-            download: false,
-            labelLoading: 'Cargando imagen...',
-            statusImageTooSmall: 'La imagen es muy pequeña. El tamaño mínimo es $0 píxeles.',
-            statusUnknownResponse: 'Ha ocurrido un error inesperado.',
-            statusUploadSuccess: 'Imagen guardada',
-            statusFileSize: 'El tamaño máximo de imagen es 1MB.',
-            statusFileType: 'El formato de imagen no es permitido. Solamente: $0.',
-            buttonConfirmLabel: 'Aceptar',
-            buttonConfirmTitle: 'Aceptar',
-            buttonCancelLabel: 'Cancelar',
-            buttonCancelLabel: "Cancelar",
-            buttonCancelTitle: "Cancelar",
-            buttonEditTitle: "Editar",
-            buttonRemoveTitle: "Eliminar",
-            buttonRotateTitle: "Rotar",
-            buttonUploadTitle: "Guardar"
-        });
+$(document).ready(function(){
+    $('.slim1').slim({
+        label: 'Arrastra tu imagen ó haz click aquí',
+        ratio: '2500:1400',
+        forceType: 'jpg',
+        minSize: {
+            width: 2500,
+            height: 1400
+        },
+        size: {
+            width: 2500,
+            height: 1400
+        },
+        download: false,
+        labelLoading: 'Cargando imagen...',
+        statusImageTooSmall: 'La imagen es muy pequeña. El tamaño mínimo es $0 píxeles.',
+        statusUnknownResponse: 'Ha ocurrido un error inesperado.',
+        statusUploadSuccess: 'Imagen guardada',
+        statusFileSize: 'El tamaño máximo de imagen es 1MB.',
+        statusFileType: 'El formato de imagen no es permitido. Solamente: $0.',
+        buttonConfirmLabel: 'Aceptar',
+        buttonConfirmTitle: 'Aceptar',
+        buttonCancelLabel: 'Cancelar',
+        buttonCancelLabel: "Cancelar",
+        buttonCancelTitle: "Cancelar",
+        buttonEditTitle: "Editar",
+        buttonRemoveTitle: "Eliminar",
+        buttonRotateTitle: "Rotar",
+        buttonUploadTitle: "Guardar"
+    });
+    $('.slim').slim({
+        label: 'Arrastra tu imagen ó haz click aquí',
+        ratio: '1:1',
+        forceType: 'jpg',
+        minSize: {
+            width: 1000,
+            height: 1000
+        },
+        size: {
+            width: 1000,
+            height: 1000
+        },
+        download: false,
+        labelLoading: 'Cargando imagen...',
+        statusImageTooSmall: 'La imagen es muy pequeña. El tamaño mínimo es $0 píxeles.',
+        statusUnknownResponse: 'Ha ocurrido un error inesperado.',
+        statusUploadSuccess: 'Imagen guardada',
+        statusFileSize: 'El tamaño máximo de imagen es 1MB.',
+        statusFileType: 'El formato de imagen no es permitido. Solamente: $0.',
+        buttonConfirmLabel: 'Aceptar',
+        buttonConfirmTitle: 'Aceptar',
+        buttonCancelLabel: 'Cancelar',
+        buttonCancelLabel: "Cancelar",
+        buttonCancelTitle: "Cancelar",
+        buttonEditTitle: "Editar",
+        buttonRemoveTitle: "Eliminar",
+        buttonRotateTitle: "Rotar",
+        buttonUploadTitle: "Guardar"
+    });
 
-        function carros_modelos(){
-            $.ajax({
-                url: '{{ route('carros_modelos') }}',
-                data: {
-                    idmarca: $('select[name="marca_id"]').val(),
-                    modeloid: '{{old('modelo_id')}}'
-                },
-                type: "get",
-                datatype: "html"
-            }).done(function(data) {
-                $('select[name="modelo_id"]').html(data);
-            });
-        }
+    function carros_modelos(){
+        $.ajax({
+            url: '{{ route('carros_modelos') }}',
+            data: {
+                idmarca: $('select[name="marca_id"]').val(),
+                modeloid: '{{old('modelo_id')}}'
+            },
+            type: "get",
+            datatype: "html"
+        }).done(function(data) {
+            $('select[name="modelo_id"]').html(data);
+        });
+    }
+    carros_modelos();
+    $('select[name="marca_id"]').change(function(){
         carros_modelos();
-        $('select[name="marca_id"]').change(function(){
-            carros_modelos();
-        })
     })
+})
 </script>
 @endsection

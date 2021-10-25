@@ -58,6 +58,9 @@ class CarroController extends Controller
             $data['img'] = $this->saveFile($request->img, 'carros/',(string)(date("YmdHis")) . (string)(rand(1,9)));
             createThumbnail('uploads/carros/' . $data['img'], 'uploads/carros/tn/' . $data['img'], 1000);
         }
+        if($request->miniatura){
+            $data['miniatura'] = $this->saveFile($request->miniatura, 'carros/',(string)(date("YmdHis")) . Str::random(1));
+        }
 
         $carro=Carro::create($data);
 
@@ -133,6 +136,15 @@ class CarroController extends Controller
         }else{
             unset($data['img']);
         }
+        if($request->miniatura){
+            $img=$carro->miniatura;
+            if($img<>''){
+                $this->deleteFile('carros/' . $img);
+            }
+            $data['miniatura'] = $this->saveFile($request->miniatura, 'carros/',(string)(date("YmdHis")) . Str::random(1));
+        }else{
+            unset($data['miniatura']);
+        }
 
         $carro->update($data);
 
@@ -149,6 +161,11 @@ class CarroController extends Controller
                 $this->deleteFile('carros/' . $carro->img);
                 $this->deleteFile('carros/tn/' . $carro->img);
             }
+            $img=$carro->miniatura;
+            if($img<>''){
+                $this->deleteFile('carros/' . $img);
+            }
+
             $carro->delete();
             return redirect()->route('carros.index');
         } catch (\Illuminate\Database\QueryException $e) {

@@ -62,64 +62,64 @@
 @section('javascript')
 <script src="js/slim.jquery.js"></script>
 <script type="text/javascript">
-  $(document).ready(function(){
+$(document).ready(function(){
     $('.slim1').slim({
-            label: 'Arrastra tu imagen ó haz click aquí',
-            ratio: '2500:1400',
-            forceType: 'jpg',
-            minSize: {
-                width: 2500,
-                height: 1400
-            },
-            size: {
-                width: 2500,
-                height: 1400
-            },
-            download: false,
-            labelLoading: 'Cargando imagen...',
-            statusImageTooSmall: 'La imagen es muy pequeña. El tamaño mínimo es $0 píxeles.',
-            statusUnknownResponse: 'Ha ocurrido un error inesperado.',
-            statusUploadSuccess: 'Imagen guardada',
-            statusFileSize: 'El tamaño máximo de imagen es 1MB.',
-            statusFileType: 'El formato de imagen no es permitido. Solamente: $0.',
-            buttonConfirmLabel: 'Aceptar',
-            buttonConfirmTitle: 'Aceptar',
-            buttonCancelLabel: 'Cancelar',
-            buttonCancelLabel: "Cancelar",
-            buttonCancelTitle: "Cancelar",
-            buttonEditTitle: "Editar",
-            buttonRemoveTitle: "Eliminar",
-            buttonRotateTitle: "Rotar",
-            buttonUploadTitle: "Guardar"
-        });
-   $('.slim').slim({
-      label: 'Arrastra tu imagen ó haz click aquí',
-      ratio: '1:1',
-      forceType: 'jpg',
-      minSize: {
-        width: 1000,
-        height: 1000
-      },
-      size: {
-        width: 1000,
-        height: 1000
-      },
-      download: false,
-      labelLoading: 'Cargando imagen...',
-      statusImageTooSmall: 'La imagen es muy pequeña. El tamaño mínimo es $0 píxeles.',
-      statusUnknownResponse: 'Ha ocurrido un error inesperado.',
-      statusUploadSuccess: 'Imagen guardada',
-      statusFileSize: 'El tamaño máximo de imagen es 1MB.',
-      statusFileType: 'El formato de imagen no es permitido. Solamente: $0.',
-      buttonConfirmLabel: 'Aceptar',
-      buttonConfirmTitle: 'Aceptar',
-      buttonCancelLabel: 'Cancelar',
-      buttonCancelLabel: "Cancelar",
-      buttonCancelTitle: "Cancelar",
-      buttonEditTitle: "Editar",
-      buttonRemoveTitle: "Eliminar",
-      buttonRotateTitle: "Rotar",
-      buttonUploadTitle: "Guardar"
+        label: 'Arrastra tu imagen ó haz click aquí',
+        ratio: '2500:1400',
+        forceType: 'jpg',
+        minSize: {
+            width: 2500,
+            height: 1400
+        },
+        size: {
+            width: 2500,
+            height: 1400
+        },
+        download: false,
+        labelLoading: 'Cargando imagen...',
+        statusImageTooSmall: 'La imagen es muy pequeña. El tamaño mínimo es $0 píxeles.',
+        statusUnknownResponse: 'Ha ocurrido un error inesperado.',
+        statusUploadSuccess: 'Imagen guardada',
+        statusFileSize: 'El tamaño máximo de imagen es 1MB.',
+        statusFileType: 'El formato de imagen no es permitido. Solamente: $0.',
+        buttonConfirmLabel: 'Aceptar',
+        buttonConfirmTitle: 'Aceptar',
+        buttonCancelLabel: 'Cancelar',
+        buttonCancelLabel: "Cancelar",
+        buttonCancelTitle: "Cancelar",
+        buttonEditTitle: "Editar",
+        buttonRemoveTitle: "Eliminar",
+        buttonRotateTitle: "Rotar",
+        buttonUploadTitle: "Guardar"
+    });
+    $('.slim').slim({
+        label: 'Arrastra tu imagen ó haz click aquí',
+        ratio: '1:1',
+        forceType: 'jpg',
+        minSize: {
+            width: 1000,
+            height: 1000
+        },
+        size: {
+            width: 1000,
+            height: 1000
+        },
+        download: false,
+        labelLoading: 'Cargando imagen...',
+        statusImageTooSmall: 'La imagen es muy pequeña. El tamaño mínimo es $0 píxeles.',
+        statusUnknownResponse: 'Ha ocurrido un error inesperado.',
+        statusUploadSuccess: 'Imagen guardada',
+        statusFileSize: 'El tamaño máximo de imagen es 1MB.',
+        statusFileType: 'El formato de imagen no es permitido. Solamente: $0.',
+        buttonConfirmLabel: 'Aceptar',
+        buttonConfirmTitle: 'Aceptar',
+        buttonCancelLabel: 'Cancelar',
+        buttonCancelLabel: "Cancelar",
+        buttonCancelTitle: "Cancelar",
+        buttonEditTitle: "Editar",
+        buttonRemoveTitle: "Eliminar",
+        buttonRotateTitle: "Rotar",
+        buttonUploadTitle: "Guardar"
     });
  })
 </script>

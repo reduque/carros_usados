@@ -52,7 +52,7 @@
                 <label>Miniatura</label>
                 <div class="slim">
                     <input name="miniatura" type="file" accept="image/jpeg, image/png" />
-                    @if($carro->img<>'')
+                    @if($carro->miniatura<>'')
                         <img src="uploads/carros/galeria/{{ $foto->miniatura }}">
                     @endif
                 </div>
