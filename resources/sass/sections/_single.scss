@@ -20,6 +20,7 @@
             max-width: 80rem;
             margin: -12.5rem auto 0;
             padding: 12.5rem 0 3.4375rem;
+            height: auto;
             overflow: hidden;
             z-index: 2;
             @include low-desktop {
@@ -134,6 +135,9 @@
             background: var(--color-white);
             transition: transform 300ms linear;
             z-index: 3;
+            @include tablet {
+                width: 30rem;
+            }
             ul {
                 list-style-type: none;
             }
@@ -442,6 +446,9 @@
                 transform: translateX(0);
                 & + .cu-single__gallery {
                     padding-left: 37rem;
+                    @include tablet {
+                        padding-left: 30rem;
+                    }
                     .cu-single__gallery__thumbs {
                         &__thumb {
                             width: calc(33.33% - 0.9375rem);
@@ -464,12 +471,10 @@
                 }
             }
         }
-        
     }
 }
 
 .cu-related {
-    padding: 0 0 0 0.625rem;
     max-width: 80rem;
     margin: 0 auto;
     &__title {
@@ -477,7 +482,6 @@
         display: block;
         font-family: var(--font-family-body);
         color: var(--color-blue-dark);
-        margin: 0 0 0 1.25rem;
         z-index: 1;
         &::before {
             content: '';
@@ -503,5 +507,9 @@
     &__grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
+        margin-left: -0.9375rem;
+    }
+    @include laptop {
+        margin: 0 0.9375rem;
     }
 }

@@ -61,11 +61,17 @@ if (singleGallery) {
         const $sidebar = document.querySelector('.cu-single__info')
         const $content = document.querySelector('.cu-single__content')
         const $gallery = document.querySelector('.cu-single__gallery__wrapper')
+        const panelBtn = document.querySelector('.cu-single__info__button')
 
         const handleContentHeight = () => {
-            const padding = $content.style.paddingTop + $content.style.paddingBottom
-            console.log($content)
-            $content.style.minHeight = `${$gallery.clientHeight + padding}px`
+            if (panelBtn.getAttribute('aria-expanded') === 'false') {
+                const padding = getStyle($content, 'padding-top') + getStyle($content, 'padding-bottom') + 15
+                console.log(padding, $gallery.clientHeight)
+                $content.style.maxHeight = `${padding + $gallery.clientHeight}px`
+            } else {
+                const padding = getStyle($content, 'padding-bottom')
+                $content.style.maxHeight = `${padding + $sidebar.clientHeight}px`
+            }
         }
 
         $body = document.querySelector('body');
@@ -101,14 +107,15 @@ if (singleGallery) {
             on: {
                 ready: function() {
                     singleGallery.querySelector('.cu-single__gallery__main').classList.remove('loading')
-                    $content.style.minHeight = `${$sidebar.clientHeight}px`
+                    handleContentHeight()
+                    console.log('ready')
                 },
                 change: function(index) {
                     thumbsSlider.select(index)
                 },
             }
         })
-        const panelBtn = document.querySelector('.cu-single__info__button')
+        
         panelBtn.addEventListener('click', (e) => {
             e.preventDefault()
             singleGallery.querySelector('.cu-single__gallery__thumbs').classList.add('transition')
@@ -122,8 +129,7 @@ if (singleGallery) {
                 panelBtn.classList.remove('loading')
                 singleGallery.querySelector('.cu-single__gallery__thumbs').classList.remove('transition')
                 singleGallery.querySelector('.cu-single__gallery__main').classList.remove('transition')
-                handleContentHeight()
-            }, 350)
+            }, 300)
         })
 
         if (window.innerWidth <= 1100) {
@@ -138,6 +144,11 @@ if (singleGallery) {
                 wrapAround: true,
                 resize: true,
                 contain: true,
+                on: {
+                    ready: function() {
+                        handleContentHeight()
+                    }
+                }
             })
         }
 
@@ -177,5 +188,19 @@ if (singleGallery) {
         $body.style.removeProperty('top');
         $body.style.removeProperty('width');
         window.scrollTo(0, scrollPos);
+    }
+
+    const  getStyle = (oElm, strCssRule) => {
+        let strValue = "";
+        if(document.defaultView && document.defaultView.getComputedStyle){
+            strValue = document.defaultView.getComputedStyle(oElm, "").getPropertyValue(strCssRule);
+        }
+        else if(oElm.currentStyle){
+            strCssRule = strCssRule.replace(/\-(\w)/g, function (strMatch, p1){
+                return p1.toUpperCase();
+            });
+            strValue = oElm.currentStyle[strCssRule];
+        }
+        return parseInt(strValue.replace(/\D/g, ''));
     }
 }

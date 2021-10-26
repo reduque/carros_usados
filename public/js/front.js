@@ -4796,17 +4796,19 @@ var vw = window.innerWidth * 0.01;
 var vh = window.innerHeight * 0.01;
 document.documentElement.style.setProperty('--vw', "".concat(vw, "px"));
 document.documentElement.style.setProperty('--vh', "".concat(vh, "px"));
+var footer = document.querySelector('.cu-footer');
+var main = document.querySelector('.cu-main');
+main.style.marginBottom = "".concat(footer.clientHeight, "px");
 
-window.onresize = function () {
+var handleWindowResize = function handleWindowResize() {
   var vw = window.innerWidth * 0.01;
   var vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty('--vw', "".concat(vw, "px"));
   document.documentElement.style.setProperty('--vh', "".concat(vh, "px"));
+  main.style.marginBottom = "".concat(footer.clientHeight, "px");
 };
 
-var footer = document.querySelector('.cu-footer');
-var main = document.querySelector('.cu-main');
-main.style.marginBottom = "".concat(footer.clientHeight, "px");
+window.addEventListener('resize', handleWindowResize);
 
 /***/ }),
 
@@ -4898,11 +4900,18 @@ if (singleGallery) {
     var $sidebar = document.querySelector('.cu-single__info');
     var $content = document.querySelector('.cu-single__content');
     var $gallery = document.querySelector('.cu-single__gallery__wrapper');
+    var panelBtn = document.querySelector('.cu-single__info__button');
 
     var handleContentHeight = function handleContentHeight() {
-      var padding = $content.style.paddingTop + $content.style.paddingBottom;
-      console.log($content);
-      $content.style.minHeight = "".concat($gallery.clientHeight + padding, "px");
+      if (panelBtn.getAttribute('aria-expanded') === 'false') {
+        var padding = getStyle($content, 'padding-top') + getStyle($content, 'padding-bottom') + 15;
+        console.log(padding, $gallery.clientHeight);
+        $content.style.maxHeight = "".concat(padding + $gallery.clientHeight, "px");
+      } else {
+        var _padding = getStyle($content, 'padding-bottom');
+
+        $content.style.maxHeight = "".concat(_padding + $sidebar.clientHeight, "px");
+      }
     };
 
     $body = document.querySelector('body');
@@ -4938,14 +4947,14 @@ if (singleGallery) {
       on: {
         ready: function ready() {
           singleGallery.querySelector('.cu-single__gallery__main').classList.remove('loading');
-          $content.style.minHeight = "".concat($sidebar.clientHeight, "px");
+          handleContentHeight();
+          console.log('ready');
         },
         change: function change(index) {
           thumbsSlider.select(index);
         }
       }
     });
-    var panelBtn = document.querySelector('.cu-single__info__button');
     panelBtn.addEventListener('click', function (e) {
       e.preventDefault();
       singleGallery.querySelector('.cu-single__gallery__thumbs').classList.add('transition');
@@ -4959,8 +4968,7 @@ if (singleGallery) {
         panelBtn.classList.remove('loading');
         singleGallery.querySelector('.cu-single__gallery__thumbs').classList.remove('transition');
         singleGallery.querySelector('.cu-single__gallery__main').classList.remove('transition');
-        handleContentHeight();
-      }, 350);
+      }, 300);
     });
 
     if (window.innerWidth <= 1100) {
@@ -4974,7 +4982,12 @@ if (singleGallery) {
         pageDots: true,
         wrapAround: true,
         resize: true,
-        contain: true
+        contain: true,
+        on: {
+          ready: function ready() {
+            handleContentHeight();
+          }
+        }
       });
     }
 
@@ -5015,6 +5028,21 @@ if (singleGallery) {
     $body.style.removeProperty('top');
     $body.style.removeProperty('width');
     window.scrollTo(0, scrollPos);
+  };
+
+  var getStyle = function getStyle(oElm, strCssRule) {
+    var strValue = "";
+
+    if (document.defaultView && document.defaultView.getComputedStyle) {
+      strValue = document.defaultView.getComputedStyle(oElm, "").getPropertyValue(strCssRule);
+    } else if (oElm.currentStyle) {
+      strCssRule = strCssRule.replace(/\-(\w)/g, function (strMatch, p1) {
+        return p1.toUpperCase();
+      });
+      strValue = oElm.currentStyle[strCssRule];
+    }
+
+    return parseInt(strValue.replace(/\D/g, ''));
   };
 }
 
