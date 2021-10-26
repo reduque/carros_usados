@@ -1,6 +1,11 @@
 .cu-main {
     .cu-single {
         padding: 0 0 1.875rem;
+        @include phone {
+            .cu-container {
+                padding: 0 0.375rem !important;
+            }
+        }
         &__feature {
             position: relative;
             padding-top: 56.3081009296148738%;
@@ -14,6 +19,9 @@
                 height: 100%;
                 object-fit: cover;
             }
+            @include phone {
+                margin: 0;
+            }
         }
         &__content {
             position: relative;
@@ -22,6 +30,22 @@
             margin: -12.5rem auto 3.4375rem;
             padding-top: 13.4375rem;
             z-index: 5;
+            @include laptop {
+                margin: -12.5rem 0.9375rem 3.4375rem;
+            }
+            @include tablet {
+                margin-top: -7.5rem;
+                padding-top: 8.4375rem;
+            }
+            @include mini-tablet {
+                margin: -3.125rem 0 0;
+                padding-top: 0;
+                padding-bottom: 1.875rem;
+            }
+            @include phone {
+                margin-top: -1.5625rem;
+                overflow: visible;
+            }
         }
         &__gallery {
             position: relative;
@@ -40,6 +64,9 @@
             }
             &__main {
                 margin-bottom: 0.9375rem;
+                @include phone {
+                    margin: 0;
+                }
                 &__item {
                     width: 100%;
                     margin-right: 0.9375rem;
@@ -62,12 +89,27 @@
             &__thumbs {
                 margin-top: 0.9375rem;
                 margin-right: -0.9375rem;
+                @include mini-tablet {
+                    margin-left: 0.9375rem;
+                    margin-right: 0;
+                }
+                @include phone {
+                    margin: 0.375rem 0 0 0.375rem;
+                }
                 &__thumb {
                     margin-right: 0.9375rem;
                     transition: filter 300ms linear;
                     filter: grayscale(1);
                     &.is-nav-selected {
                         filter: grayscale(0);
+                    }
+                    @include mini-tablet {
+                        width: calc(33.333333333% - 0.9375rem) !important;
+                        margin-right: 0.9375rem;
+                    }
+                    @include phone {
+                        width: calc(50% - 0.375rem) !important;
+                        margin-right: 0.375rem;
                     }
                 }
             }
@@ -95,6 +137,13 @@
                     right: 1.25rem;
                 }
             }
+            @include mini-tablet {
+                padding-left: 0 !important;
+            }
+            @include phone {
+                width: calc(100% + 1rem);
+                margin: 0 -0.5rem;
+            }
         }
         &__info {
             position: absolute;
@@ -106,6 +155,18 @@
             background: var(--color-white);
             transition: transform 300ms linear;
             z-index: 3;
+            @include laptop {
+                width: 30rem;
+            }
+            @include mini-tablet {
+                position: relative;
+                padding: 2.5rem 1.5625rem;
+                width: calc(100% - 2.5rem);
+            }
+            @include phone {
+                width: calc(100% - 1.5625rem);
+                padding: 1.875rem 1rem 1.5625rem;
+            }
             ul {
                 list-style-type: none;
             }
@@ -128,6 +189,11 @@
                 color: var(--color-blue-dark);
                 background: var(--color-white);
                 transition: transform 300ms linear;
+                @include mini-tablet {
+                    display: none !important;
+                    pointer-events: none !important;
+                    visibility: hidden !important;
+                }
                 &::before {
                     display: block;
                     content: '';
@@ -170,6 +236,10 @@
             &__model {
                 font-size: 2.8125rem;
                 line-height: 2.8125rem;
+                @include phone {
+                    font-size: 2.1875rem;
+                    line-height: 2.1875rem;
+                }
             }
             &__meta {
                 margin-top: 0.3125rem;
@@ -182,6 +252,10 @@
                     margin: 0;
                     font-size: 1.6875rem;
                     line-height: 1.6875rem;
+                    @include phone {
+                        font-size: 1.1875rem;
+                        line-height: 1.1875rem;
+                    }
                     &:first-child {
                         &::after {
                             display: block;
@@ -201,10 +275,19 @@
                 flex-flow: row nowrap;
                 align-items: center;
                 justify-content: space-between;
+                @include phone {
+                    margin-top: 0.9375rem;
+                    flex-flow: column nowrap;
+                    align-items: flex-start;
+                }
                 &__price {
                     justify-content: flex-start;
                     font-size: 3.75rem;
                     line-height: 3.75rem;
+                    @include phone {
+                        font-size: 2.8125rem;
+                        line-height: 2.8125rem;
+                    }
                     &::before,
                     &::after {
                         display: inline-block;
@@ -228,6 +311,12 @@
                     color: var(--color-blue-dark);
                     background: var(--color-yellow);
                     margin-bottom: -0.75rem;
+                    @include phone {
+                        font-size: 0.875rem;
+                        line-height: 2.0625rem;
+                        padding: 0 1.25rem;
+                        margin-top: 0.875rem;
+                    }
                     &:hover {
                         color: var(--color-yellow);
                         background: var(--color-blue-dark);
@@ -238,6 +327,11 @@
                 padding: 1.5625rem 0 0;
                 margin-top: 1.25rem;
                 border-top: 1px solid var(--color-gray-border-dark);
+                @include phone {
+                    padding: 0;
+                    margin: 2.1875rem -1.5rem 0 0;
+                    border: none;
+                }
                 li {
                     display: flex;
                     flex-flow: row wrap;
@@ -264,6 +358,10 @@
                 padding: 0;
                 margin: 1.875rem 0 2.5rem;
                 border-top: 1px solid var(--color-gray-border);
+                @include phone {
+                    margin-right: -1.5rem;
+                    margin-bottom: 1.875rem;
+                }
                 li {
                     display: grid;
                     grid-template-columns: 7fr 3fr;
@@ -294,12 +392,48 @@
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);
                 grid-gap: 1.875rem;
+                @include laptop {
+                    display: block;
+                    grid-gap: 0;
+                    margin: 0 0 3rem;
+                }
+                @include mini-tablet {
+                    margin-bottom: 4rem;
+                    .flickity-page-dots {
+                        bottom: -2.1875rem !important;
+                    }
+                }
+                @include phone {
+                    margin-left: -1.5rem;
+                    margin-right: -3.125rem;
+                    padding: 0 0 0 2.875rem;
+                    .flickity-page-dots {
+                        left: 50%;
+                        width: auto;
+                        transform: translateX(-50%);
+                    }
+                }
                 &__item {
+                    width: 100%;
                     text-align: center;
                     padding: 0.75rem 0.625rem;
                     border-radius: 0.3125rem;
                     color: var(--color-blue-dark);
                     border: 1px solid var(--color-blue-dark);
+                    @include laptop {
+                        width: 40%;
+                        aspect-ratio: 1 / 1;
+                        margin-right: 1.875rem;
+                    }
+                    @include mini-tablet {
+                        width: 33.33%;
+                        margin-right: 1.5625rem;
+                    }
+                    @include phone {
+                        width: 54%;
+                        padding: 0.625rem;
+                        margin-right: 1.25rem;
+                    }
                     &, h3 {
                         display: flex;
                         flex-flow: column nowrap;
@@ -361,6 +495,9 @@
                 border-radius: 0.625rem;
                 background: var(--color-white-gray);
                 border: 1px solid var(--color-gray-background-dark);
+                @include phone {
+                    margin-right: -1.5rem;
+                }
                 h3 {
                     display: flex;
                     flex-flow: row nowrap;
@@ -396,6 +533,9 @@
                 transform: translateX(0);
                 & + .cu-single__gallery {
                     padding-left: 37rem;
+                    @include laptop {
+                        padding-left: 30rem;
+                    }
                     .cu-single__gallery__thumbs {
                         &__thumb {
                             width: calc(33.333% - 0.9375rem);
@@ -424,6 +564,10 @@
 .cu-related {
     max-width: 80rem;
     margin: 0 auto;
+    @include laptop {
+        max-width: none;
+        margin: 0 0.9375rem;
+    }
     &__title {
         position: relative;
         display: block;
@@ -454,6 +598,6 @@
     &__grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        margin: 0 -0.9375rem;
+        margin: 0 -1.25rem;
     }
 }

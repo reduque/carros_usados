@@ -4905,10 +4905,12 @@ if (singleGallery) {
     var panelBtn = document.querySelector('.cu-single__info__button');
 
     var handleContentHeight = function handleContentHeight() {
-      if (panelBtn.getAttribute('aria-expanded') === "false") {
-        $content.removeProperty('style');
-      } else {
-        $content.style.minHeight = "".concat($sidebar.clientHeight - getStyle($sidebar, 'padding-bottom'), "px");
+      if (window.innerWidth > 860) {
+        if (panelBtn.getAttribute('aria-expanded') === "false") {
+          $content.removeAttribute('style');
+        } else {
+          $content.style.minHeight = "".concat($sidebar.clientHeight - getStyle($sidebar, 'padding-bottom'), "px");
+        }
       }
     };
 
@@ -4959,10 +4961,11 @@ if (singleGallery) {
         resizeSliders();
         singleGallery.querySelector('.cu-single__gallery__thumbs').classList.remove('loading');
         singleGallery.querySelector('.cu-single__gallery__main').classList.remove('loading');
+        handleContentHeight();
       }, 310);
     });
 
-    if (window.innerWidth <= 1100) {
+    if (window.innerWidth <= 1366) {
       var actionSlider = new flickity__WEBPACK_IMPORTED_MODULE_3___default.a(actions, {
         cellSelector: '.cu-single__info__actions__item',
         cellAlign: 'left',
@@ -4970,7 +4973,6 @@ if (singleGallery) {
         groupCells: 1,
         prevNextButtons: false,
         pageDots: true,
-        wrapAround: true,
         resize: true,
         contain: true,
         on: {

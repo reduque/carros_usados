@@ -2227,6 +2227,11 @@ img {
 .cu-main .cu-single {
   padding: 0 0 1.875rem;
 }
+@media (max-width: 600px) {
+  .cu-main .cu-single .cu-container {
+    padding: 0 0.375rem !important;
+  }
+}
 .cu-main .cu-single__feature {
   position: relative;
   padding-top: 56.3081009296%;
@@ -2242,6 +2247,11 @@ img {
   -o-object-fit: cover;
      object-fit: cover;
 }
+@media (max-width: 600px) {
+  .cu-main .cu-single__feature {
+    margin: 0;
+  }
+}
 .cu-main .cu-single__content {
   position: relative;
   max-width: 80rem;
@@ -2249,6 +2259,30 @@ img {
   margin: -12.5rem auto 3.4375rem;
   padding-top: 13.4375rem;
   z-index: 5;
+}
+@media (max-width: 1280px) {
+  .cu-main .cu-single__content {
+    margin: -12.5rem 0.9375rem 3.4375rem;
+  }
+}
+@media (max-width: 1100px) {
+  .cu-main .cu-single__content {
+    margin-top: -7.5rem;
+    padding-top: 8.4375rem;
+  }
+}
+@media (max-width: 860px) {
+  .cu-main .cu-single__content {
+    margin: -3.125rem 0 0;
+    padding-top: 0;
+    padding-bottom: 1.875rem;
+  }
+}
+@media (max-width: 600px) {
+  .cu-main .cu-single__content {
+    margin-top: -1.5625rem;
+    overflow: visible;
+  }
 }
 .cu-main .cu-single__gallery {
   position: relative;
@@ -2267,6 +2301,11 @@ img {
 }
 .cu-main .cu-single__gallery__main {
   margin-bottom: 0.9375rem;
+}
+@media (max-width: 600px) {
+  .cu-main .cu-single__gallery__main {
+    margin: 0;
+  }
 }
 .cu-main .cu-single__gallery__main__item {
   width: 100%;
@@ -2288,6 +2327,17 @@ img {
   margin-top: 0.9375rem;
   margin-right: -0.9375rem;
 }
+@media (max-width: 860px) {
+  .cu-main .cu-single__gallery__thumbs {
+    margin-left: 0.9375rem;
+    margin-right: 0;
+  }
+}
+@media (max-width: 600px) {
+  .cu-main .cu-single__gallery__thumbs {
+    margin: 0.375rem 0 0 0.375rem;
+  }
+}
 .cu-main .cu-single__gallery__thumbs__thumb {
   margin-right: 0.9375rem;
   transition: filter 300ms linear;
@@ -2295,6 +2345,18 @@ img {
 }
 .cu-main .cu-single__gallery__thumbs__thumb.is-nav-selected {
   filter: grayscale(0);
+}
+@media (max-width: 860px) {
+  .cu-main .cu-single__gallery__thumbs__thumb {
+    width: calc(33.333333333% - 0.9375rem) !important;
+    margin-right: 0.9375rem;
+  }
+}
+@media (max-width: 600px) {
+  .cu-main .cu-single__gallery__thumbs__thumb {
+    width: calc(50% - 0.375rem) !important;
+    margin-right: 0.375rem;
+  }
 }
 .cu-main .cu-single__gallery .flickity-button {
   width: 2.5rem;
@@ -2320,6 +2382,17 @@ img {
 .cu-main .cu-single__gallery .flickity-button.next {
   right: 1.25rem;
 }
+@media (max-width: 860px) {
+  .cu-main .cu-single__gallery {
+    padding-left: 0 !important;
+  }
+}
+@media (max-width: 600px) {
+  .cu-main .cu-single__gallery {
+    width: calc(100% + 1rem);
+    margin: 0 -0.5rem;
+  }
+}
 .cu-main .cu-single__info {
   position: absolute;
   width: 37rem;
@@ -2330,6 +2403,24 @@ img {
   background: var(--color-white);
   transition: transform 300ms linear;
   z-index: 3;
+}
+@media (max-width: 1280px) {
+  .cu-main .cu-single__info {
+    width: 30rem;
+  }
+}
+@media (max-width: 860px) {
+  .cu-main .cu-single__info {
+    position: relative;
+    padding: 2.5rem 1.5625rem;
+    width: calc(100% - 2.5rem);
+  }
+}
+@media (max-width: 600px) {
+  .cu-main .cu-single__info {
+    width: calc(100% - 1.5625rem);
+    padding: 1.875rem 1rem 1.5625rem;
+  }
 }
 .cu-main .cu-single__info ul {
   list-style-type: none;
@@ -2353,6 +2444,13 @@ img {
   color: var(--color-blue-dark);
   background: var(--color-white);
   transition: transform 300ms linear;
+}
+@media (max-width: 860px) {
+  .cu-main .cu-single__info__button {
+    display: none !important;
+    pointer-events: none !important;
+    visibility: hidden !important;
+  }
 }
 .cu-main .cu-single__info__button::before {
   display: block;
@@ -2393,6 +2491,12 @@ img {
   font-size: 2.8125rem;
   line-height: 2.8125rem;
 }
+@media (max-width: 600px) {
+  .cu-main .cu-single__info__model {
+    font-size: 2.1875rem;
+    line-height: 2.1875rem;
+  }
+}
 .cu-main .cu-single__info__meta {
   margin-top: 0.3125rem;
 }
@@ -2405,6 +2509,12 @@ img {
   margin: 0;
   font-size: 1.6875rem;
   line-height: 1.6875rem;
+}
+@media (max-width: 600px) {
+  .cu-main .cu-single__info__meta p {
+    font-size: 1.1875rem;
+    line-height: 1.1875rem;
+  }
 }
 .cu-main .cu-single__info__meta p:first-child::after {
   display: block;
@@ -2422,10 +2532,23 @@ img {
   align-items: center;
   justify-content: space-between;
 }
+@media (max-width: 600px) {
+  .cu-main .cu-single__info__footer {
+    margin-top: 0.9375rem;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+  }
+}
 .cu-main .cu-single__info__footer__price {
   justify-content: flex-start;
   font-size: 3.75rem;
   line-height: 3.75rem;
+}
+@media (max-width: 600px) {
+  .cu-main .cu-single__info__footer__price {
+    font-size: 2.8125rem;
+    line-height: 2.8125rem;
+  }
 }
 .cu-main .cu-single__info__footer__price::before, .cu-main .cu-single__info__footer__price::after {
   display: inline-block;
@@ -2449,6 +2572,14 @@ img {
   background: var(--color-yellow);
   margin-bottom: -0.75rem;
 }
+@media (max-width: 600px) {
+  .cu-main .cu-single__info__footer .cu-button {
+    font-size: 0.875rem;
+    line-height: 2.0625rem;
+    padding: 0 1.25rem;
+    margin-top: 0.875rem;
+  }
+}
 .cu-main .cu-single__info__footer .cu-button:hover {
   color: var(--color-yellow);
   background: var(--color-blue-dark);
@@ -2457,6 +2588,13 @@ img {
   padding: 1.5625rem 0 0;
   margin-top: 1.25rem;
   border-top: 1px solid var(--color-gray-border-dark);
+}
+@media (max-width: 600px) {
+  .cu-main .cu-single__info__extras {
+    padding: 0;
+    margin: 2.1875rem -1.5rem 0 0;
+    border: none;
+  }
 }
 .cu-main .cu-single__info__extras li {
   display: flex;
@@ -2483,6 +2621,12 @@ img {
   padding: 0;
   margin: 1.875rem 0 2.5rem;
   border-top: 1px solid var(--color-gray-border);
+}
+@media (max-width: 600px) {
+  .cu-main .cu-single__info__specs {
+    margin-right: -1.5rem;
+    margin-bottom: 1.875rem;
+  }
 }
 .cu-main .cu-single__info__specs li {
   display: grid;
@@ -2514,12 +2658,60 @@ img {
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 1.875rem;
 }
+@media (max-width: 1280px) {
+  .cu-main .cu-single__info__actions {
+    display: block;
+    grid-gap: 0;
+    margin: 0 0 3rem;
+  }
+}
+@media (max-width: 860px) {
+  .cu-main .cu-single__info__actions {
+    margin-bottom: 4rem;
+  }
+  .cu-main .cu-single__info__actions .flickity-page-dots {
+    bottom: -2.1875rem !important;
+  }
+}
+@media (max-width: 600px) {
+  .cu-main .cu-single__info__actions {
+    margin-left: -1.5rem;
+    margin-right: -3.125rem;
+    padding: 0 0 0 2.875rem;
+  }
+  .cu-main .cu-single__info__actions .flickity-page-dots {
+    left: 50%;
+    width: auto;
+    transform: translateX(-50%);
+  }
+}
 .cu-main .cu-single__info__actions__item {
+  width: 100%;
   text-align: center;
   padding: 0.75rem 0.625rem;
   border-radius: 0.3125rem;
   color: var(--color-blue-dark);
   border: 1px solid var(--color-blue-dark);
+}
+@media (max-width: 1280px) {
+  .cu-main .cu-single__info__actions__item {
+    width: 40%;
+    aspect-ratio: 1/1;
+    margin-right: 1.875rem;
+  }
+}
+@media (max-width: 860px) {
+  .cu-main .cu-single__info__actions__item {
+    width: 33.33%;
+    margin-right: 1.5625rem;
+  }
+}
+@media (max-width: 600px) {
+  .cu-main .cu-single__info__actions__item {
+    width: 54%;
+    padding: 0.625rem;
+    margin-right: 1.25rem;
+  }
 }
 .cu-main .cu-single__info__actions__item, .cu-main .cu-single__info__actions__item h3 {
   display: flex;
@@ -2573,6 +2765,11 @@ img {
   background: var(--color-white-gray);
   border: 1px solid var(--color-gray-background-dark);
 }
+@media (max-width: 600px) {
+  .cu-main .cu-single__info__times {
+    margin-right: -1.5rem;
+  }
+}
 .cu-main .cu-single__info__times h3 {
   display: flex;
   flex-flow: row nowrap;
@@ -2610,6 +2807,11 @@ img {
 .cu-main .cu-single__info[aria-hidden=false] + .cu-single__gallery {
   padding-left: 37rem;
 }
+@media (max-width: 1280px) {
+  .cu-main .cu-single__info[aria-hidden=false] + .cu-single__gallery {
+    padding-left: 30rem;
+  }
+}
 .cu-main .cu-single__info[aria-hidden=false] + .cu-single__gallery .cu-single__gallery__thumbs__thumb {
   width: calc(33.333% - 0.9375rem);
 }
@@ -2629,6 +2831,12 @@ img {
 .cu-related {
   max-width: 80rem;
   margin: 0 auto;
+}
+@media (max-width: 1280px) {
+  .cu-related {
+    max-width: none;
+    margin: 0 0.9375rem;
+  }
 }
 .cu-related__title {
   position: relative;
@@ -2660,5 +2868,5 @@ img {
 .cu-related__grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  margin: 0 -0.9375rem;
+  margin: 0 -1.25rem;
 }
