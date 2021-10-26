@@ -4897,24 +4897,21 @@ if (singleGallery) {
   var $body;
 
   window.onload = function () {
+    $body = document.querySelector('body');
+    scrollPos = 0;
     var $sidebar = document.querySelector('.cu-single__info');
     var $content = document.querySelector('.cu-single__content');
-    var $gallery = document.querySelector('.cu-single__gallery__wrapper');
+    var actions = document.querySelector('.cu-single__info__actions');
     var panelBtn = document.querySelector('.cu-single__info__button');
 
     var handleContentHeight = function handleContentHeight() {
-      if (panelBtn.getAttribute('aria-expanded') === 'false') {
-        var padding = getStyle($content, 'padding-top') + getStyle($content, 'padding-bottom') + 15;
-        console.log(padding, $gallery.clientHeight);
-        $content.style.maxHeight = "".concat(padding + $gallery.clientHeight, "px");
+      if (panelBtn.getAttribute('aria-expanded') === "false") {
+        $content.removeProperty('style');
       } else {
-        var _padding = getStyle($content, 'padding-bottom');
-
-        $content.style.maxHeight = "".concat(_padding + $sidebar.clientHeight, "px");
+        $content.style.minHeight = "".concat($sidebar.clientHeight - getStyle($sidebar, 'padding-bottom'), "px");
       }
     };
 
-    $body = document.querySelector('body');
     var thumbsSlider = new flickity__WEBPACK_IMPORTED_MODULE_3___default.a(singleGallery.querySelector('.cu-single__gallery__thumbs'), {
       cellSelector: '.gallery-thumb',
       cellAlign: 'left',
@@ -4945,10 +4942,9 @@ if (singleGallery) {
       resize: true,
       contain: true,
       on: {
-        ready: function ready() {
+        ready: function ready(index) {
           singleGallery.querySelector('.cu-single__gallery__main').classList.remove('loading');
           handleContentHeight();
-          console.log('ready');
         },
         change: function change(index) {
           thumbsSlider.select(index);
@@ -4957,22 +4953,16 @@ if (singleGallery) {
     });
     panelBtn.addEventListener('click', function (e) {
       e.preventDefault();
-      singleGallery.querySelector('.cu-single__gallery__thumbs').classList.add('transition');
-      singleGallery.querySelector('.cu-single__gallery__main').classList.add('transition');
-      panelBtn.classList.add('loading');
+      singleGallery.querySelector('.cu-single__gallery__thumbs').classList.add('loading');
+      singleGallery.querySelector('.cu-single__gallery__main').classList.add('loading');
       setTimeout(function () {
-        mainSlider.resize();
-        mainSlider.reposition();
-        thumbsSlider.resize();
-        thumbsSlider.reposition();
-        panelBtn.classList.remove('loading');
-        singleGallery.querySelector('.cu-single__gallery__thumbs').classList.remove('transition');
-        singleGallery.querySelector('.cu-single__gallery__main').classList.remove('transition');
-      }, 300);
+        resizeSliders();
+        singleGallery.querySelector('.cu-single__gallery__thumbs').classList.remove('loading');
+        singleGallery.querySelector('.cu-single__gallery__main').classList.remove('loading');
+      }, 310);
     });
 
     if (window.innerWidth <= 1100) {
-      var actions = document.querySelector('.cu-single__info__actions');
       var actionSlider = new flickity__WEBPACK_IMPORTED_MODULE_3___default.a(actions, {
         cellSelector: '.cu-single__info__actions__item',
         cellAlign: 'left',
@@ -4991,9 +4981,15 @@ if (singleGallery) {
       });
     }
 
-    window.onresize = function () {
-      thumbsSlider.resize();
+    window.addEventListener('resize', function () {
+      resizeSliders();
+    });
+
+    var resizeSliders = function resizeSliders() {
       mainSlider.resize();
+      mainSlider.reposition();
+      thumbsSlider.resize();
+      thumbsSlider.reposition();
     };
   };
 
@@ -5014,6 +5010,21 @@ if (singleGallery) {
     });
   }
 
+  var getStyle = function getStyle(oElm, strCssRule) {
+    var strValue = "";
+
+    if (document.defaultView && document.defaultView.getComputedStyle) {
+      strValue = document.defaultView.getComputedStyle(oElm, "").getPropertyValue(strCssRule);
+    } else if (oElm.currentStyle) {
+      strCssRule = strCssRule.replace(/\-(\w)/g, function (strMatch, p1) {
+        return p1.toUpperCase();
+      });
+      strValue = oElm.currentStyle[strCssRule];
+    }
+
+    return parseInt(strValue.replace(/\D/g, ''));
+  };
+
   var disableScroll = function disableScroll() {
     scrollPos = window.pageYOffset;
     $body.style.overflow = 'hidden';
@@ -5028,21 +5039,6 @@ if (singleGallery) {
     $body.style.removeProperty('top');
     $body.style.removeProperty('width');
     window.scrollTo(0, scrollPos);
-  };
-
-  var getStyle = function getStyle(oElm, strCssRule) {
-    var strValue = "";
-
-    if (document.defaultView && document.defaultView.getComputedStyle) {
-      strValue = document.defaultView.getComputedStyle(oElm, "").getPropertyValue(strCssRule);
-    } else if (oElm.currentStyle) {
-      strCssRule = strCssRule.replace(/\-(\w)/g, function (strMatch, p1) {
-        return p1.toUpperCase();
-      });
-      strValue = oElm.currentStyle[strCssRule];
-    }
-
-    return parseInt(strValue.replace(/\D/g, ''));
   };
 }
 

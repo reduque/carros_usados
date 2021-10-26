@@ -56,25 +56,22 @@ const singleGallery = document.querySelector('.cu-single__gallery')
 if (singleGallery) {
     let scrollPos;
     let $body;
-    
     window.onload = function() {
+        $body = document.querySelector('body');
+        scrollPos = 0;
         const $sidebar = document.querySelector('.cu-single__info')
         const $content = document.querySelector('.cu-single__content')
-        const $gallery = document.querySelector('.cu-single__gallery__wrapper')
+        const actions = document.querySelector('.cu-single__info__actions')
         const panelBtn = document.querySelector('.cu-single__info__button')
 
         const handleContentHeight = () => {
-            if (panelBtn.getAttribute('aria-expanded') === 'false') {
-                const padding = getStyle($content, 'padding-top') + getStyle($content, 'padding-bottom') + 15
-                console.log(padding, $gallery.clientHeight)
-                $content.style.maxHeight = `${padding + $gallery.clientHeight}px`
+            if (panelBtn.getAttribute('aria-expanded') === "false") {
+                $content.removeProperty('style')
             } else {
-                const padding = getStyle($content, 'padding-bottom')
-                $content.style.maxHeight = `${padding + $sidebar.clientHeight}px`
+                $content.style.minHeight = `${$sidebar.clientHeight - getStyle($sidebar, 'padding-bottom')}px`
             }
         }
-
-        $body = document.querySelector('body');
+    
         const thumbsSlider = new Flickity(singleGallery.querySelector('.cu-single__gallery__thumbs'), {
             cellSelector: '.gallery-thumb',
             cellAlign: 'left',
@@ -105,10 +102,9 @@ if (singleGallery) {
             resize: true,
             contain: true,
             on: {
-                ready: function() {
+                ready: function(index) {
                     singleGallery.querySelector('.cu-single__gallery__main').classList.remove('loading')
                     handleContentHeight()
-                    console.log('ready')
                 },
                 change: function(index) {
                     thumbsSlider.select(index)
@@ -118,22 +114,17 @@ if (singleGallery) {
         
         panelBtn.addEventListener('click', (e) => {
             e.preventDefault()
-            singleGallery.querySelector('.cu-single__gallery__thumbs').classList.add('transition')
-            singleGallery.querySelector('.cu-single__gallery__main').classList.add('transition')
-            panelBtn.classList.add('loading')
+            singleGallery.querySelector('.cu-single__gallery__thumbs').classList.add('loading')
+            singleGallery.querySelector('.cu-single__gallery__main').classList.add('loading')
             setTimeout(() => {
-                mainSlider.resize()
-                mainSlider.reposition()
-                thumbsSlider.resize()
-                thumbsSlider.reposition()
-                panelBtn.classList.remove('loading')
-                singleGallery.querySelector('.cu-single__gallery__thumbs').classList.remove('transition')
-                singleGallery.querySelector('.cu-single__gallery__main').classList.remove('transition')
-            }, 300)
+                resizeSliders()
+                singleGallery.querySelector('.cu-single__gallery__thumbs').classList.remove('loading')
+                singleGallery.querySelector('.cu-single__gallery__main').classList.remove('loading')
+            }, 310)
         })
 
         if (window.innerWidth <= 1100) {
-            const actions = document.querySelector('.cu-single__info__actions')
+            
             const actionSlider = new Flickity(actions, {
                 cellSelector: '.cu-single__info__actions__item',
                 cellAlign: 'left',
@@ -152,9 +143,15 @@ if (singleGallery) {
             })
         }
 
-        window.onresize = function() {
-            thumbsSlider.resize()
+        window.addEventListener('resize', () => {
+            resizeSliders()
+        })
+
+        const resizeSliders = () => {
             mainSlider.resize()
+            mainSlider.reposition()
+            thumbsSlider.resize()
+            thumbsSlider.reposition()
         }
     }
 
@@ -174,6 +171,20 @@ if (singleGallery) {
         })
     }
 
+    const  getStyle = (oElm, strCssRule) => {
+        let strValue = "";
+        if(document.defaultView && document.defaultView.getComputedStyle){
+            strValue = document.defaultView.getComputedStyle(oElm, "").getPropertyValue(strCssRule);
+        }
+        else if(oElm.currentStyle){
+            strCssRule = strCssRule.replace(/\-(\w)/g, function (strMatch, p1){
+                return p1.toUpperCase();
+            });
+            strValue = oElm.currentStyle[strCssRule];
+        }
+        return parseInt(strValue.replace(/\D/g, ''));
+    }
+
     const disableScroll = () => {
         scrollPos = window.pageYOffset;
         $body.style.overflow = 'hidden';
@@ -188,19 +199,5 @@ if (singleGallery) {
         $body.style.removeProperty('top');
         $body.style.removeProperty('width');
         window.scrollTo(0, scrollPos);
-    }
-
-    const  getStyle = (oElm, strCssRule) => {
-        let strValue = "";
-        if(document.defaultView && document.defaultView.getComputedStyle){
-            strValue = document.defaultView.getComputedStyle(oElm, "").getPropertyValue(strCssRule);
-        }
-        else if(oElm.currentStyle){
-            strCssRule = strCssRule.replace(/\-(\w)/g, function (strMatch, p1){
-                return p1.toUpperCase();
-            });
-            strValue = oElm.currentStyle[strCssRule];
-        }
-        return parseInt(strValue.replace(/\D/g, ''));
     }
 }
