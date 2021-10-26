@@ -5,6 +5,7 @@
             position: relative;
             padding-top: 56.3081009296148738%;
             margin: 0 0.9375rem;
+            z-index: 1;
             img {
                 position: absolute;
                 left: 0;
@@ -16,13 +17,22 @@
         }
         &__content {
             position: relative;
-            margin: 0.9375rem 0 3.4375rem;
+            max-width: 80rem;
+            margin: -12.5rem auto 3.4375rem;
+            padding-top: 12.5rem;
+            overflow: hidden;
+            z-index: 2;
         }
         &__gallery {
+            position: absolute;
+            width: 100%;
+            right: 0;
+            top: 13.4375rem;
             transition: all 300ms linear;
             overflow-x: hidden;
             &__main {
-                margin-right: 0.9375rem;
+                margin-bottom: 0.9375rem;
+                transition: opacity 400ms linear;
                 &__item {
                     width: 100%;
                     margin-right: 0.9375rem;
@@ -41,16 +51,47 @@
                         }
                     }
                 }
+                &.transition {
+                    opacity: 0;
+                    transition-duration: 150ms;
+                }
+                &.loading {
+                    opacity: 0;
+                }
+                @include mini-tablet {
+                    margin-right: 0;
+                }
             }
             &__thumbs {
                 margin-top: 0.9375rem;
+                margin-right: -0.9375rem;
+                transition: opacity 400ms linear;
                 &__thumb {
+                    position: relative;
+                    height: 0;
                     margin-right: 0.9375rem;
                     transition: filter 300ms linear;
                     filter: grayscale(1);
+                    figure {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        left: 0;
+                        top: 0;
+                    }
                     &.is-nav-selected {
                         filter: grayscale(0);
                     }
+                }
+                &.transition {
+                    opacity: 0;
+                    transition-duration: 150ms;
+                }
+                &.loading {
+                    opacity: 0;
+                }
+                @include mini-tablet {
+                    margin-right: -0.9375rem;
                 }
             }
             .flickity-button {
@@ -79,15 +120,15 @@
             }
         }
         &__info {
-            position: absolute;
+            position: relative;
             width: 37rem;
             height: calc(100% + 12.5rem);
-            padding: 1.875rem;
-            left: 0;
-            top: -12.5rem;
+            padding: 1.875rem 1.875rem 0;
+            margin-top: -12.5rem;
             color: var(--color-black-dark);
             background: var(--color-white);
             transition: transform 300ms linear;
+            z-index: 3;
             ul {
                 list-style-type: none;
             }
@@ -109,7 +150,7 @@
                 border-radius: 0 0.625rem 0.625rem 0;
                 color: var(--color-blue-dark);
                 background: var(--color-white);
-                transition: transform 300ms linear;
+                transition: opacity 300ms linear;
                 &::before {
                     display: block;
                     content: '';
@@ -147,6 +188,15 @@
                     .close {
                         display: block;
                     }
+                }
+                &.loading {
+                    opacity: 0;
+                    transition-duration: 0ms;
+                }
+                @include mini-tablet {
+                    display: none !important;
+                    pointer-events: none !important;
+                    visibility: hidden !important;
                 }
             }
             &__model {
@@ -276,7 +326,7 @@
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);
                 grid-gap: 1.875rem;
-                li {
+                &__item {
                     text-align: center;
                     padding: 0.75rem 0.625rem;
                     border-radius: 0.3125rem;
@@ -335,6 +385,15 @@
                         }
                     }
                 }
+                @include tablet {
+                    display: block;
+                    grid-gap: 0;
+                    width: 60%;
+                    margin: 0 auto;
+                    &__item {
+                        width: 100%;
+                    }
+                }
             }
             &__times {
                 color: var(--color-blue-dark);
@@ -380,7 +439,7 @@
                     padding-left: 37rem;
                     .cu-single__gallery__thumbs {
                         &__thumb {
-                            width: calc(50% - 0.9375rem);
+                            width: calc(33.33% - 0.9375rem);
                         }
                     }
                 }
@@ -388,11 +447,10 @@
             &[aria-hidden="true"] {
                 transform: translateX(-100%);
                 .cu-single__info__button {
-                    transform: translateX(100%);
+                    transform: translate(calc(100% + 1.875rem), 14.375rem);
                 }
                 & + .cu-single__gallery {
-                    padding-left: 0;
-                    margin-left: 0.9375rem;
+                    padding-left: 1.875rem;
                     .cu-single__gallery__thumbs {
                         &__thumb {
                             width: calc(20% - 0.9375rem);
@@ -406,13 +464,15 @@
 }
 
 .cu-related {
-    padding: 0 0.9375rem;
+    padding: 0 0 0 0.625rem;
+    max-width: 80rem;
+    margin: 0 auto;
     &__title {
         position: relative;
         display: block;
         font-family: var(--font-family-body);
         color: var(--color-blue-dark);
-        margin: 0 1.25rem;
+        margin: 0 0 0 1.25rem;
         z-index: 1;
         &::before {
             content: '';

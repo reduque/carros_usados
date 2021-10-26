@@ -7,14 +7,14 @@
         ?>
         @foreach ($carro->puntos_intermedia as $item)
             <?php if($grupo <> $item->punto->grupo->grupo){ ?>
-            <li>
-                <h5 align="center">{{$item->punto->grupo->grupo}}<span></span></h5>
+            <li class="full">
+                <h5>{{$item->punto->grupo->grupo}}</h5>
             </li>
             <?php
                 $grupo = $item->punto->grupo->grupo;
             }?>
             <li>
-                <h5><span>{{ $item->punto->punto}}</span></h5>
+                <p><span>{{ $item->punto->punto}}</span></p>
                 <div class="{{ ($item->respuesta) ? 'activo' : 'inactivo'}}"></div>
             </li>
         @endforeach

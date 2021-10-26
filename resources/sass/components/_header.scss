@@ -73,6 +73,9 @@
             line-height: 1.375rem;
             letter-spacing: 0;
             color: var(--color-white);
+            &:hover {
+                color: var(--color-yellow);
+            }
             @include phone {
                 font-size: 0.9375rem;
                 line-height: 0.9375rem;

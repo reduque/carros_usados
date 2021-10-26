@@ -8,7 +8,13 @@
     <section class="cu-single">
         <div class="cu-container cu-container--single">
             <figure class="cu-single__feature">
-                <img src="uploads/carros/{{ $carro->img }}" alt="{{ $carro->marca->marca . ' ' . $carro->modelo->modelo . ' ' . $carro->ano }}">
+                @if(isMobile())
+                    <!-- Version cuadrada de foto featured -->
+                    <img src="uploads/carros/{{ $carro->img }}" alt="{{ $carro->marca->marca . ' ' . $carro->modelo->modelo . ' ' . $carro->ano }}" />
+                @else
+                    <!-- Version apaisada de foto featured -->
+                    <img src="uploads/carros/{{ $carro->img }}" alt="{{ $carro->marca->marca . ' ' . $carro->modelo->modelo . ' ' . $carro->ano }}" />
+                @endif
             </figure>
             <div class="cu-single__content">
                 <div id="cu-single-info" class="cu-single__info" aria-hidden="false">
@@ -71,21 +77,21 @@
                             <span>{{ ($carro->sistema_de_seguroda) ? 'Si' : 'No' }}</span>
                         </li>
                     </ul>
-                    <ul class="cu-single__info__actions">
-                        <li>
+                    <div class="cu-single__info__actions">
+                        <div class="cu-single__info__actions__item">
                             <h3>Agenda<br />una cita</h3>
                             <p>Parsley açai frosted gingerbread bites vine tomatoes avocado dressing drizzle grains.</p>
-                        </li>
-                        <li>
+                        </div>
+                        <div class="cu-single__info__actions__item">
                             <h3>Nuestros carros<br />Tienen garantía</h3>
                             <p>Parsley açai frosted gingerbread bites vine tomatoes avocado dressing drizzle grains.</p>
-                        </li>
-                        <li>
+                        </div>
+                        <div class="cu-single__info__actions__item">
                             <h3>Revisión de 150 puntos</h3>
                             <p>Revisa el resultado de la evaluación de este carro</p>
                             <button class="see-points">Haz clic aquí</button>
-                        </li>
-                    </ul>
+                        </div>
+                    </div>
                     <div class="cu-single__info__times">
                         <h3>Horario de antención</h3>
                         <p>Citas para revisar los carros en persona se llevan a cabo de:</p>
@@ -93,23 +99,25 @@
                     </div>
                 </div>
                 <div class="cu-single__gallery">
-                    <div class="cu-single__gallery__main">
-                        @foreach($carro->fotos as $foto)
-                            <figure class="cu-single__gallery__main__item gallery-item">
-                                <a href="uploads/carros/galeria/{{ $foto->img }}" data-fancybox="gallery">
-                                    <img src="uploads/carros/galeria/{{ $foto->img }}" alt="{{ $carro->marca->marca . ' ' . $carro->modelo->modelo . ' ' . $carro->ano }}" />
-                                </a>
-                            </figure>
-                        @endforeach
-                    </div>
-                    <div class="cu-single__gallery__thumbs">
-                        @foreach($carro->fotos as $foto)
-                            <div class="cu-single__gallery__thumbs__thumb gallery-thumb">
-                                <figure>
-                                    <img src="uploads/carros/galeria/{{ $foto->miniatura }}" alt="{{ $carro->marca->marca . ' ' . $carro->modelo->modelo . ' ' . $carro->ano }}" />
+                    <div class="cu-single__gallery__wrapper">
+                        <div class="cu-single__gallery__main loading">
+                            @foreach($carro->fotos as $foto)
+                                <figure class="cu-single__gallery__main__item gallery-item">
+                                    <a href="uploads/carros/galeria/{{ $foto->img }}" data-fancybox="gallery">
+                                        <img src="uploads/carros/galeria/{{ $foto->img }}" alt="{{ $carro->marca->marca . ' ' . $carro->modelo->modelo . ' ' . $carro->ano }}" />
+                                    </a>
                                 </figure>
-                            </div>
                             @endforeach
+                        </div>
+                        <div class="cu-single__gallery__thumbs loading">
+                            @foreach($carro->fotos as $foto)
+                                <div class="cu-single__gallery__thumbs__thumb gallery-thumb">
+                                    <figure>
+                                        <img src="uploads/carros/galeria/{{ $foto->miniatura }}" alt="{{ $carro->marca->marca . ' ' . $carro->modelo->modelo . ' ' . $carro->ano }}" />
+                                    </figure>
+                                </div>
+                                @endforeach
+                        </div>
                     </div>
                 </div>
             </div>

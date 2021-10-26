@@ -56,9 +56,16 @@ const singleGallery = document.querySelector('.cu-single__gallery')
 if (singleGallery) {
     let scrollPos;
     let $body;
+    
     window.onload = function() {
+        const $sidebar = document.querySelector('.cu-single__info')
+        const $content = document.querySelector('.cu-single__content')
         $body = document.querySelector('body');
-        scrollPos = 0;
+        const thumbs = document.querySelectorAll('.gallery-thumb')
+
+        thumbs.forEach((thumb) => {
+            thumb.style.paddingTop = `${thumb.clientWidth}px`
+        })
         const thumbsSlider = new Flickity(singleGallery.querySelector('.cu-single__gallery__thumbs'), {
             cellSelector: '.gallery-thumb',
             cellAlign: 'left',
@@ -70,6 +77,9 @@ if (singleGallery) {
             resize: true,
             asNavFor: singleGallery.querySelector('.cu-single__gallery__main'),
             on: {
+                ready: function() {
+                    singleGallery.querySelector('.cu-single__gallery__thumbs').classList.remove('loading')
+                },
                 change: function(index) {
                     mainSlider.select(index)
                 },
@@ -86,6 +96,9 @@ if (singleGallery) {
             resize: true,
             contain: true,
             on: {
+                ready: function() {
+                    singleGallery.querySelector('.cu-single__gallery__main').classList.remove('loading')
+                },
                 change: function(index) {
                     thumbsSlider.select(index)
                 },
@@ -94,11 +107,35 @@ if (singleGallery) {
         const panelBtn = document.querySelector('.cu-single__info__button')
         panelBtn.addEventListener('click', (e) => {
             e.preventDefault()
+            singleGallery.querySelector('.cu-single__gallery__thumbs').classList.add('transition')
+            singleGallery.querySelector('.cu-single__gallery__main').classList.add('transition')
+            panelBtn.classList.add('loading')
             setTimeout(() => {
+                thumbs.forEach((thumb) => {
+                    thumb.style.paddingTop = `${thumb.clientWidth}px`
+                })
                 mainSlider.resize()
                 thumbsSlider.resize()
-            }, 310)
+                panelBtn.classList.remove('loading')
+                singleGallery.querySelector('.cu-single__gallery__thumbs').classList.remove('transition')
+                singleGallery.querySelector('.cu-single__gallery__main').classList.remove('transition')
+            }, 450)
         })
+
+        if (window.innerWidth <= 1100) {
+            const actions = document.querySelector('.cu-single__info__actions')
+            const actionSlider = new Flickity(actions, {
+                cellSelector: '.cu-single__info__actions__item',
+                cellAlign: 'left',
+                draggable: true,
+                groupCells: 1,
+                prevNextButtons: false,
+                pageDots: true,
+                wrapAround: true,
+                resize: true,
+                contain: true,
+            })
+        }
 
         window.onresize = function() {
             thumbsSlider.resize()

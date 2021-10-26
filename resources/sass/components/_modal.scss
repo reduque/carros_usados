@@ -56,7 +56,7 @@
     overflow-y: auto;
     &__title {
         font-size: 1.25rem;
-        line-height: 1.25rem;
+        line-height: 2rem;
         text-align: center;
         letter-spacing: -0.045rem;
         color: var(--color-blue-dark);
@@ -79,20 +79,27 @@
             grid-template-columns: 5fr 1fr;
             background: var(--color-white);
             border-bottom: 1px solid var(--color-gray-border);
-            h5, div {
+            &.full {
+                grid-template-columns: 1fr;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+            }
+            h5, p, div {
+                display: block;
                 font-family: var(--font-family-body);
                 font-size: 0.875rem;
                 font-weight: 700;
                 letter-spacing: -0.02rem;
-                line-height: 2.625rem;
+                line-height: 1rem;
+                padding: 0.8125rem 0.9375rem;
+                margin: 0;
             }
-            h5 {
-                padding: 0 0.9375rem;
+            p {
                 text-transform: uppercase;
                 span {
                     font-weight: 400;
                     text-transform: none;
-                    margin-left: 0.5rem;
                 }
             }
             div {
@@ -100,7 +107,6 @@
                 flex-flow: column nowrap;
                 align-items: center;
                 justify-content: center;
-                padding-left: 0 1.25rem;
                 border-left: 1px solid var(--color-gray-border);
                 &::before {
                     content: '';
