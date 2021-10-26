@@ -153,4 +153,11 @@
             }
         }
     }
+    &:not(.cu-card--full) {
+        @include phone {
+            .cu-card__wrapper {
+                margin: 0.3125rem;
+            }
+        }
+    }
 }

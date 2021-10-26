@@ -1359,6 +1359,11 @@ img {
 .cu-card--full .cu-card__info__extras li:last-child {
   margin: 0;
 }
+@media (max-width: 600px) {
+  .cu-card:not(.cu-card--full) .cu-card__wrapper {
+    margin: 0.3125rem;
+  }
+}
 
 .cu-modal {
   position: fixed;
