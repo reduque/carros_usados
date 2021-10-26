@@ -62,6 +62,7 @@ if (singleGallery) {
         const $sidebar = document.querySelector('.cu-single__info')
         const $content = document.querySelector('.cu-single__content')
         const actions = document.querySelector('.cu-single__info__actions')
+        const related = document.querySelector('.cu-related__grid')
         const panelBtn = document.querySelector('.cu-single__info__button')
 
         const handleContentHeight = () => {
@@ -142,6 +143,19 @@ if (singleGallery) {
                         handleContentHeight()
                     }
                 }
+            })
+        }
+        if (window.innerWidth <= 1100) {
+            const relatedSlider = new Flickity(related, {
+                cellSelector: '.cu-card',
+                cellAlign: 'left',
+                draggable: true,
+                groupCells: 1,
+                prevNextButtons: false,
+                wrapAround: true,
+                pageDots: true,
+                resize: true,
+                contain: true,
             })
         }
 

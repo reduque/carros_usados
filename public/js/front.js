@@ -4902,6 +4902,7 @@ if (singleGallery) {
     var $sidebar = document.querySelector('.cu-single__info');
     var $content = document.querySelector('.cu-single__content');
     var actions = document.querySelector('.cu-single__info__actions');
+    var related = document.querySelector('.cu-related__grid');
     var panelBtn = document.querySelector('.cu-single__info__button');
 
     var handleContentHeight = function handleContentHeight() {
@@ -4980,6 +4981,20 @@ if (singleGallery) {
             handleContentHeight();
           }
         }
+      });
+    }
+
+    if (window.innerWidth <= 1100) {
+      var relatedSlider = new flickity__WEBPACK_IMPORTED_MODULE_3___default.a(related, {
+        cellSelector: '.cu-card',
+        cellAlign: 'left',
+        draggable: true,
+        groupCells: 1,
+        prevNextButtons: false,
+        wrapAround: true,
+        pageDots: true,
+        resize: true,
+        contain: true
       });
     }
 

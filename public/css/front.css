@@ -2865,8 +2865,40 @@ img {
   padding: 0 1rem 0 0;
   background: var(--color-white);
 }
+@media (max-width: 600px) {
+  .cu-related__title {
+    text-align: center;
+  }
+  .cu-related__title::before {
+    display: none;
+  }
+  .cu-related__title span {
+    font-size: 1.1875rem;
+    line-height: 1.1875rem;
+  }
+}
 .cu-related__grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   margin: 0 -1.25rem;
+}
+@media (max-width: 1100px) {
+  .cu-related__grid {
+    display: block;
+    grid-gap: 0;
+    margin-bottom: 2.5rem;
+  }
+  .cu-related__grid .cu-card {
+    width: 33.33%;
+  }
+}
+@media (max-width: 860px) {
+  .cu-related__grid .cu-card {
+    width: 50%;
+  }
+}
+@media (max-width: 600px) {
+  .cu-related__grid .cu-card {
+    width: 100%;
+  }
 }

@@ -594,10 +594,38 @@
             padding: 0 1rem 0 0;
             background: var(--color-white);
         }
+        @include phone {
+            text-align: center;
+            &::before {
+                display: none;
+            }
+            span {
+                font-size: 1.1875rem;
+                line-height: 1.1875rem;
+            }
+        }
     }
     &__grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         margin: 0 -1.25rem;
+        @include tablet {
+            display: block;
+            grid-gap: 0;
+            margin-bottom: 2.5rem;
+            .cu-card {
+                width: 33.33%;
+            }
+        }
+        @include mini-tablet {
+            .cu-card {
+                width: 50%;
+            }
+        }
+        @include phone {
+            .cu-card {
+                width: 100%;
+            }
+        }
     }
 }
