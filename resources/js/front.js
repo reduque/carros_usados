@@ -60,12 +60,15 @@ if (singleGallery) {
     window.onload = function() {
         const $sidebar = document.querySelector('.cu-single__info')
         const $content = document.querySelector('.cu-single__content')
-        $body = document.querySelector('body');
-        const thumbs = document.querySelectorAll('.gallery-thumb')
+        const $gallery = document.querySelector('.cu-single__gallery__wrapper')
 
-        thumbs.forEach((thumb) => {
-            thumb.style.paddingTop = `${thumb.clientWidth}px`
-        })
+        const handleContentHeight = () => {
+            const padding = $content.style.paddingTop + $content.style.paddingBottom
+            console.log($content)
+            $content.style.minHeight = `${$gallery.clientHeight + padding}px`
+        }
+
+        $body = document.querySelector('body');
         const thumbsSlider = new Flickity(singleGallery.querySelector('.cu-single__gallery__thumbs'), {
             cellSelector: '.gallery-thumb',
             cellAlign: 'left',
@@ -98,6 +101,7 @@ if (singleGallery) {
             on: {
                 ready: function() {
                     singleGallery.querySelector('.cu-single__gallery__main').classList.remove('loading')
+                    $content.style.minHeight = `${$sidebar.clientHeight}px`
                 },
                 change: function(index) {
                     thumbsSlider.select(index)
@@ -111,15 +115,15 @@ if (singleGallery) {
             singleGallery.querySelector('.cu-single__gallery__main').classList.add('transition')
             panelBtn.classList.add('loading')
             setTimeout(() => {
-                thumbs.forEach((thumb) => {
-                    thumb.style.paddingTop = `${thumb.clientWidth}px`
-                })
                 mainSlider.resize()
+                mainSlider.reposition()
                 thumbsSlider.resize()
+                thumbsSlider.reposition()
                 panelBtn.classList.remove('loading')
                 singleGallery.querySelector('.cu-single__gallery__thumbs').classList.remove('transition')
                 singleGallery.querySelector('.cu-single__gallery__main').classList.remove('transition')
-            }, 450)
+                handleContentHeight()
+            }, 350)
         })
 
         if (window.innerWidth <= 1100) {

@@ -4897,11 +4897,15 @@ if (singleGallery) {
   window.onload = function () {
     var $sidebar = document.querySelector('.cu-single__info');
     var $content = document.querySelector('.cu-single__content');
+    var $gallery = document.querySelector('.cu-single__gallery__wrapper');
+
+    var handleContentHeight = function handleContentHeight() {
+      var padding = $content.style.paddingTop + $content.style.paddingBottom;
+      console.log($content);
+      $content.style.minHeight = "".concat($gallery.clientHeight + padding, "px");
+    };
+
     $body = document.querySelector('body');
-    var thumbs = document.querySelectorAll('.gallery-thumb');
-    thumbs.forEach(function (thumb) {
-      thumb.style.paddingTop = "".concat(thumb.clientWidth, "px");
-    });
     var thumbsSlider = new flickity__WEBPACK_IMPORTED_MODULE_3___default.a(singleGallery.querySelector('.cu-single__gallery__thumbs'), {
       cellSelector: '.gallery-thumb',
       cellAlign: 'left',
@@ -4934,6 +4938,7 @@ if (singleGallery) {
       on: {
         ready: function ready() {
           singleGallery.querySelector('.cu-single__gallery__main').classList.remove('loading');
+          $content.style.minHeight = "".concat($sidebar.clientHeight, "px");
         },
         change: function change(index) {
           thumbsSlider.select(index);
@@ -4947,15 +4952,15 @@ if (singleGallery) {
       singleGallery.querySelector('.cu-single__gallery__main').classList.add('transition');
       panelBtn.classList.add('loading');
       setTimeout(function () {
-        thumbs.forEach(function (thumb) {
-          thumb.style.paddingTop = "".concat(thumb.clientWidth, "px");
-        });
         mainSlider.resize();
+        mainSlider.reposition();
         thumbsSlider.resize();
+        thumbsSlider.reposition();
         panelBtn.classList.remove('loading');
         singleGallery.querySelector('.cu-single__gallery__thumbs').classList.remove('transition');
         singleGallery.querySelector('.cu-single__gallery__main').classList.remove('transition');
-      }, 450);
+        handleContentHeight();
+      }, 350);
     });
 
     if (window.innerWidth <= 1100) {

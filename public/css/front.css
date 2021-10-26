@@ -2245,10 +2245,16 @@ img {
 .cu-main .cu-single__content {
   position: relative;
   max-width: 80rem;
-  margin: -12.5rem auto 3.4375rem;
-  padding-top: 12.5rem;
+  margin: -12.5rem auto 0;
+  padding: 12.5rem 0 3.4375rem;
   overflow: hidden;
   z-index: 2;
+}
+@media (max-width: 1366px) {
+  .cu-main .cu-single__content {
+    margin-left: 0.9375rem;
+    margin-right: 0.9375rem;
+  }
 }
 .cu-main .cu-single__gallery {
   position: absolute;
@@ -2297,10 +2303,11 @@ img {
 }
 .cu-main .cu-single__gallery__thumbs__thumb {
   position: relative;
-  height: 0;
   margin-right: 0.9375rem;
   transition: filter 300ms linear;
   filter: grayscale(1);
+  aspect-ratio: 1/1;
+  overflow: hidden;
 }
 .cu-main .cu-single__gallery__thumbs__thumb figure {
   position: absolute;
@@ -2667,10 +2674,10 @@ img {
   transform: translateX(-100%);
 }
 .cu-main .cu-single__info[aria-hidden=true] .cu-single__info__button {
-  transform: translate(calc(100% + 1.875rem), 14.375rem);
+  transform: translate(100%, 14.375rem);
 }
 .cu-main .cu-single__info[aria-hidden=true] + .cu-single__gallery {
-  padding-left: 1.875rem;
+  padding-left: 0;
 }
 .cu-main .cu-single__info[aria-hidden=true] + .cu-single__gallery .cu-single__gallery__thumbs__thumb {
   width: calc(20% - 0.9375rem);
