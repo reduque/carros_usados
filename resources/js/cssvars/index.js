@@ -9,8 +9,8 @@ const main = document.querySelector('.cu-main')
 main.style.marginBottom = `${footer.clientHeight}px`
 
 const handleWindowResize = () => {
-    let vw = window.innerWidth * 0.01;
-    let vh = window.innerHeight * 0.01;
+    vw = window.innerWidth * 0.01;
+    vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vw', `${vw}px`)
     document.documentElement.style.setProperty('--vh', `${vh}px`)
     main.style.marginBottom = `${footer.clientHeight}px`

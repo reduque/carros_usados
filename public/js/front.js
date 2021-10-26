@@ -4801,8 +4801,8 @@ var main = document.querySelector('.cu-main');
 main.style.marginBottom = "".concat(footer.clientHeight, "px");
 
 var handleWindowResize = function handleWindowResize() {
-  var vw = window.innerWidth * 0.01;
-  var vh = window.innerHeight * 0.01;
+  vw = window.innerWidth * 0.01;
+  vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty('--vw', "".concat(vw, "px"));
   document.documentElement.style.setProperty('--vh', "".concat(vh, "px"));
   main.style.marginBottom = "".concat(footer.clientHeight, "px");
