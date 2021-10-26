@@ -468,6 +468,13 @@
             @include mid-desktop {
                 width: 64%;
             }
+            @include tablet {
+                &--mobile {
+                    display: block;
+                    width: 50%;
+                    right: 0;
+                }
+            }
             @include mini-tablet {
                 &--desktop {
                     display: none;
@@ -491,7 +498,7 @@
             }
         }
     }
-    @include mini-tablet {
+    @include tablet {
         height: auto;
         padding: 3.5rem 0;
         background: linear-gradient(0deg, var(--color-white) 0%, var(--color-white) 25%, var(--color-gray-background) 100%);
