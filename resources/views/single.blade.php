@@ -8,13 +8,11 @@
     <section class="cu-single">
         <div class="cu-container cu-container--single">
             <figure class="cu-single__feature">
-                @if(isMobile())
-                    <!-- Version cuadrada de foto featured -->
-                    <img src="uploads/carros/{{ $carro->img }}" alt="{{ $carro->marca->marca . ' ' . $carro->modelo->modelo . ' ' . $carro->ano }}" />
-                @else
-                    <!-- Version apaisada de foto featured -->
-                    <img src="uploads/carros/{{ $carro->img }}" alt="{{ $carro->marca->marca . ' ' . $carro->modelo->modelo . ' ' . $carro->ano }}" />
-                @endif
+            @if(isMobile())
+                <img src="uploads/carros/{{ $carro->miniatura }}" alt="{{ $carro->marca->marca . ' ' . $carro->modelo->modelo . ' ' . $carro->ano }}">
+            @else
+                <img src="uploads/carros/{{ $carro->img }}" alt="{{ $carro->marca->marca . ' ' . $carro->modelo->modelo . ' ' . $carro->ano }}">
+            @endif
             </figure>
             <div class="cu-single__content">
                 <div id="cu-single-info" class="cu-single__info" aria-hidden="false">
