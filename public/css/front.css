@@ -1394,6 +1394,14 @@ img {
   background: var(--color-white);
   overflow: hidden;
 }
+@media (max-width: 600px) {
+  .cu-modal__container {
+    width: auto;
+    max-width: none;
+    margin: 0 1.5625rem;
+    max-height: calc(var(--vh, vh) * 74);
+  }
+}
 .cu-modal__close {
   position: absolute;
   width: 2.5rem;
@@ -1408,6 +1416,14 @@ img {
 }
 .cu-modal__close:hover {
   background: var(--color-yellow);
+}
+@media (max-width: 600px) {
+  .cu-modal__close {
+    width: 2rem;
+    height: 2rem;
+    -webkit-mask-size: 1rem;
+            mask-size: 1rem;
+  }
 }
 .cu-modal.active {
   opacity: 1;
@@ -1431,6 +1447,12 @@ img {
   letter-spacing: -0.045rem;
   color: var(--color-blue-dark);
   margin: 0 0 1.875rem;
+}
+@media (max-width: 600px) {
+  .cu-points__title {
+    padding: 0 1.5rem;
+    line-height: 1.5rem;
+  }
 }
 .cu-points__wrapper {
   width: 100%;

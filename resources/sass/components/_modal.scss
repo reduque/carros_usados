@@ -25,6 +25,12 @@
         border-radius: 0.625rem;
         background: var(--color-white);
         overflow: hidden;
+        @include phone {
+            width: auto;
+            max-width: none;
+            margin: 0 1.5625rem;
+            max-height: calc(var(--vh, vh) * 74);
+        }
     }
     &__close {
         position: absolute;
@@ -37,6 +43,11 @@
         background: var(--color-blue-dark);
         &:hover {
             background: var(--color-yellow);
+        }
+        @include phone {
+            width: 2rem;
+            height: 2rem;
+            mask-size: 1rem;
         }
     }
     &.active {
@@ -61,6 +72,10 @@
         letter-spacing: -0.045rem;
         color: var(--color-blue-dark);
         margin: 0 0 1.875rem;
+        @include phone {
+            padding: 0 1.5rem;
+            line-height: 1.5rem;
+        }
     }
     &__wrapper {
         width: 100%;
