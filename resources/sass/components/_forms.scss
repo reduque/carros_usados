@@ -112,3 +112,42 @@
         }
     }
 }
+
+.cu-form {
+    &__field {
+        margin-bottom: 1rem;
+        max-width: 80%;
+        input, textarea {
+            width: 100%;
+            font-size: 1rem;
+            line-height: 1rem;
+            color: var(--color-black-dark);
+            padding: 0.5rem 0.625rem;
+            border-radius: 0.3125rem;
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-border-form);
+        }
+    }
+    .cu-button {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        font-size: 0.8125rem;
+        line-height: 2rem;
+        padding: 0 0.625rem;
+        text-transform: uppercase;
+        color: var(--color-white);
+        background: var(--color-blue-light);
+        border-radius: 0.1875rem;
+        &::before {
+            content: '';
+            width: 1.0625rem;
+            height: 0.8125rem;
+            margin-right: 0.5rem;
+            background: var(--color-white);
+        }
+        &:hover {
+            background: var(--color-blue-dark);
+        }
+    }
+}

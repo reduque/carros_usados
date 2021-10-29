@@ -5013,16 +5013,33 @@ if (singleGallery) {
   var pointsBtn = document.querySelector('.see-points');
 
   if (pointsBtn) {
-    var modal = document.querySelector('.cu-modal');
-    var closeBtn = modal.querySelector('.cu-modal__close');
+    var modalPoints = document.getElementById('puntos-modal');
+    var closePoints = modalPoints.querySelector('.cu-modal__close');
     pointsBtn.addEventListener('click', function (e) {
       e.preventDefault();
-      modal.classList.add('active');
+      modalPoints.classList.add('active');
       disableScroll();
     });
-    closeBtn.addEventListener('click', function (e) {
+    closePoints.addEventListener('click', function (e) {
       e.preventDefault();
-      modal.classList.remove('active');
+      modalPoints.classList.remove('active');
+      enableScroll();
+    });
+  }
+
+  var contactBtn = document.querySelector('.contact-btn');
+
+  if (contactBtn) {
+    var modalContact = document.getElementById('contact-modal');
+    var closeContact = modalContact.querySelector('.cu-modal__close');
+    contactBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      modalContact.classList.add('active');
+      disableScroll();
+    });
+    closeContact.addEventListener('click', function (e) {
+      e.preventDefault();
+      modalContact.classList.remove('active');
       enableScroll();
     });
   }

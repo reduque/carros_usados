@@ -78,7 +78,7 @@
                         </li>
                     </ul>
                     <div class="cu-single__info__actions">
-                        <div class="cu-single__info__actions__item">
+                        <div class="cu-single__info__actions__item contact-btn">
                             <h3>Agenda<br />una cita</h3>
                             <p>Parsley açai frosted gingerbread bites vine tomatoes avocado dressing drizzle grains.</p>
                         </div>
@@ -124,7 +124,8 @@
             @include('partials._related')
         </div>
     </section>
-    @include('partials._modal')
+    @include('partials._modal_puntos')
+    @include('partials._modal_contact')
 @endsection
 @section('javascript')
    

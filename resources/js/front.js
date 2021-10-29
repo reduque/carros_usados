@@ -173,16 +173,32 @@ if (singleGallery) {
 
     const pointsBtn = document.querySelector('.see-points')
     if (pointsBtn) {
-        const modal = document.querySelector('.cu-modal')
-        const closeBtn = modal.querySelector('.cu-modal__close')
+        const modalPoints = document.getElementById('puntos-modal')
+        const closePoints = modalPoints.querySelector('.cu-modal__close')
         pointsBtn.addEventListener('click', (e) => {
             e.preventDefault()
-            modal.classList.add('active')
+            modalPoints.classList.add('active')
             disableScroll()
         })
-        closeBtn.addEventListener('click', (e) => {
+        closePoints.addEventListener('click', (e) => {
             e.preventDefault()
-            modal.classList.remove('active')
+            modalPoints.classList.remove('active')
+            enableScroll()
+        })
+    }
+
+    const contactBtn = document.querySelector('.contact-btn')
+    if (contactBtn) {
+        const modalContact = document.getElementById('contact-modal')
+        const closeContact = modalContact.querySelector('.cu-modal__close')
+        contactBtn.addEventListener('click', (e) => {
+            e.preventDefault()
+            modalContact.classList.add('active')
+            disableScroll()
+        })
+        closeContact.addEventListener('click', (e) => {
+            e.preventDefault()
+            modalContact.classList.remove('active')
             enableScroll()
         })
     }

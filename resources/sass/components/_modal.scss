@@ -19,7 +19,7 @@
         display: flex;
         flex-flow: column nowrap;
         width: 100%;
-        padding: 3rem 0;
+        padding: 1.5625rem 0;
         max-width: 43.75rem;
         max-height: calc(var(--vh, vh) * 70);
         border-radius: 0.625rem;
@@ -57,11 +57,26 @@
         pointer-events: all;
         transition-delay: 0ms, 0ms, 10ms;
     }
+    &#contact-modal {
+        @include phone {
+            place-items: flex-end;
+        }
+        .cu-modal__container {
+            margin: 0 0.625rem;
+            background: var(--color-gray-modal);
+            @include phone {
+                max-height: calc(100% - 4rem);
+                margin-bottom: 0.625rem;
+                padding-bottom: 0;
+            }
+        }
+    }
 }
 
 .cu-points {
     flex: 1;
     width: 100%;
+    padding: 0.8125rem 0;
     display: flex;
     flex-flow: column nowrap;
     overflow-y: auto;
@@ -144,6 +159,108 @@
             }
             &:first-child {
                 border-top: 1px solid var(--color-gray-border);
+            }
+        }
+    }
+}
+
+.cu-contact {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1.5625rem;
+    padding: 0 1.5625rem;
+    @include phone {
+        display: flex;
+        flex-flow: column-reverse nowrap;
+        padding: 0;
+        overflow: auto;
+    }
+    &__image {
+        &, img {
+            width: 100%;
+            height: 100%;
+        }
+        img {
+            object-fit: cover;
+        }
+        @include phone {
+            height: calc(var(--vh, vh) * 25)
+        }
+    }
+    &__info {
+        padding-top: 0.3125rem;
+        @include phone {
+            padding: 0 1.5625rem
+        }
+        h2 {
+            max-width: 80%;
+            font-size: 1.875rem;
+            line-height: 1.875rem;
+            font-weight: 700;
+            letter-spacing: -0.02rem;
+            color: var(--color-blue-dark);
+            margin: 0 0 1.5rem;
+            @include phone {
+                font-size: 1.625rem;
+                line-height: 1.625rem;
+            }
+        }
+        p {
+            font-size: 1.25rem;
+            line-height: 1.25rem;
+            @include phone {
+                font-size: 1.125rem;
+                line-height: 1.125rem;
+            }
+        }
+        .cu-form {
+            .cu-button {
+                &::before {
+                    mask: url('../img/svg/icon-contact.svg') center/contain no-repeat;
+                }
+            }
+        }
+        &__whatsapp {
+            margin: 1.375rem 1.5rem 0 0;
+            padding-top: 1.375rem;
+            border-top: 1px solid var(--color-gray-border);
+            h3 {
+                font-size: 1.25rem;
+                line-height: 1.25rem;
+                font-weight: 400;
+                @include phone {
+                    font-size: 1.125rem;
+                    line-height: 1.125rem;
+                }
+            }
+            a {
+                display: inline-flex;
+                flex-flow: row nowrap;
+                align-items: center;
+                font-size: 0.8125rem;
+                line-height: 2rem;
+                padding: 0 0.625rem;
+                text-transform: uppercase;
+                color: var(--color-white);
+                border: 1px solid var(--color-green-wa);
+                background: var(--color-green-wa);
+                border-radius: 0.1875rem;
+                margin-top: 1.125rem;
+                &::before {
+                    content: '';
+                    width: 1.0625rem;
+                    height: 1.0625rem;
+                    margin-right: 0.5rem;
+                    mask: url('../img/svg/icon-whatsapp.svg') center/contain no-repeat;
+                    background: var(--color-white);
+                }
+                &:hover {
+                    color: var(--color-green-wa);
+                    background: var(--color-white);
+                    &::before {
+                        background: var(--color-green-wa);
+                    }
+                }
             }
         }
     }
