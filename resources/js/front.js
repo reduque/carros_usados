@@ -196,6 +196,14 @@ if (singleGallery) {
             modalContact.classList.add('active')
             disableScroll()
         })
+        
+        const reserveBtn = document.querySelector('.reserve-btn')
+        reserveBtn.addEventListener('click', (e) => {
+            e.preventDefault()
+            modalContact.classList.add('active')
+            disableScroll()
+        })
+
         closeContact.addEventListener('click', (e) => {
             e.preventDefault()
             modalContact.classList.remove('active')

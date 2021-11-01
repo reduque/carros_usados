@@ -19,3 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('productos_home', 'API\ProductoController@productos_home');
+
+Route::post('enviar_formulario', 'HomeController@enviar_formulario')->name('enviar_formulario');

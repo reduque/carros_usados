@@ -4796,19 +4796,17 @@ var vw = window.innerWidth * 0.01;
 var vh = window.innerHeight * 0.01;
 document.documentElement.style.setProperty('--vw', "".concat(vw, "px"));
 document.documentElement.style.setProperty('--vh', "".concat(vh, "px"));
+
+window.onresize = function () {
+  var vw = window.innerWidth * 0.01;
+  var vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vw', "".concat(vw, "px"));
+  document.documentElement.style.setProperty('--vh', "".concat(vh, "px"));
+};
+
 var footer = document.querySelector('.cu-footer');
 var main = document.querySelector('.cu-main');
 main.style.marginBottom = "".concat(footer.clientHeight, "px");
-
-var handleWindowResize = function handleWindowResize() {
-  vw = window.innerWidth * 0.01;
-  vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty('--vw', "".concat(vw, "px"));
-  document.documentElement.style.setProperty('--vh', "".concat(vh, "px"));
-  main.style.marginBottom = "".concat(footer.clientHeight, "px");
-};
-
-window.addEventListener('resize', handleWindowResize);
 
 /***/ }),
 
@@ -4847,47 +4845,26 @@ __webpack_require__.r(__webpack_exports__);
 var homeSlider = document.querySelector('.cu-catalog__slider__wrapper');
 
 if (homeSlider) {
-  var slides = homeSlider.querySelector('.cu-card').length;
-
   var responsiveCells = function responsiveCells() {
     if (window.innerWidth > 1100) {
       return 5;
     } else if (window.innerWidth > 890) {
-      return 4;
-    } else if (window.innerWidth > 600) {
       return 3;
-    } else {
+    } else if (window.innerWidth > 600) {
       return 2;
+    } else {
+      return 1;
     }
   };
 
-  window.onload = function () {
-    var slider = new flickity__WEBPACK_IMPORTED_MODULE_3___default.a(homeSlider, {
-      cellAlign: 'left',
-      contain: true,
-      pageDots: window.innerWidth < 480,
-      prevNextButtons: slides > responsiveCells(),
-      groupCells: responsiveCells(),
-      cellSelector: '.cu-card'
-    });
-
-    if (window.innerWidth < 860) {
-      var reasons = document.querySelector('.cu-reasons__reasons');
-      var reasonsSlider = new flickity__WEBPACK_IMPORTED_MODULE_3___default.a(reasons, {
-        cellAlign: 'left',
-        contain: true,
-        pageDots: true,
-        prevNextButtons: false,
-        wrapAround: true,
-        cellSelector: '.cu-reasons__reasons__item'
-      });
-
-      window.onresize = function () {
-        slider.resize();
-        reasonsSlider.resize();
-      };
-    }
-  };
+  var slider = new flickity__WEBPACK_IMPORTED_MODULE_3___default.a(homeSlider, {
+    cellAlign: 'left',
+    contain: true,
+    pageDots: false,
+    prevNextButtons: true,
+    groupCells: responsiveCells(),
+    cellSelector: '.cu-card'
+  });
 }
 
 var singleGallery = document.querySelector('.cu-single__gallery');
@@ -4899,22 +4876,6 @@ if (singleGallery) {
   window.onload = function () {
     $body = document.querySelector('body');
     scrollPos = 0;
-    var $sidebar = document.querySelector('.cu-single__info');
-    var $content = document.querySelector('.cu-single__content');
-    var actions = document.querySelector('.cu-single__info__actions');
-    var related = document.querySelector('.cu-related__grid');
-    var panelBtn = document.querySelector('.cu-single__info__button');
-
-    var handleContentHeight = function handleContentHeight() {
-      if (window.innerWidth > 860) {
-        if (panelBtn.getAttribute('aria-expanded') === "false") {
-          $content.removeAttribute('style');
-        } else {
-          $content.style.minHeight = "".concat($sidebar.clientHeight - getStyle($sidebar, 'padding-bottom'), "px");
-        }
-      }
-    };
-
     var thumbsSlider = new flickity__WEBPACK_IMPORTED_MODULE_3___default.a(singleGallery.querySelector('.cu-single__gallery__thumbs'), {
       cellSelector: '.gallery-thumb',
       cellAlign: 'left',
@@ -4926,9 +4887,6 @@ if (singleGallery) {
       resize: true,
       asNavFor: singleGallery.querySelector('.cu-single__gallery__main'),
       on: {
-        ready: function ready() {
-          singleGallery.querySelector('.cu-single__gallery__thumbs').classList.remove('loading');
-        },
         change: function change(index) {
           mainSlider.select(index);
         }
@@ -4945,125 +4903,37 @@ if (singleGallery) {
       resize: true,
       contain: true,
       on: {
-        ready: function ready(index) {
-          singleGallery.querySelector('.cu-single__gallery__main').classList.remove('loading');
-          handleContentHeight();
-        },
         change: function change(index) {
           thumbsSlider.select(index);
         }
       }
     });
+    var panelBtn = document.querySelector('.cu-single__info__button');
     panelBtn.addEventListener('click', function (e) {
       e.preventDefault();
-      singleGallery.querySelector('.cu-single__gallery__thumbs').classList.add('loading');
-      singleGallery.querySelector('.cu-single__gallery__main').classList.add('loading');
       setTimeout(function () {
-        resizeSliders();
-        singleGallery.querySelector('.cu-single__gallery__thumbs').classList.remove('loading');
-        singleGallery.querySelector('.cu-single__gallery__main').classList.remove('loading');
-        handleContentHeight();
+        mainSlider.resize();
+        thumbsSlider.resize();
       }, 310);
     });
-
-    if (window.innerWidth <= 1366) {
-      var actionSlider = new flickity__WEBPACK_IMPORTED_MODULE_3___default.a(actions, {
-        cellSelector: '.cu-single__info__actions__item',
-        cellAlign: 'left',
-        draggable: true,
-        groupCells: 1,
-        prevNextButtons: false,
-        pageDots: true,
-        resize: true,
-        contain: true,
-        on: {
-          ready: function ready() {
-            handleContentHeight();
-          }
-        }
-      });
-    }
-
-    if (window.innerWidth <= 1100) {
-      var relatedSlider = new flickity__WEBPACK_IMPORTED_MODULE_3___default.a(related, {
-        cellSelector: '.cu-card',
-        cellAlign: 'left',
-        draggable: true,
-        groupCells: 1,
-        prevNextButtons: false,
-        wrapAround: true,
-        pageDots: true,
-        resize: true,
-        contain: true
-      });
-    }
-
-    window.addEventListener('resize', function () {
-      resizeSliders();
-    });
-
-    var resizeSliders = function resizeSliders() {
-      mainSlider.resize();
-      mainSlider.reposition();
-      thumbsSlider.resize();
-      thumbsSlider.reposition();
-    };
   };
 
   var pointsBtn = document.querySelector('.see-points');
 
   if (pointsBtn) {
-    var modalPoints = document.getElementById('puntos-modal');
-    var closePoints = modalPoints.querySelector('.cu-modal__close');
+    var modal = document.querySelector('.cu-modal');
+    var closeBtn = modal.querySelector('.cu-modal__close');
     pointsBtn.addEventListener('click', function (e) {
       e.preventDefault();
-      modalPoints.classList.add('active');
+      modal.classList.add('active');
       disableScroll();
     });
-    closePoints.addEventListener('click', function (e) {
+    closeBtn.addEventListener('click', function (e) {
       e.preventDefault();
-      modalPoints.classList.remove('active');
+      modal.classList.remove('active');
       enableScroll();
     });
   }
-
-  var contactBtn = document.querySelector('.contact-btn');
-
-  if (contactBtn) {
-    var modalContact = document.getElementById('contact-modal');
-    var closeContact = modalContact.querySelector('.cu-modal__close');
-    contactBtn.addEventListener('click', function (e) {
-      e.preventDefault();
-      modalContact.classList.add('active');
-      disableScroll();
-    });
-    var reserveBtn = document.querySelector('.reserve-btn');
-    reserveBtn.addEventListener('click', function (e) {
-      e.preventDefault();
-      modalContact.classList.add('active');
-      disableScroll();
-    });
-    closeContact.addEventListener('click', function (e) {
-      e.preventDefault();
-      modalContact.classList.remove('active');
-      enableScroll();
-    });
-  }
-
-  var getStyle = function getStyle(oElm, strCssRule) {
-    var strValue = "";
-
-    if (document.defaultView && document.defaultView.getComputedStyle) {
-      strValue = document.defaultView.getComputedStyle(oElm, "").getPropertyValue(strCssRule);
-    } else if (oElm.currentStyle) {
-      strCssRule = strCssRule.replace(/\-(\w)/g, function (strMatch, p1) {
-        return p1.toUpperCase();
-      });
-      strValue = oElm.currentStyle[strCssRule];
-    }
-
-    return parseInt(strValue.replace(/\D/g, ''));
-  };
 
   var disableScroll = function disableScroll() {
     scrollPos = window.pageYOffset;

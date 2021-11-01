@@ -10,10 +10,10 @@
             <figure class="cu-single__feature">
                 @if(isMobile())
                     <!-- Version cuadrada de foto featured -->
-                    <img src="uploads/carros/{{ $carro->img }}" alt="{{ $carro->marca->marca . ' ' . $carro->modelo->modelo . ' ' . $carro->ano }}" />
+                    <img src="uploads/carros/{{ $carro->img }}" alt="{{ $carro->marca->marca . ' ' . $carro->modelo->modelo . ' ' . $carro->ano . ' ' . $carro->placa }}" />
                 @else
                     <!-- Version apaisada de foto featured -->
-                    <img src="uploads/carros/{{ $carro->img }}" alt="{{ $carro->marca->marca . ' ' . $carro->modelo->modelo . ' ' . $carro->ano }}" />
+                    <img src="uploads/carros/{{ $carro->img }}" alt="{{ $carro->marca->marca . ' ' . $carro->modelo->modelo . ' ' . $carro->ano . ' ' . $carro->placa }}" />
                 @endif
             </figure>
             <div class="cu-single__content">
@@ -104,7 +104,7 @@
                             @foreach($carro->fotos as $foto)
                                 <figure class="cu-single__gallery__main__item gallery-item">
                                     <a href="uploads/carros/galeria/{{ $foto->img }}" data-fancybox="gallery">
-                                        <img src="uploads/carros/galeria/{{ $foto->img }}" alt="{{ $carro->marca->marca . ' ' . $carro->modelo->modelo . ' ' . $carro->ano }}" />
+                                        <img src="uploads/carros/galeria/{{ $foto->img }}" alt="{{ $carro->marca->marca . ' ' . $carro->modelo->modelo . ' ' . $carro->ano . ' ' . $carro->placa }}" />
                                     </a>
                                 </figure>
                             @endforeach
@@ -113,7 +113,7 @@
                             @foreach($carro->fotos as $foto)
                                 <div class="cu-single__gallery__thumbs__thumb gallery-thumb">
                                     <figure>
-                                        <img src="uploads/carros/galeria/{{ $foto->miniatura }}" alt="{{ $carro->marca->marca . ' ' . $carro->modelo->modelo . ' ' . $carro->ano }}" />
+                                        <img src="uploads/carros/galeria/{{ $foto->miniatura }}" alt="{{ $carro->marca->marca . ' ' . $carro->modelo->modelo . ' ' . $carro->ano . ' ' . $carro->placa }}" />
                                     </figure>
                                 </div>
                                 @endforeach
@@ -127,6 +127,6 @@
     @include('partials._modal_puntos')
     @include('partials._modal_contact')
 @endsection
-@section('javascript')
-   
+@section('scripts')
+<script src="js/single.js" type="text/javascript"></script>
 @endsection

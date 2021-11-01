@@ -37,7 +37,7 @@
                 <tbody>
                 @foreach($carros as $carro)
                     <tr data-id='{{ codifica($carro->id) }}'>
-                        <td><a href="{{ route('carros.edit', codifica($carro->id) ) }}" title="@lang('administracion.editar')">{{ $carro->placa . ' ' . $carro->marca->marca . ' ' . $carro->modelo->modelo . ' ' . $carro->ano }}</a></td>
+                        <td><a href="{{ route('carros.edit', codifica($carro->id) ) }}" title="@lang('administracion.editar')">{{ $carro->marca->marca . ' ' . $carro->modelo->modelo . ' ' . $carro->ano . ' ' . $carro->placa }}</a></td>
                         <td>
                             <a href="{{ route('carros.edit', codifica($carro->id) ) }}" title="@lang('administracion.editar')"><i class="fa fa-fw fa-edit"></i></a>
                             <a href="{{ route('carros_eliminar', codifica($carro->id) ) }}" title="@lang('administracion.eliminar')"><i class="fa fa-fw fa-ban bloquear"></i></a>
