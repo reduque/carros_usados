@@ -30,7 +30,6 @@ function postAjax(url, data, success) {
 }
 
 singleForm.addEventListener('submit', function (event) {
-  /*
   event.preventDefault();
   let data = new FormData(singleForm);
   let formObj = serialize(data);
@@ -39,7 +38,6 @@ singleForm.addEventListener('submit', function (event) {
   postAjax(url,formObj, function(data){ console.log(data); });
   let contenedor=document.querySelector('.cu-contact__info');
   contenedor.innerHTML = '<p><br><br>Hemos recibido tu información, pronto serás contactado por uno de nuestros ejecutivos de ventas</p>';
-  */
 });
 
 // Convert to an object
