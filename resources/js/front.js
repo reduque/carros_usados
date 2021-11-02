@@ -64,6 +64,8 @@ if (singleGallery) {
         const actions = document.querySelector('.cu-single__info__actions')
         const related = document.querySelector('.cu-related__grid')
         const panelBtn = document.querySelector('.cu-single__info__button')
+        let actionSlider
+        let relatedSlider
 
         const handleContentHeight = () => {
             if (window.innerWidth > 860){
@@ -114,22 +116,9 @@ if (singleGallery) {
                 },
             }
         })
-        
-        panelBtn.addEventListener('click', (e) => {
-            e.preventDefault()
-            singleGallery.querySelector('.cu-single__gallery__thumbs').classList.add('loading')
-            singleGallery.querySelector('.cu-single__gallery__main').classList.add('loading')
-            setTimeout(() => {
-                resizeSliders()
-                singleGallery.querySelector('.cu-single__gallery__thumbs').classList.remove('loading')
-                singleGallery.querySelector('.cu-single__gallery__main').classList.remove('loading')
-                handleContentHeight()
-            }, 310)
-        })
 
         if (window.innerWidth <= 1366) {
-            
-            const actionSlider = new Flickity(actions, {
+            actionSlider = new Flickity(actions, {
                 cellSelector: '.cu-single__info__actions__item',
                 cellAlign: 'left',
                 draggable: true,
@@ -144,9 +133,13 @@ if (singleGallery) {
                     }
                 }
             })
+        } else {
+            if (actionSlider) {
+                actionSlider.destroy()
+            }
         }
         if (window.innerWidth <= 1100) {
-            const relatedSlider = new Flickity(related, {
+            relatedSlider = new Flickity(related, {
                 cellSelector: '.cu-card',
                 cellAlign: 'left',
                 draggable: true,
@@ -157,7 +150,25 @@ if (singleGallery) {
                 resize: true,
                 contain: true,
             })
+        } else {
+            if (relatedSlider) {
+                relatedSlider.destroy()
+            }
         }
+        
+        panelBtn.addEventListener('click', (e) => {
+            e.preventDefault()
+            singleGallery.querySelector('.cu-single__gallery__thumbs').classList.add('loading')
+            singleGallery.querySelector('.cu-single__gallery__main').classList.add('loading')
+            setTimeout(() => {
+                resizeSliders()
+                singleGallery.querySelector('.cu-single__gallery__thumbs').classList.remove('loading')
+                singleGallery.querySelector('.cu-single__gallery__main').classList.remove('loading')
+                handleContentHeight()
+            }, 310)
+        })
+
+        
 
         window.addEventListener('resize', () => {
             resizeSliders()
@@ -168,6 +179,54 @@ if (singleGallery) {
             mainSlider.reposition()
             thumbsSlider.resize()
             thumbsSlider.reposition()
+            if (window.innerWidth <= 1366) {
+                if (actionSlider) {
+                    actionSlider.resize()
+                    actionSlider.reposition()
+                } else {
+                    actionSlider = new Flickity(actions, {
+                        cellSelector: '.cu-single__info__actions__item',
+                        cellAlign: 'left',
+                        draggable: true,
+                        groupCells: 1,
+                        prevNextButtons: false,
+                        pageDots: true,
+                        resize: true,
+                        contain: true,
+                        on: {
+                            ready: function() {
+                                handleContentHeight()
+                            }
+                        }
+                    })
+                }
+            } else {
+                if (actionSlider) {
+                    actionSlider.destroy()
+                }
+            }
+            if (window.innerWidth <= 1100) {
+                if (relatedSlider) {
+                    relatedSlider.resize()
+                    relatedSlider.reposition()
+                } else {
+                    relatedSlider = new Flickity(related, {
+                        cellSelector: '.cu-card',
+                        cellAlign: 'left',
+                        draggable: true,
+                        groupCells: 1,
+                        prevNextButtons: false,
+                        wrapAround: true,
+                        pageDots: true,
+                        resize: true,
+                        contain: true,
+                    })
+                }
+            } else {
+                if (relatedSlider) {
+                    relatedSlider.destroy()
+                }
+            }
         }
     }
 
