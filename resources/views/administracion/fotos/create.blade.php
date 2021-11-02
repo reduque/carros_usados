@@ -35,7 +35,7 @@
                 <div class="slim1">
                     <input name="img" type="file" accept="image/jpeg, image/png" required />
                 </div>
-                <label><span>Tamaño mímino 2500 x 1400 px | JPG o PNG</span></label>
+                <label><span>Tamaño mímino 1200 x 672 px | JPG o PNG</span></label>
             </div>
         </div>
         <div class="col-lg-4">
@@ -44,7 +44,7 @@
                 <div class="slim">
                     <input name="miniatura" type="file" accept="image/jpeg, image/png" required />
                 </div>
-                <label><span>Tamaño mímino 1000 x 1000 px | JPG o PNG</span></label>
+                <label><span>Tamaño mímino 500 x 500 px | JPG o PNG</span></label>
             </div>
         </div>
     </div>
@@ -65,15 +65,15 @@
 $(document).ready(function(){
     $('.slim1').slim({
         label: 'Arrastra tu imagen ó haz click aquí',
-        ratio: '2500:1400',
+        ratio: '1200:672',
         forceType: 'jpg',
         minSize: {
-            width: 2500,
-            height: 1400
+            width: 1200,
+            height: 672
         },
         size: {
-            width: 2500,
-            height: 1400
+            width: 1200,
+            height: 672
         },
         download: false,
         labelLoading: 'Cargando imagen...',
@@ -97,12 +97,12 @@ $(document).ready(function(){
         ratio: '1:1',
         forceType: 'jpg',
         minSize: {
-            width: 1000,
-            height: 1000
+            width: 500,
+            height: 500,
         },
         size: {
-            width: 1000,
-            height: 1000
+            width: 500,
+            height: 500,
         },
         download: false,
         labelLoading: 'Cargando imagen...',

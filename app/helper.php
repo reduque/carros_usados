@@ -200,5 +200,8 @@ function createThumbnail($src, $dest, $targetWidth, $targetHeight = null) {
 		IMAGE_HANDLERS[$type]['quality']
 	);
 }
+function nombre_wepb($nombre){
+	return explode(".", trim($nombre))[0] . "." . 'webp';
+}
 
 ?>

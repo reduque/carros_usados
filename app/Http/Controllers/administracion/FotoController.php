@@ -53,9 +53,11 @@ class FotoController extends Controller
         $data=$request->toArray();
         if($request->img){
             $data['img'] = $this->saveFile($request->img, 'carros/galeria/',(string)(date("YmdHis")) . Str::random(1));
+            $this->crea_webp('carros/galeria/',$data['img']);
         }
         if($request->miniatura){
             $data['miniatura'] = $this->saveFile($request->miniatura, 'carros/galeria/',(string)(date("YmdHis")) . Str::random(1));
+            $this->crea_webp('carros/galeria/',$data['miniatura']);
         }
         $foto=Foto::create($data);
 
@@ -86,8 +88,10 @@ class FotoController extends Controller
             $img=$foto->img;
             if($img<>''){
                 $this->deleteFile('carros/galeria/' . $img);
+                $this->deleteFile('carros/galeria/' . nombre_wepb($img));
             }
             $data['img'] = $this->saveFile($request->img, 'carros/galeria/',(string)(date("YmdHis")) . Str::random(1));
+            $this->crea_webp('carros/galeria/',$data['img']);
         }else{
             unset($data['img']);
         }
@@ -95,8 +99,10 @@ class FotoController extends Controller
             $img=$foto->miniatura;
             if($img<>''){
                 $this->deleteFile('carros/galeria/' . $img);
+                $this->deleteFile('carros/galeria/' . nombre_wepb($img));
             }
             $data['miniatura'] = $this->saveFile($request->miniatura, 'carros/galeria/',(string)(date("YmdHis")) . Str::random(1));
+            $this->crea_webp('carros/galeria/',$data['miniatura']);
         }else{
             unset($data['miniatura']);
         }
@@ -114,10 +120,12 @@ class FotoController extends Controller
             $img=$foto->img;
             if($img<>''){
                 $this->deleteFile('carros/galeria/' . $img);
+                $this->deleteFile('carros/galeria/' . nombre_wepb($img));
             }
             $img=$foto->miniatura;
             if($img<>''){
                 $this->deleteFile('carros/galeria/' . $img);
+                $this->deleteFile('carros/galeria/' . nombre_wepb($img));
             }
             $foto->delete();
             return redirect()->route('fotos.index');

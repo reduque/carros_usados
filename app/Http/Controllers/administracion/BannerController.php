@@ -44,7 +44,7 @@ class BannerController extends Controller
             }
             $img = "";
             if($request->img){
-                $img = $this->saveFile($request->img, 'banners/',(string)(date("YmdHis")) . (string)(rand(1,9)));
+                $img = $this->saveFile($request->img, 'banners/',(string)(date("YmdHis")) . Str::random(1));
             }
             $active = ($request->active == 1) ? 1 : 0 ;
             $banner=Banner::create([
@@ -92,7 +92,7 @@ class BannerController extends Controller
             if($request->img){
                 if($img<>'')
                     $this->deleteFile('banners/' . $img);
-                $img = $this->saveFile($request->img, 'banners/',(string)(date("YmdHis")) . (string)(rand(1,9)));
+                $img = $this->saveFile($request->img, 'banners/',(string)(date("YmdHis")) . Str::random(1));
             }
 
             $active = ($request->active == 1) ? 1 : 0 ;

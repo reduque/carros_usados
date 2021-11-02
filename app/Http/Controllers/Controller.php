@@ -53,4 +53,22 @@ class Controller extends BaseController
     }
 
 
+    public function crea_webp($ruta, $origen){
+        if(config('app.env') != 'local'){
+            $ruta2=config('app.url_uploads') . $ruta;
+        }else{
+            $ruta2='uploads/' . $ruta;
+        }
+        $destino = explode(".", trim($origen))[0] . "." . 'webp';
+        $file=$ruta2 . $origen;
+        $image=  imagecreatefromjpeg($file);
+        ob_start();
+        imagejpeg($image,NULL,100);
+        $cont=ob_get_contents();
+        ob_end_clean();
+        imagedestroy($image);
+        $content =  imagecreatefromstring($cont);
+        imagewebp($content,$ruta2 . $destino);
+        imagedestroy($content);
+    }
 }

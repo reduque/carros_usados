@@ -55,11 +55,14 @@ class CarroController extends Controller
         $data['aire_acondicionado']= $request->aire_acondicionado ? 1 : 0;
         $data['sistema_de_seguroda']= $request->sistema_de_seguroda ? 1 : 0;
         if($request->img){
-            $data['img'] = $this->saveFile($request->img, 'carros/',(string)(date("YmdHis")) . (string)(rand(1,9)));
-            createThumbnail('uploads/carros/' . $data['img'], 'uploads/carros/tn/' . $data['img'], 1000);
+            $data['img'] = $this->saveFile($request->img, 'carros/',(string)(date("YmdHis")) . Str::random(1));
+            createThumbnail('uploads/carros/' . $data['img'], 'uploads/carros/tn/' . $data['img'], 500);
+            $this->crea_webp('carros/',$data['img']);
+            $this->crea_webp('carros/tn/',$data['img']);
         }
         if($request->miniatura){
             $data['miniatura'] = $this->saveFile($request->miniatura, 'carros/',(string)(date("YmdHis")) . Str::random(1));
+            $this->crea_webp('carros/',$data['miniatura']);
         }
 
         $carro=Carro::create($data);
@@ -130,9 +133,13 @@ class CarroController extends Controller
             if($img<>''){
                 $this->deleteFile('carros/' . $img);
                 $this->deleteFile('carros/tn/' . $img);
+                $this->deleteFile('carros/' . nombre_wepb($img));
+                $this->deleteFile('carros/tn/' . nombre_wepb($img));
             }
-            $data['img'] = $this->saveFile($request->img, 'carros/',(string)(date("YmdHis")) . (string)(rand(1,9)));
-            createThumbnail('uploads/carros/' . $data['img'], 'uploads/carros/tn/' . $data['img'], 1000);
+            $data['img'] = $this->saveFile($request->img, 'carros/',(string)(date("YmdHis")) . Str::random(1));
+            createThumbnail('uploads/carros/' . $data['img'], 'uploads/carros/tn/' . $data['img'], 500);
+            $this->crea_webp('carros/',$data['img']);
+            $this->crea_webp('carros/tn/',$data['img']);
         }else{
             unset($data['img']);
         }
@@ -140,8 +147,10 @@ class CarroController extends Controller
             $img=$carro->miniatura;
             if($img<>''){
                 $this->deleteFile('carros/' . $img);
+                $this->deleteFile('carros/' . nombre_wepb($img));
             }
             $data['miniatura'] = $this->saveFile($request->miniatura, 'carros/',(string)(date("YmdHis")) . Str::random(1));
+            $this->crea_webp('carros/',$data['miniatura']);
         }else{
             unset($data['miniatura']);
         }
@@ -160,10 +169,14 @@ class CarroController extends Controller
             if($carro->img<>''){
                 $this->deleteFile('carros/' . $carro->img);
                 $this->deleteFile('carros/tn/' . $carro->img);
+                $this->deleteFile('carros/' . nombre_wepb($carro->img));
+                $this->deleteFile('carros/tn/' . nombre_wepb($carro->img));
+
             }
             $img=$carro->miniatura;
             if($img<>''){
                 $this->deleteFile('carros/' . $img);
+                $this->deleteFile('carros/' . nombre_wepb($img));
             }
 
             $carro->delete();
