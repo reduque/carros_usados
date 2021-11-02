@@ -10,10 +10,10 @@
             <figure class="cu-single__feature">
                 @if(isMobile())
                     <!-- Version cuadrada de foto featured -->
-                    <img src="uploads/carros/{{ $carro->img }}" alt="{{ $carro->marca->marca . ' ' . $carro->modelo->modelo . ' ' . $carro->ano . ' ' . $carro->placa }}" />
+                    <img class="lazy" src="img/loading_p.gif" data-src="uploads/carros/{{ $carro->miniatura }}" data-srcwemb="uploads/carros/{{ nombre_wepb($carro->miniatura) }}" alt="{{ $carro->marca->marca . ' ' . $carro->modelo->modelo . ' ' . $carro->ano . ' ' . $carro->placa }}" />
                 @else
                     <!-- Version apaisada de foto featured -->
-                    <img src="uploads/carros/{{ $carro->img }}" alt="{{ $carro->marca->marca . ' ' . $carro->modelo->modelo . ' ' . $carro->ano . ' ' . $carro->placa }}" />
+                    <img class="lazy" src="img/loading_g.gif" data-src="uploads/carros/{{ $carro->img }}" data-srcwemb="uploads/carros/{{ nombre_wepb($carro->img) }}" alt="{{ $carro->marca->marca . ' ' . $carro->modelo->modelo . ' ' . $carro->ano . ' ' . $carro->placa }}" />
                 @endif
             </figure>
             <div class="cu-single__content">
@@ -104,7 +104,7 @@
                             @foreach($carro->fotos as $foto)
                                 <figure class="cu-single__gallery__main__item gallery-item">
                                     <a href="uploads/carros/galeria/{{ $foto->img }}" data-fancybox="gallery">
-                                        <img src="uploads/carros/galeria/{{ $foto->img }}" alt="{{ $carro->marca->marca . ' ' . $carro->modelo->modelo . ' ' . $carro->ano . ' ' . $carro->placa }}" />
+                                        <img class="lazy" src="img/loading_g.gif" data-src="uploads/carros/galeria/{{ $foto->img }}" data-srcwemb="uploads/carros/galeria/{{ nombre_wepb($foto->img) }}" alt="{{ $carro->marca->marca . ' ' . $carro->modelo->modelo . ' ' . $carro->ano . ' ' . $carro->placa }}" />
                                     </a>
                                 </figure>
                             @endforeach

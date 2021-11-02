@@ -20,6 +20,7 @@
 
     @include('partials._footer')
     <script src="js/front.js" type="text/javascript"></script>
+    <script src="js/lazyload.js" type="text/javascript"></script>
     @yield('scripts')
 </body>
 </html>
