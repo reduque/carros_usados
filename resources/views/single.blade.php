@@ -10,10 +10,10 @@
             <figure class="cu-single__feature">
                 @if(isMobile())
                     <!-- Version cuadrada de foto featured -->
-                    <img class="lazy" src="img/loading_p.gif" data-src="uploads/carros/{{ $carro->miniatura }}" data-srcwemb="uploads/carros/{{ nombre_wepb($carro->miniatura) }}" alt="{{ $carro->marca->marca . ' ' . $carro->modelo->modelo . ' ' . $carro->ano . ' ' . $carro->placa }}" />
+                    <img class="lazy" src="img/loading_p.gif" data-src="uploads/carros/{{ $carro->miniatura }}" data-srcwebp="uploads/carros/{{ nombre_wepb($carro->miniatura) }}" alt="{{ $carro->marca->marca . ' ' . $carro->modelo->modelo . ' ' . $carro->ano . ' ' . $carro->placa }}" />
                 @else
                     <!-- Version apaisada de foto featured -->
-                    <img class="lazy" src="img/loading_g.gif" data-src="uploads/carros/{{ $carro->img }}" data-srcwemb="uploads/carros/{{ nombre_wepb($carro->img) }}" alt="{{ $carro->marca->marca . ' ' . $carro->modelo->modelo . ' ' . $carro->ano . ' ' . $carro->placa }}" />
+                    <img class="lazy" src="img/loading_g.gif" data-src="uploads/carros/{{ $carro->img }}" data-srcwebp="uploads/carros/{{ nombre_wepb($carro->img) }}" alt="{{ $carro->marca->marca . ' ' . $carro->modelo->modelo . ' ' . $carro->ano . ' ' . $carro->placa }}" />
                 @endif
             </figure>
             <div class="cu-single__content">
@@ -104,7 +104,7 @@
                             @foreach($carro->fotos as $foto)
                                 <figure class="cu-single__gallery__main__item gallery-item">
                                     <a href="uploads/carros/galeria/{{ $foto->img }}" data-fancybox="gallery">
-                                        <img class="lazy" src="img/loading_g.gif" data-src="uploads/carros/galeria/{{ $foto->img }}" data-srcwemb="uploads/carros/galeria/{{ nombre_wepb($foto->img) }}" alt="{{ $carro->marca->marca . ' ' . $carro->modelo->modelo . ' ' . $carro->ano . ' ' . $carro->placa }}" />
+                                        <img class="lazy" src="img/loading_g.gif" data-src="uploads/carros/galeria/{{ $foto->img }}" data-srcwebp="uploads/carros/galeria/{{ nombre_wepb($foto->img) }}" alt="{{ $carro->marca->marca . ' ' . $carro->modelo->modelo . ' ' . $carro->ano . ' ' . $carro->placa }}" />
                                     </a>
                                 </figure>
                             @endforeach
@@ -113,7 +113,7 @@
                             @foreach($carro->fotos as $foto)
                                 <div class="cu-single__gallery__thumbs__thumb gallery-thumb">
                                     <figure>
-                                        <img src="uploads/carros/galeria/{{ $foto->miniatura }}" alt="{{ $carro->marca->marca . ' ' . $carro->modelo->modelo . ' ' . $carro->ano . ' ' . $carro->placa }}" />
+                                        <img class="lazy" src="img/loading_p.gif" data-src="uploads/carros/galeria/{{ $foto->miniatura }}" data-srcwebp="uploads/carros/galeria/{{ nombre_wepb($foto->miniatura) }}" alt="{{ $carro->marca->marca . ' ' . $carro->modelo->modelo . ' ' . $carro->ano . ' ' . $carro->placa }}" />
                                     </figure>
                                 </div>
                                 @endforeach

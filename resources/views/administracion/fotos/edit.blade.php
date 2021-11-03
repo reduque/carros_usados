@@ -56,7 +56,7 @@
                         <img src="uploads/carros/galeria/{{ $foto->miniatura }}">
                     @endif
                 </div>
-                <label><span>Tamaño mímino 500 x 500 px | JPG o PNG</span></label>
+                <label><span>Tamaño mímino 640 x 640 px | JPG o PNG</span></label>
             </div>
         </div>
     </div>
@@ -78,7 +78,7 @@
 <script type="text/javascript">
 $(document).ready(function(){
     setTimeout(function(){
-        $(".alert").slideUp(500);
+        $(".alert").slideUp(640);
     },10000)
     $(".btn-danger").click(function(event){
         event.preventDefault();
@@ -127,12 +127,12 @@ $(document).ready(function(){
         ratio: '1:1',
         forceType: 'jpg',
         minSize: {
-            width: 500,
-            height: 500,
+            width: 640,
+            height: 640,
         },
         size: {
-            width: 500,
-            height: 500,
+            width: 640,
+            height: 640,
         },
         download: false,
         labelLoading: 'Cargando imagen...',

@@ -32,4 +32,22 @@ class BorrarController extends Controller
         }
 
     }
+    public function webp(Request $request){
+        $url='borrar/uploads/carrospeq/galeria/*.jpeg';
+        if ($request->ajax()) {
+            $archivo=$request->archivo;
+            $destino = explode(".", trim($archivo))[0] . "." . 'webp';
+            $image=  imagecreatefromjpeg($archivo);
+            ob_start();
+            imagejpeg($image,NULL,100);
+            $cont=ob_get_contents();
+            ob_end_clean();
+            imagedestroy($image);
+            $content =  imagecreatefromstring($cont);
+            imagewebp($content,$destino);
+            imagedestroy($content);
+        }else{
+            return view('borrar.webp',['archivos' => glob($url)]);
+        }
+    }
 }

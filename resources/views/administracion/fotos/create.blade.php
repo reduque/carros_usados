@@ -44,7 +44,7 @@
                 <div class="slim">
                     <input name="miniatura" type="file" accept="image/jpeg, image/png" required />
                 </div>
-                <label><span>Tamaño mímino 500 x 500 px | JPG o PNG</span></label>
+                <label><span>Tamaño mímino 640 x 640 px | JPG o PNG</span></label>
             </div>
         </div>
     </div>
@@ -97,12 +97,12 @@ $(document).ready(function(){
         ratio: '1:1',
         forceType: 'jpg',
         minSize: {
-            width: 500,
-            height: 500,
+            width: 640,
+            height: 640,
         },
         size: {
-            width: 500,
-            height: 500,
+            width: 640,
+            height: 640,
         },
         download: false,
         labelLoading: 'Cargando imagen...',

@@ -68,7 +68,12 @@ Route::group(['middleware' => 'auth:admin'], function () {
 });
 
 Route::get('borrar/borrar', 'BorrarController@borrar')->name('borrar_procesar');
-
+Route::get('borrar/borrar/webp', 'BorrarController@webp')->name('borrar_webp');
+/*
+Route::get('borrar/borrar/phpinfo', function(){
+	gd_info();
+});
+*/
 /*
 Route::group(['middleware' => 'auth:admin'], function (){
     */

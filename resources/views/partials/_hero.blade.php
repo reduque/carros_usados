@@ -7,7 +7,7 @@
                 <a class="cu-button cu-button--filled" aria-controls="cu-search-bar" aria-expanded="false">Buscar</a>
                 <p>Descubre todas las opciones que tenemos para ti con solo un click.</p>
             </div>
-            <img class="cu-hero__content__image" src="img/content/carros-usados-hero.png" alt="Compra el vehículo que deseas al mejor precio." />
+            <img class="cu-hero__content__image lazy" data-src="img/content/carros-usados-hero.png" src="img/nada.gif" data-srcwebp="img/content/carros-usados-hero.webp" alt="Compra el vehículo que deseas al mejor precio." />
         </div>
     </div>
 </section>

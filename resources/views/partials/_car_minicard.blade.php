@@ -2,7 +2,7 @@
     <div class="cu-card__wrapper">
         <figure class="cu-card__image">
             <a href="{{ route('single',codifica($carro_p->id)) }}">
-                <img src="uploads/carros/{{ $carro_p->miniatura }}" alt="{{ $carro_p->marca->marca . ' ' . $carro_p->modelo->modelo . ' ' . $carro_p->ano . ' ' . $carro_p->placa }}" />
+                <img class="lazy" src="img/loading_p.gif" data-src="uploads/carros/{{ $carro_p->miniatura }}" data-srcwebp="uploads/carros/{{ nombre_wepb($carro_p->miniatura) }}" alt="{{ $carro_p->marca->marca . ' ' . $carro_p->modelo->modelo . ' ' . $carro_p->ano . ' ' . $carro_p->placa }}" />
             </a>
         </figure>
         <div class="cu-card__info">

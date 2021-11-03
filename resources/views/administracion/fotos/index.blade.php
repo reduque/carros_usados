@@ -58,7 +58,7 @@
         <div class="galeria">
             @foreach($fotos as $foto)
             <article data-id='{{ codifica($foto->id) }}'>
-                <a href="{{ route('fotos.edit', codifica($foto->id) ) }}" title="@lang('administracion.editar')"><img src="uploads/carros/galeria/{{ $foto->img }}"></a>
+                <a href="{{ route('fotos.edit', codifica($foto->id) ) }}" title="@lang('administracion.editar')"><img class="lazy" src="img/loading_g.gif" data-src="uploads/carros/galeria/{{ $foto->img }}" data-srcwebp="uploads/carros/galeria/{{ nombre_wepb($foto->img) }}"></a>
                 <i class="fa fa-arrows-alt"></i>
             </article>
             @endforeach
