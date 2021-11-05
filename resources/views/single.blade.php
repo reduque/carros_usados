@@ -80,22 +80,22 @@
                     <div class="cu-single__info__actions">
                         <div class="cu-single__info__actions__item contact-btn">
                             <h3>Agenda<br />una cita</h3>
-                            <p>Parsley açai frosted gingerbread bites vine tomatoes avocado dressing drizzle grains.</p>
+                            <p>Déjanos tus datos y nosotros te contactaremos.</p>
                         </div>
                         <div class="cu-single__info__actions__item">
-                            <h3>Nuestros carros<br />Tienen garantía</h3>
-                            <p>Parsley açai frosted gingerbread bites vine tomatoes avocado dressing drizzle grains.</p>
+                            <h3>Documentación<br>asegurada</h3>
+                            <p>Nos encargamos de toda la documentación y trámites requeridos.</p>
                         </div>
                         <div class="cu-single__info__actions__item">
                             <h3>Revisión de 150 puntos</h3>
-                            <p>Revisa el resultado de la evaluación de este carro</p>
+                            <p>Conoce el resultado de la revisión técnica de este vehículo.</p>
                             <button class="see-points">Haz clic aquí</button>
                         </div>
                     </div>
                     <div class="cu-single__info__times">
                         <h3>Horario de antención</h3>
-                        <p>Citas para revisar los carros en persona se llevan a cabo de:</p>
-                        <h5>Lunes a Sábado de 9:00m - 6pm</h5>
+                        <p>Citas presenciales de:</p>
+                        <h5>Lunes a Sábado de 9:00 a.m. a 5:00 p.m.</h5>
                     </div>
                 </div>
                 <div class="cu-single__gallery">
