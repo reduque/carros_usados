@@ -194,7 +194,7 @@
         <div class="col-lg-7">
             <div class="form-group">
                 <label>Imagen</label>
-                <div class="slim1">
+                <div class="slim1 webp">
                     <input name="img" type="file" accept="image/jpeg, image/png" />
                     @if($carro->img<>'')
                         <img src="uploads/carros/{{ $carro->img }}">
@@ -206,7 +206,7 @@
         <div class="col-lg-4">
             <div class="form-group">
                 <label>Miniatura</label>
-                <div class="slim">
+                <div class="slim webp">
                     <input name="miniatura" type="file" accept="image/jpeg, image/png" />
                     @if($carro->miniatura<>'')
                         <img src="uploads/carros/{{ $carro->miniatura }}">
@@ -282,6 +282,7 @@
 @section('javascript')
 
 <script src="js/slim.jquery.js"></script>
+<script src="js/creawebp.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
     $('.slim1').slim({

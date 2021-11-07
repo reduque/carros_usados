@@ -187,7 +187,7 @@
         <div class="col-lg-7">
             <div class="form-group">
                 <label>Imagen pincipal</label>
-                <div class="slim1">
+                <div class="slim1 webp">
                     <input name="img" type="file" accept="image/jpeg, image/png" />
                 </div>
                 <label><span>Tamaño mímino 2500 x 1400 px | JPG o PNG</span></label>
@@ -196,7 +196,7 @@
         <div class="col-lg-4">
             <div class="form-group">
                 <label>Miniatura</label>
-                <div class="slim">
+                <div class="slim webp">
                     <input name="miniatura" type="file" accept="image/jpeg, image/png" required />
                 </div>
                 <label><span>Tamaño mímino 640 x 640 px | JPG o PNG</span></label>
@@ -217,6 +217,7 @@
 @section('javascript')
 
 <script src="js/slim.jquery.js"></script>
+<script src="js/creawebp.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
     $('.slim1').slim({

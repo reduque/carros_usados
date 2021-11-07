@@ -57,12 +57,11 @@ class CarroController extends Controller
         if($request->img){
             $data['img'] = $this->saveFile($request->img, 'carros/',(string)(date("YmdHis")) . Str::random(1));
             createThumbnail('uploads/carros/' . $data['img'], 'uploads/carros/tn/' . $data['img'], 500);
-            $this->crea_webp('carros/',$data['img']);
-            $this->crea_webp('carros/tn/',$data['img']);
+            $this->crea_webp('carros/',$data['img'],$data['img_webp']);
         }
         if($request->miniatura){
             $data['miniatura'] = $this->saveFile($request->miniatura, 'carros/',(string)(date("YmdHis")) . Str::random(1));
-            $this->crea_webp('carros/',$data['miniatura']);
+            $this->crea_webp('carros/',$data['miniatura'],$data['miniatura_webp']);
         }
 
         $carro=Carro::create($data);
@@ -138,8 +137,7 @@ class CarroController extends Controller
             }
             $data['img'] = $this->saveFile($request->img, 'carros/',(string)(date("YmdHis")) . Str::random(1));
             createThumbnail('uploads/carros/' . $data['img'], 'uploads/carros/tn/' . $data['img'], 500);
-            $this->crea_webp('carros/',$data['img']);
-            $this->crea_webp('carros/tn/',$data['img']);
+            $this->crea_webp('carros/',$data['img'],$data['img_webp']);
         }else{
             unset($data['img']);
         }
@@ -150,7 +148,7 @@ class CarroController extends Controller
                 $this->deleteFile('carros/' . nombre_wepb($img));
             }
             $data['miniatura'] = $this->saveFile($request->miniatura, 'carros/',(string)(date("YmdHis")) . Str::random(1));
-            $this->crea_webp('carros/',$data['miniatura']);
+            $this->crea_webp('carros/',$data['miniatura'],$data['miniatura_webp']);
         }else{
             unset($data['miniatura']);
         }

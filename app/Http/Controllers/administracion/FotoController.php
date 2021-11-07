@@ -53,11 +53,11 @@ class FotoController extends Controller
         $data=$request->toArray();
         if($request->img){
             $data['img'] = $this->saveFile($request->img, 'carros/galeria/',(string)(date("YmdHis")) . Str::random(1));
-            $this->crea_webp('carros/galeria/',$data['img']);
+            $this->crea_webp('carros/galeria/',$data['img'],$data['img_webp']);
         }
         if($request->miniatura){
             $data['miniatura'] = $this->saveFile($request->miniatura, 'carros/galeria/',(string)(date("YmdHis")) . Str::random(1));
-            $this->crea_webp('carros/galeria/',$data['miniatura']);
+            $this->crea_webp('carros/galeria/',$data['miniatura'],$data['miniatura_webp']);
         }
         $foto=Foto::create($data);
 
@@ -91,7 +91,7 @@ class FotoController extends Controller
                 $this->deleteFile('carros/galeria/' . nombre_wepb($img));
             }
             $data['img'] = $this->saveFile($request->img, 'carros/galeria/',(string)(date("YmdHis")) . Str::random(1));
-            $this->crea_webp('carros/galeria/',$data['img']);
+            $this->crea_webp('carros/galeria/',$data['img'],$data['img_webp']);
         }else{
             unset($data['img']);
         }
@@ -102,7 +102,7 @@ class FotoController extends Controller
                 $this->deleteFile('carros/galeria/' . nombre_wepb($img));
             }
             $data['miniatura'] = $this->saveFile($request->miniatura, 'carros/galeria/',(string)(date("YmdHis")) . Str::random(1));
-            $this->crea_webp('carros/galeria/',$data['miniatura']);
+            $this->crea_webp('carros/galeria/',$data['miniatura'],$data['miniatura_webp']);
         }else{
             unset($data['miniatura']);
         }

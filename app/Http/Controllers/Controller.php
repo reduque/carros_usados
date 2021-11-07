@@ -53,6 +53,19 @@ class Controller extends BaseController
     }
 
 
+    public function crea_webp($path, $nombre, $data){
+        $fileName = explode(".", trim($nombre))[0] . "." . 'webp';
+
+        $filepath = $path . $fileName;
+        $Base64Img=$data;
+        list(, $Base64Img) = explode(';', $Base64Img);
+        list(, $Base64Img) = explode(',', $Base64Img);
+        $image = base64_decode($Base64Img);
+        $filepath = 'uploads/' . $filepath;
+        file_put_contents($filepath, $image);
+    }
+
+    /*
     public function crea_webp($ruta, $origen){
         $ruta2='uploads/' . $ruta;
         $destino = explode(".", trim($origen))[0] . "." . 'webp';
@@ -68,4 +81,5 @@ class Controller extends BaseController
         //$image = \Image::make($content)->encode('webp', 90)->save($ruta2 . $destino);
         imagedestroy($content);
     }
+    */
 }
