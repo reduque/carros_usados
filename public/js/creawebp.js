@@ -36,7 +36,7 @@ $(document).ready(function () {
                         reader.onloadend = function () {
                             var base64data = reader.result;
                             var input = document.createElement("input");
-                            input.type = "text";
+                            input.type = "hidden";
                             input.name = el.prop('name') + "_webp";
                             input.value = base64data;
                             formulario.appendChild(input);

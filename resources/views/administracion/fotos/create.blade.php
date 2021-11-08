@@ -35,7 +35,7 @@
                 <div class="slim1 webp">
                     <input name="img" type="file" accept="image/jpeg, image/png" required />
                 </div>
-                <label><span>Tamaño mímino 1200 x 672 px | JPG o PNG</span></label>
+                <label><span>Tamaño mímino 1280 x 717 px | JPG o PNG</span></label>
             </div>
         </div>
         <div class="col-lg-4">
@@ -66,15 +66,15 @@
 $(document).ready(function(){
     $('.slim1').slim({
         label: 'Arrastra tu imagen ó haz click aquí',
-        ratio: '1200:672',
+        ratio: '1280:717',
         forceType: 'jpg',
         minSize: {
-            width: 1200,
-            height: 672
+            width: 1280,
+            height: 717
         },
         size: {
-            width: 1200,
-            height: 672
+            width: 1280,
+            height: 717
         },
         download: false,
         labelLoading: 'Cargando imagen...',
