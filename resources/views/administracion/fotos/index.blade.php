@@ -75,6 +75,8 @@
 @endsection
 
 @section('javascript')
+<script src="js/lazyload.js" type="text/javascript"></script>
+
 <script type="text/javascript">
 $(document).ready(function(){
     $(".bloquear").click(function(event){
