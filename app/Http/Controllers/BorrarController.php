@@ -33,7 +33,8 @@ class BorrarController extends Controller
 
     }
     public function webp(Request $request){
-        $url='borrar/uploads/carrospeq/galeria/*.jpeg';
+        //$url='borrar/uploads/carros/galeria/*.jpeg';
+        $url='borrar/uploads/carros/*.jpeg';
         if ($request->ajax()) {
             $archivo=$request->archivo;
             $destino = explode(".", trim($archivo))[0] . "." . 'webp';

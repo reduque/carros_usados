@@ -65,8 +65,7 @@ class Controller extends BaseController
         file_put_contents($filepath, $image);
     }
 
-    /*
-    public function crea_webp($ruta, $origen){
+    public function crea_webp_php($ruta, $origen){
         $ruta2='uploads/' . $ruta;
         $destino = explode(".", trim($origen))[0] . "." . 'webp';
         $file=$ruta2 . $origen;
@@ -81,5 +80,4 @@ class Controller extends BaseController
         //$image = \Image::make($content)->encode('webp', 90)->save($ruta2 . $destino);
         imagedestroy($content);
     }
-    */
 }
