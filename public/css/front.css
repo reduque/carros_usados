@@ -1794,7 +1794,7 @@ img {
   height: auto;
   right: 0;
   top: 50%;
-  transform: translateY(-42%);
+  transform: translateY(-38%);
 }
 @media (max-width: 1440px) {
   .cu-hero__content__image {

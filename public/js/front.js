@@ -4957,7 +4957,7 @@ if (singleGallery) {
       }
     });
 
-    if (window.innerWidth <= 1366) {
+    if (window.innerWidth <= 1280) {
       actionSlider = new flickity__WEBPACK_IMPORTED_MODULE_3___default.a(actions, {
         cellSelector: '.cu-single__info__actions__item',
         cellAlign: 'left',

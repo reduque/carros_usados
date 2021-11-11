@@ -117,7 +117,7 @@ if (singleGallery) {
             }
         })
 
-        if (window.innerWidth <= 1366) {
+        if (window.innerWidth <= 1280) {
             actionSlider = new Flickity(actions, {
                 cellSelector: '.cu-single__info__actions__item',
                 cellAlign: 'left',
