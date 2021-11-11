@@ -5018,7 +5018,7 @@ if (singleGallery) {
       thumbsSlider.resize();
       thumbsSlider.reposition();
 
-      if (window.innerWidth <= 1366) {
+      if (window.innerWidth <= 1280) {
         if (actionSlider) {
           actionSlider.resize();
           actionSlider.reposition();
